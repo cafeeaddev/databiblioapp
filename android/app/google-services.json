@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "152869979546",
+    "project_id": "databiblio-df216",
+    "storage_bucket": "databiblio-df216.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:152869979546:android:61b64b8bb690bbb2eda623",
+        "android_client_info": {
+          "package_name": "com.cafeead.databiblio"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPdc4jkuzFNZTsLsLw1teF6W1RjA_wXnI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

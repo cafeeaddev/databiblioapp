@@ -1,0 +1,100 @@
+name: granth_flutter
+description: A new Book selling  Flutter application.
+version: 4.7.0
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # COMMON
+  nb_utils: ^6.0.7
+  url_launcher: ^6.2.1
+  html: ^0.15.4
+  #http: ^1.1.0
+  http: ^0.13.4
+  intl: ^0.18.1
+  share_plus: ^7.2.1
+  package_info_plus: ^4.0.2
+  flutter_screenutil: ^5.9.0
+
+  # Animated Text
+  animated_text_kit: ^4.2.2
+
+  # Firebase
+  firebase_core: ^2.23.0
+  firebase_crashlytics: ^3.4.5
+
+  # STATE MANAGEMENT
+  mobx: ^2.2.1
+  flutter_mobx: ^2.2.0
+  get: ^4.6.6
+
+  # IMAGES
+  cached_network_image: ^3.3.0
+  image_picker: ^1.0.4
+
+  # UI
+  google_fonts: ^4.0.4
+
+  #Push Notification
+  onesignal_flutter: ^5.0.4
+
+  #VOICE SEARCH
+  speech_to_text: ^6.4.1
+
+  # DOWNLOAD
+  internet_file: ^1.2.0
+  flutter_file_downloader: ^1.1.4
+  path_provider: ^2.1.1
+  universal_html: ^2.2.4
+
+  # PDF File
+  flutter_pdfview: ^1.3.2
+  #syncfusion_flutter_pdfviewer: ^23.2.4
+  syncfusion_flutter_pdfviewer: ^20.4.54
+
+  # EPUB File
+  epub_view: ^3.2.0
+  vocsy_epub_viewer: ^2.0.0
+  
+  # DATABASE
+  sqflite: ^2.3.0
+
+  #payment
+  razorpay_flutter: ^1.3.5
+  flutter_stripe: ^9.5.0+1
+  paytm: ^3.0.1
+  flutterwave_standard: ^1.0.3
+
+  #Google ads
+  google_mobile_ads: ^3.1.0
+
+  #Animation
+  lottie: ^2.7.0
+
+  #permission
+  permission_handler: ^11.1.0
+  device_info_plus: ^9.1.1
+
+  flutter_localizations:
+    sdk: flutter
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  build_runner: ^2.4.6
+  mobx_codegen: ^2.4.0
+  #flutter packages pub run build_runner build --delete-conflicting-outputs
+
+
+flutter:
+  uses-material-design: true
+  assets:
+    - images/
+    - images/app_icons/
+    - images/app_images/
+    - images/flag/
+    - images/lottie/
+
