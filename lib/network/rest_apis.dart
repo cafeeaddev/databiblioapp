@@ -119,6 +119,15 @@ Future<DashboardResponse> getDashboardDetails({String? type, int? page}) async {
   return response;
 }
 
+Future<DashboardResponse> getDashboardDetailsMoodle({String? type, int? page}) async {
+  var response = await handleResponse(await buildHttpResponse(
+      'https://databiblion.cafeeadhost.com.br/webservice/rest/server.php?moodlewsrestformat=json'
+          '&wstoken=2ab3f1e2a757c5bc5e1d3a32c7680395'
+          '&wsfunction=local_wsgetbooks_get_dashboard', method: HttpMethod.GET));
+
+  return DashboardResponse.fromJson(response);
+}
+
 ///end region
 
 /// book details api call
@@ -167,6 +176,14 @@ Future<CategoryListModel> getAllCategoryList({String? type, int? page}) async {
 
 Future<AllBookDetailsModel> getBookDetails(Map request) async {
   return AllBookDetailsModel.fromJson(await (handleResponse(await buildHttpResponse('book-detail', request: request, method: HttpMethod.POST))));
+}
+
+Future<AllBookDetailsModel> getBookDetailsMoodle({int? bookid, int? userid}) async {
+  return AllBookDetailsModel.fromJson(await (handleResponse(await buildHttpResponse(
+      'https://databiblion.cafeeadhost.com.br/webservice/rest/server.php?wstoken=2ab3f1e2a757c5bc5e1d3a32c7680395'
+          '&wsfunction=local_wsgetbooks_get_bookdetails'
+          '&moodlewsrestformat=json'
+          '&bookid=$bookid&userid=$userid', method: HttpMethod.GET))));
 }
 
 Future<PostLocatorResponse> postLocatorData(Map request) async {

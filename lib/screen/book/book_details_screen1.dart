@@ -79,11 +79,9 @@ class BookDetailsScreen1State extends State<BookDetailsScreen1> {
           resizeToAvoidBottomInset: true,
           body: SafeArea(
             child: FutureBuilder<AllBookDetailsModel>(
-              future: getBookDetails(
-                {
-                  "book_id": widget.bookId.validate(),
-                  "user_id": appStore.userId.validate(),
-                },
+              future: getBookDetailsMoodle(
+                bookid: widget.bookId.validate(),
+                userid: appStore.userId.validate(),
               ),
               builder: (context, snap) {
                 if (snap.hasData) {
