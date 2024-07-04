@@ -57,11 +57,9 @@ class _BookDetailsScreen2State extends State<BookDetailsScreen2> with SingleTick
         return Scaffold(
           body: SafeArea(
             child: FutureBuilder<AllBookDetailsModel>(
-              future: getBookDetails(
-                {
-                  "book_id": widget.bookId.validate(),
-                  "user_id": appStore.userId.validate(),
-                },
+              future: getBookDetailsMoodle(
+                bookid: widget.bookId.validate(),
+                userid: appStore.userId.validate()
               ),
               builder: (context, snap) {
                 if (snap.hasData) {

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:epub_view/epub_view.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:granth_flutter/component/app_loader_widget.dart';
 import 'package:granth_flutter/component/font_size_component.dart';
@@ -39,15 +40,19 @@ class _EPubViewerScreenState extends State<EPubViewerScreen> {
     super.initState();
   }
 
-  void init() async {
+  void init() {
     ///open epub file
+    var doc = kDebugMode ? EpubDocument.openAsset('assets/burroughs-mucker.epub') : EpubDocument.openData(File(widget.filePath).readAsBytesSync());
     _epubReaderController = EpubController(
-      document: EpubDocument.openData(File(widget.filePath).readAsBytesSync()),
+      document: doc,
       epubCfi: getStringAsync('$LAST_BOOK_PAGE${widget.bookId}'),
     );
+    /*
     await Future.delayed(const Duration(seconds: 2), () {
       AppLoaderWidget();
     });
+
+     */
     setState(() {});
   }
 
@@ -176,9 +181,8 @@ class _EPubViewerScreenState extends State<EPubViewerScreen> {
       body: _epubReaderController != null
           ? Theme(
               data: appStore.isDarkMode ? ThemeData.dark() : ThemeData.light(),
-              //child: VocsyEpub()
-              child: EpuB(id: widget.bookId ?? 0, path: widget.filePath, darkMode: appStore.isDarkMode)
-              /*
+              //child: EpuB(id: widget.bookId ?? 0, path: widget.filePath, darkMode: appStore.isDarkMode)
+
               child: EpubView(
                 controller: _epubReaderController!,
                 onDocumentLoaded: (document) => Center(child: CircularProgressIndicator()),
@@ -192,7 +196,6 @@ class _EPubViewerScreenState extends State<EPubViewerScreen> {
                 },
               ),
 
-               */
             )
           : AppLoaderWidget().center(),
     );
