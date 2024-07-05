@@ -1,203 +1,204 @@
-import 'dart:io';
+// import 'dart:io';
 
-import 'package:epub_view/epub_view.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:granth_flutter/component/app_loader_widget.dart';
-import 'package:granth_flutter/component/font_size_component.dart';
-import 'package:granth_flutter/configs.dart';
-import 'package:granth_flutter/main.dart';
-import 'package:granth_flutter/models/font_size_model.dart';
-import 'package:granth_flutter/utils/common.dart';
-import 'package:nb_utils/nb_utils.dart';
 
-import '../../utils/constants.dart';
-import '../../component/reading_card_list.dart';
+// import 'package:epub_view/epub_view.dart';
+// import 'package:flutter/foundation.dart';
+// import 'package:flutter/material.dart';
+// import 'package:granth_flutter/component/app_loader_widget.dart';
+// import 'package:granth_flutter/component/font_size_component.dart';
+// import 'package:granth_flutter/configs.dart';
+// import 'package:granth_flutter/main.dart';
+// import 'package:granth_flutter/models/font_size_model.dart';
+// import 'package:granth_flutter/utils/common.dart';
+// import 'package:nb_utils/nb_utils.dart';
 
-class EPubViewerScreen extends StatefulWidget {
-  final String filePath;
-  final String bookName;
-  final int? bookId;
+// import '../../utils/constants.dart';
+// import '../../component/reading_card_list.dart';
 
-  EPubViewerScreen({required this.filePath, required this.bookName, this.bookId});
+// class EPubViewerScreen extends StatefulWidget {
+//   final String filePath;
+//   final String bookName;
+//   final int? bookId;
 
-  @override
-  State<EPubViewerScreen> createState() => _EPubViewerScreenState();
-}
+//   EPubViewerScreen({required this.filePath, required this.bookName, this.bookId});
 
-class _EPubViewerScreenState extends State<EPubViewerScreen> {
-  EpubController? _epubReaderController;
-  final scaffoldKey = GlobalKey<ScaffoldState>();
-  List<FontSizeModel> fontSizeList = fontList();
+//   @override
+//   State<EPubViewerScreen> createState() => _EPubViewerScreenState();
+// }
 
-  double textSize = 18.0;
+// class _EPubViewerScreenState extends State<EPubViewerScreen> {
+//   EpubController? _epubReaderController;
+//   final scaffoldKey = GlobalKey<ScaffoldState>();
+//   List<FontSizeModel> fontSizeList = fontList();
 
-  int selectedIndex = 1;
+//   double textSize = 18.0;
 
-  @override
-  void initState() {
-    init();
-    super.initState();
-  }
+//   int selectedIndex = 1;
 
-  void init() {
-    ///open epub file
-    var doc = kDebugMode ? EpubDocument.openAsset('assets/burroughs-mucker.epub') : EpubDocument.openData(File(widget.filePath).readAsBytesSync());
-    _epubReaderController = EpubController(
-      document: doc,
-      epubCfi: getStringAsync('$LAST_BOOK_PAGE${widget.bookId}'),
-    );
-    /*
-    await Future.delayed(const Duration(seconds: 2), () {
-      AppLoaderWidget();
-    });
+//   @override
+//   void initState() {
+//     init();
+//     super.initState();
+//   }
 
-     */
-    setState(() {});
-  }
+//   void init() {
+//     ///open epub file
+//     var doc = kDebugMode ? EpubDocument.openAsset('assets/burroughs-mucker.epub') : EpubDocument.openData(File(widget.filePath).readAsBytesSync());
+//     _epubReaderController = EpubController(
+//       document: doc,
+//       epubCfi: getStringAsync('$LAST_BOOK_PAGE${widget.bookId}'),
+//     );
+//     /*
+//     await Future.delayed(const Duration(seconds: 2), () {
+//       AppLoaderWidget();
+//     });
 
-  @override
-  void dispose() {
-    super.dispose();
-    _epubReaderController!.dispose();
-  }
+//      */
+//     setState(() {});
+//   }
 
-  Widget bottomSheetWidget() {
-    return Column(
-      children: [
-        16.height,
-        Container(
-          padding: EdgeInsets.all(defaultRadius),
-          alignment: Alignment.center,
-          child: Icon(Icons.close, color: white),
-          decoration: boxDecorationDefault(
-            color: defaultPrimaryColor,
-            shape: BoxShape.circle,
-            boxShadow: [
-              BoxShadow(color: Colors.transparent),
-            ],
-          ),
-        ).onTap(
-          () {
-            finish(context);
-          },
-        ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: _epubReaderController!.tableOfContents().map((e) {
-            return Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    e.title.validate(),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: primaryTextStyle(),
-                  ),
-                  Divider(),
-                ],
-              ),
-            ).onTap(() async {
-              _epubReaderController!.jumpTo(
-                index: _epubReaderController!.tableOfContents().indexOf(e),
-              );
-              await 1.seconds.delay;
-              finish(context);
-            });
-          }).toList(),
-        ).paddingAll(16),
-      ],
-    );
-  }
+//   @override
+//   void dispose() {
+//     super.dispose();
+//     _epubReaderController!.dispose();
+//   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      key: scaffoldKey,
-      appBar: appBarWidget(
-        widget.bookName,
-        color: context.scaffoldBackgroundColor,
-        backWidget: IconButton(
-          onPressed: () async {
-            showModalBottomSheet(
-              isScrollControlled: true,
-              isDismissible: true,
-              enableDrag: true,
-              backgroundColor: context.cardColor,
-              elevation: 2,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(topRight: Radius.circular(22), topLeft: Radius.circular(22)),
-              ),
-              context: context,
-              builder: (context) {
-                return DraggableScrollableSheet(
-                  expand: false,
-                  initialChildSize: 0.8,
-                  maxChildSize: 1.0,
-                  builder: (context, scrollController) {
-                    return SingleChildScrollView(
-                      controller: scrollController,
-                      child: bottomSheetWidget(),
-                    );
-                  },
-                );
-              },
-            );
-          },
-          icon: Icon(Icons.menu),
-        ),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.font_download_outlined),
-            onPressed: () async {
-              bool? data = await showModalBottomSheet(
-                context: context,
-                isDismissible: true,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
-                builder: (BuildContext context) {
-                  return StatefulBuilder(builder: (context, secondaryState) {
-                    return FontSizeComponent(
-                      fontSizeList: fontSizeList,
-                      selectedIndex: selectedIndex,
-                      onTap: (index) {
-                        secondaryState(() {
-                          selectedIndex = index;
-                          textSize = fontSizeList[index].fontSize.toString().toDouble();
-                        });
-                      },
-                    );
-                  });
-                },
-              );
-              if (data.validate()) {
-                setState(() {});
-              }
-            },
-          ),
-        ],
-      ),
-      body: _epubReaderController != null
-          ? Theme(
-              data: appStore.isDarkMode ? ThemeData.dark() : ThemeData.light(),
-              //child: EpuB(id: widget.bookId ?? 0, path: widget.filePath, darkMode: appStore.isDarkMode)
+//   Widget bottomSheetWidget() {
+//     return Column(
+//       children: [
+//         16.height,
+//         Container(
+//           padding: EdgeInsets.all(defaultRadius),
+//           alignment: Alignment.center,
+//           child: Icon(Icons.close, color: white),
+//           decoration: boxDecorationDefault(
+//             color: defaultPrimaryColor,
+//             shape: BoxShape.circle,
+//             boxShadow: [
+//               BoxShadow(color: Colors.transparent),
+//             ],
+//           ),
+//         ).onTap(
+//           () {
+//             finish(context);
+//           },
+//         ),
+//         Column(
+//           crossAxisAlignment: CrossAxisAlignment.start,
+//           children: _epubReaderController!.tableOfContents().map((e) {
+//             return Padding(
+//               padding: const EdgeInsets.all(8.0),
+//               child: Column(
+//                 crossAxisAlignment: CrossAxisAlignment.start,
+//                 children: [
+//                   Text(
+//                     e.title.validate(),
+//                     maxLines: 1,
+//                     overflow: TextOverflow.ellipsis,
+//                     style: primaryTextStyle(),
+//                   ),
+//                   Divider(),
+//                 ],
+//               ),
+//             ).onTap(() async {
+//               _epubReaderController!.jumpTo(
+//                 index: _epubReaderController!.tableOfContents().indexOf(e),
+//               );
+//               await 1.seconds.delay;
+//               finish(context);
+//             });
+//           }).toList(),
+//         ).paddingAll(16),
+//       ],
+//     );
+//   }
 
-              child: EpubView(
-                controller: _epubReaderController!,
-                onDocumentLoaded: (document) => Center(child: CircularProgressIndicator()),
-                builders: EpubViewBuilders<DefaultBuilderOptions>(
-                  options: DefaultBuilderOptions(textStyle: TextStyle(fontSize: textSize)),
-                  chapterDividerBuilder: (_) => Divider(),
-                  loaderBuilder: (context) => Center(child: CircularProgressIndicator()),
-                ),
-                onChapterChanged: (value) async {
-                  await setValue('$LAST_BOOK_PAGE${widget.bookId}', _epubReaderController!.generateEpubCfi());
-                },
-              ),
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       key: scaffoldKey,
+//       appBar: appBarWidget(
+//         widget.bookName,
+//         color: context.scaffoldBackgroundColor,
+//         backWidget: IconButton(
+//           onPressed: () async {
+//             showModalBottomSheet(
+//               isScrollControlled: true,
+//               isDismissible: true,
+//               enableDrag: true,
+//               backgroundColor: context.cardColor,
+//               elevation: 2,
+//               shape: RoundedRectangleBorder(
+//                 borderRadius: BorderRadius.only(topRight: Radius.circular(22), topLeft: Radius.circular(22)),
+//               ),
+//               context: context,
+//               builder: (context) {
+//                 return DraggableScrollableSheet(
+//                   expand: false,
+//                   initialChildSize: 0.8,
+//                   maxChildSize: 1.0,
+//                   builder: (context, scrollController) {
+//                     return SingleChildScrollView(
+//                       controller: scrollController,
+//                       child: bottomSheetWidget(),
+//                     );
+//                   },
+//                 );
+//               },
+//             );
+//           },
+//           icon: Icon(Icons.menu),
+//         ),
+//         actions: [
+//           IconButton(
+//             icon: Icon(Icons.font_download_outlined),
+//             onPressed: () async {
+//               bool? data = await showModalBottomSheet(
+//                 context: context,
+//                 isDismissible: true,
+//                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
+//                 builder: (BuildContext context) {
+//                   return StatefulBuilder(builder: (context, secondaryState) {
+//                     return FontSizeComponent(
+//                       fontSizeList: fontSizeList,
+//                       selectedIndex: selectedIndex,
+//                       onTap: (index) {
+//                         secondaryState(() {
+//                           selectedIndex = index;
+//                           textSize = fontSizeList[index].fontSize.toString().toDouble();
+//                         });
+//                       },
+//                     );
+//                   });
+//                 },
+//               );
+//               if (data.validate()) {
+//                 setState(() {});
+//               }
+//             },
+//           ),
+//         ],
+//       ),
+//       body: _epubReaderController != null
+//           ? Theme(
+//               data: appStore.isDarkMode ? ThemeData.dark() : ThemeData.light(),
+//               //child: EpuB(id: widget.bookId ?? 0, path: widget.filePath, darkMode: appStore.isDarkMode)
 
-            )
-          : AppLoaderWidget().center(),
-    );
-  }
-}
+//               child: EpubView(
+//                 controller: _epubReaderController!,
+//                 onDocumentLoaded: (document) => Center(child: CircularProgressIndicator()),
+//                 builders: EpubViewBuilders<DefaultBuilderOptions>(
+//                   options: DefaultBuilderOptions(textStyle: TextStyle(fontSize: textSize)),
+//                   chapterDividerBuilder: (_) => Divider(),
+//                   loaderBuilder: (context) => Center(child: CircularProgressIndicator()),
+//                 ),
+//                 onChapterChanged: (value) async {
+//                   await setValue('$LAST_BOOK_PAGE${widget.bookId}', _epubReaderController!.generateEpubCfi());
+//                 },
+//               ),
+
+//             )
+//           : AppLoaderWidget().center(),
+//     );
+//   }
+// }

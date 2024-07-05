@@ -8,6 +8,7 @@ import 'package:granth_flutter/models/bookdetail_model.dart';
 import 'package:granth_flutter/models/payment_method_list_model.dart';
 import 'package:granth_flutter/screen/book/epub_viewer_screen.dart';
 import 'package:granth_flutter/screen/book/pdf_viewer_screen.dart';
+import 'package:granth_flutter/theme_notifier.dart';
 import 'package:granth_flutter/utils/file_common.dart';
 import 'package:granth_flutter/utils/images.dart';
 import 'package:granth_flutter/utils/permissions.dart';
@@ -17,6 +18,10 @@ import 'package:nb_utils/nb_utils.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:universal_html/html.dart' as html;
 import 'package:url_launcher/url_launcher.dart';
+import 'package:epub_view_example/reader.dart';
+import 'package:epub_view/epub_view.dart';
+import 'package:flutter/foundation.dart';
+import 'package:provider/provider.dart';
 
 import '../models/downloaded_book.dart';
 import '../models/font_size_model.dart';
@@ -25,20 +30,90 @@ import 'constants.dart';
 
 List<LanguageDataModel> languageList() {
   return [
-    LanguageDataModel(id: 1, name: 'English', languageCode: 'en', fullLanguageCode: 'en-US', flag: 'images/flag/ic_us.png'),
-    LanguageDataModel(id: 2, name: 'Hindi', languageCode: 'hi', fullLanguageCode: 'hi-IN', flag: 'images/flag/ic_india.png'),
-    LanguageDataModel(id: 3, name: 'Arabic', languageCode: 'ar', fullLanguageCode: 'ar-AR', flag: 'images/flag/ic_ar.png'),
-    LanguageDataModel(id: 4, name: 'Gujarati', languageCode: 'gu', fullLanguageCode: 'gu-GU', flag: 'images/flag/ic_india.png'),
-    LanguageDataModel(id: 5, name: 'African', languageCode: 'af', fullLanguageCode: 'ar-AF', flag: 'images/flag/ic_af.png'),
-    LanguageDataModel(id: 6, name: 'Dutch', languageCode: 'nl', fullLanguageCode: 'nl-NL', flag: 'images/flag/ic_nl.png'),
-    LanguageDataModel(id: 7, name: 'French', languageCode: 'fr', fullLanguageCode: 'fr-FR', flag: 'images/flag/ic_fr.png'),
-    LanguageDataModel(id: 8, name: 'German', languageCode: 'de', fullLanguageCode: 'de-DE', flag: 'images/flag/ic_de.png'),
-    LanguageDataModel(id: 9, name: 'Indonesian', languageCode: 'id', fullLanguageCode: 'id-ID', flag: 'images/flag/ic_id.png'),
-    LanguageDataModel(id: 10, name: 'Spanish', languageCode: 'es', fullLanguageCode: 'es-ES', flag: 'images/flag/ic_es.jpg'),
-    LanguageDataModel(id: 11, name: 'Turkish', languageCode: 'tr', fullLanguageCode: 'tr-TR', flag: 'images/flag/ic_tr.png'),
-    LanguageDataModel(id: 12, name: 'Vietnam', languageCode: 'vi', fullLanguageCode: 'vi-VI', flag: 'images/flag/ic_vi.png'),
-    LanguageDataModel(id: 13, name: 'Albanian', languageCode: 'sq', fullLanguageCode: 'sq-SQ', flag: 'images/flag/ic_arbanian.png'),
-    LanguageDataModel(id: 14, name: 'Portugal', languageCode: 'pt', fullLanguageCode: 'pt-PT', flag: 'images/flag/ic_pt.png'),
+    LanguageDataModel(
+        id: 1,
+        name: 'English',
+        languageCode: 'en',
+        fullLanguageCode: 'en-US',
+        flag: 'images/flag/ic_us.png'),
+    LanguageDataModel(
+        id: 2,
+        name: 'Hindi',
+        languageCode: 'hi',
+        fullLanguageCode: 'hi-IN',
+        flag: 'images/flag/ic_india.png'),
+    LanguageDataModel(
+        id: 3,
+        name: 'Arabic',
+        languageCode: 'ar',
+        fullLanguageCode: 'ar-AR',
+        flag: 'images/flag/ic_ar.png'),
+    LanguageDataModel(
+        id: 4,
+        name: 'Gujarati',
+        languageCode: 'gu',
+        fullLanguageCode: 'gu-GU',
+        flag: 'images/flag/ic_india.png'),
+    LanguageDataModel(
+        id: 5,
+        name: 'African',
+        languageCode: 'af',
+        fullLanguageCode: 'ar-AF',
+        flag: 'images/flag/ic_af.png'),
+    LanguageDataModel(
+        id: 6,
+        name: 'Dutch',
+        languageCode: 'nl',
+        fullLanguageCode: 'nl-NL',
+        flag: 'images/flag/ic_nl.png'),
+    LanguageDataModel(
+        id: 7,
+        name: 'French',
+        languageCode: 'fr',
+        fullLanguageCode: 'fr-FR',
+        flag: 'images/flag/ic_fr.png'),
+    LanguageDataModel(
+        id: 8,
+        name: 'German',
+        languageCode: 'de',
+        fullLanguageCode: 'de-DE',
+        flag: 'images/flag/ic_de.png'),
+    LanguageDataModel(
+        id: 9,
+        name: 'Indonesian',
+        languageCode: 'id',
+        fullLanguageCode: 'id-ID',
+        flag: 'images/flag/ic_id.png'),
+    LanguageDataModel(
+        id: 10,
+        name: 'Spanish',
+        languageCode: 'es',
+        fullLanguageCode: 'es-ES',
+        flag: 'images/flag/ic_es.jpg'),
+    LanguageDataModel(
+        id: 11,
+        name: 'Turkish',
+        languageCode: 'tr',
+        fullLanguageCode: 'tr-TR',
+        flag: 'images/flag/ic_tr.png'),
+    LanguageDataModel(
+        id: 12,
+        name: 'Vietnam',
+        languageCode: 'vi',
+        fullLanguageCode: 'vi-VI',
+        flag: 'images/flag/ic_vi.png'),
+    LanguageDataModel(
+        id: 13,
+        name: 'Albanian',
+        languageCode: 'sq',
+        fullLanguageCode: 'sq-SQ',
+        flag: 'images/flag/ic_arbanian.png'),
+    LanguageDataModel(
+        id: 14,
+        name: 'Portugal',
+        languageCode: 'pt',
+        fullLanguageCode: 'pt-PT',
+        flag: 'images/flag/ic_pt.png'),
   ];
 }
 
@@ -46,17 +121,27 @@ List<String> rtlSupport = ['ar'];
 
 List<PaymentMethodListModel> paymentModeListData() {
   List<PaymentMethodListModel> paymentModeList = [];
-  paymentModeList.add(PaymentMethodListModel(title: "razorPay", image: razorpay_img));
+  paymentModeList
+      .add(PaymentMethodListModel(title: "razorPay", image: razorpay_img));
 
 //  paymentModeList.add(PaymentMethodListModel(title: "paytm", image: paytm_img));
-  paymentModeList.add(PaymentMethodListModel(title: "paypal", image: pay_pal_img));
-  paymentModeList.add(PaymentMethodListModel(title: "stripe", image: stripe_img));
-  paymentModeList.add(PaymentMethodListModel(title: "flutterWave", image: flutter_wave_img));
+  paymentModeList
+      .add(PaymentMethodListModel(title: "paypal", image: pay_pal_img));
+  paymentModeList
+      .add(PaymentMethodListModel(title: "stripe", image: stripe_img));
+  paymentModeList.add(
+      PaymentMethodListModel(title: "flutterWave", image: flutter_wave_img));
 
   return paymentModeList;
 }
 
-InputDecoration inputDecoration(BuildContext context, {Widget? prefixIcon, String? hintText, double? borderRadius, Widget? preFixIcon, Widget? suffixIcon, bool labelText = true}) {
+InputDecoration inputDecoration(BuildContext context,
+    {Widget? prefixIcon,
+    String? hintText,
+    double? borderRadius,
+    Widget? preFixIcon,
+    Widget? suffixIcon,
+    bool labelText = true}) {
   return InputDecoration(
     contentPadding: EdgeInsets.only(left: 12, bottom: 10, top: 10, right: 10),
     labelText: labelText ? hintText : '',
@@ -100,7 +185,8 @@ setOneSignal() async {
   OneSignal.User.pushSubscription.optIn();
 
   OneSignal.Notifications.addForegroundWillDisplayListener((event) {
-    OneSignal.Notifications.displayNotification(event.notification.notificationId);
+    OneSignal.Notifications.displayNotification(
+        event.notification.notificationId);
     return event.notification.display();
   });
   OneSignal.User.pushSubscription.addObserver((stateChanges) async {
@@ -122,6 +208,8 @@ String getPaymentStatus({String? status, String? method}) {
     return "";
   }
 }
+
+ 
 
 ///Payment Color
 Color setTransactionSuccess({required String status}) {
@@ -158,7 +246,8 @@ Future clearSearchHistory() async {
   await setValue(SEARCH_TEXT, "");
 }
 
-String formatDate(String? dateTime, {String format = DATE_FORMAT_4, String format2 = DATE_FORMAT_6}) {
+String formatDate(String? dateTime,
+    {String format = DATE_FORMAT_4, String format2 = DATE_FORMAT_6}) {
   if (dateTime.validate().isNotEmpty) {
     final currentDate = DateTime.now();
     int currentYear = currentDate.year;
@@ -183,18 +272,53 @@ List<FontSizeModel> fontList() {
   return fontSizeList;
 }
 
-void handleViewClick(BuildContext context, {bool isPDF = false, String? filePath, String? bookName, int? bookId}) async {
+void handleViewClick(BuildContext context,
+    {bool isPDF = false,
+    String? filePath,
+    String? bookName,
+    int? bookId}) async {
   isPDF = filePath.validate().isPdf;
 
   if (isPDF) {
-    PDFViewerScreen(filePath: filePath.validate(), bookName: bookName.validate(), bookId: bookId).launch(context).then((value) {});
+    PDFViewerScreen(
+            filePath: filePath.validate(),
+            bookName: bookName.validate(),
+            bookId: bookId)
+        .launch(context)
+        .then((value) {});
   } else if (filePath.validate().contains(".epub")) {
-    await EPubViewerScreen(filePath: filePath.validate(), bookName: bookName.validate(), bookId: bookId).launch(context).then((value) {});
+    // await EPubViewerScreen(filePath: filePath.validate(), bookName: bookName.validate(), bookId: bookId).launch(context).then((value) {});
+    var book = kDebugMode
+        ? EpubDocument.openAsset('assets/burroughs-mucker.epub')
+        : EpubDocument.openData(File(filePath.validate()).readAsBytesSync());
+    if (book != null) {
+      print('EPUB document opened successfully.');
+      Navigator.push(
+  context,
+  MaterialPageRoute(
+    builder: (context) => ReaderScreen(
+      onToggleTheme: (isDark) {
+                      _toggleTheme(context, isDark);
+                    },
+      book: book,
+    ),
+  ),
+);
+
+    } else {
+      print('Failed to open EPUB document.');
+    }
   } else {
     toast('Invalid File');
   }
-}
 
+
+}
+  void _toggleTheme(BuildContext context, bool isDark) {
+    // Atualize o tema usando o ThemeNotifier
+    final themeNotifier = Provider.of<ThemeNotifier>(context, listen: false);
+    themeNotifier.toggleTheme(isDark);
+  }
 Future<bool> checkAndroidVersionAndStoragePermission() async {
   if (Platform.isAndroid) {
     final DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
@@ -221,20 +345,26 @@ void downloadBook(
   String finalFilePath = '';
 
   if (isWeb) {
-    html.AnchorElement anchorElement = html.AnchorElement(href: bookDetailResponse!.fileSamplePath);
+    html.AnchorElement anchorElement =
+        html.AnchorElement(href: bookDetailResponse!.fileSamplePath);
     anchorElement.download = 'Test File';
     anchorElement.click();
   } else {
     if (await checkAndroidVersionAndStoragePermission()) {
       fileName = await getBookFileName(
         bookDetailResponse!.bookId.toString().validate(),
-        isSample == false ? bookDetailResponse.fileSamplePath.validate() : bookDetailResponse.filePath.validate(),
+        isSample == false
+            ? bookDetailResponse.fileSamplePath.validate()
+            : bookDetailResponse.filePath.validate(),
         isSample: isSample == true ? true : false,
       );
-      finalFilePath = await getBookFilePathFromName(fileName, isSampleFile: isSample == true ? true : false);
+      finalFilePath = await getBookFilePathFromName(fileName,
+          isSampleFile: isSample == true ? true : false);
 
       ///sample pdf or epub book read
-      if (isSample == true ? appStore.sampleFileExist : appStore.purchasedFileExist) {
+      if (isSample == true
+          ? appStore.sampleFileExist
+          : appStore.purchasedFileExist) {
         handleViewClick(
           context,
           bookId: bookDetailResponse.bookId.validate(),
@@ -305,16 +435,25 @@ void downloadBook(
   }
 }
 
-Future<void> commonLaunchUrl(String url, {LaunchMode launchMode = LaunchMode.externalApplication}) async {
+Future<void> commonLaunchUrl(String url,
+    {LaunchMode launchMode = LaunchMode.externalApplication}) async {
   await launchUrl(Uri.parse(url), mode: launchMode);
 }
 
 class HttpOverridesSkipCertificate extends HttpOverrides {
   @override
-  HttpClient createHttpClient(SecurityContext? context) => super.createHttpClient(context)..badCertificateCallback = (X509Certificate cert, String host, int port) => true;
+  HttpClient createHttpClient(SecurityContext? context) =>
+      super.createHttpClient(context)
+        ..badCertificateCallback =
+            (X509Certificate cert, String host, int port) => true;
 }
 
-Widget WebBreadCrumbWidget(BuildContext context, {String? title, String? subTitle1, String? subTitle2, double? height, double? bottomSpace}) {
+Widget WebBreadCrumbWidget(BuildContext context,
+    {String? title,
+    String? subTitle1,
+    String? subTitle2,
+    double? height,
+    double? bottomSpace}) {
   return Container(
     width: context.width(),
     height: height ?? 150,
@@ -328,7 +467,8 @@ Widget WebBreadCrumbWidget(BuildContext context, {String? title, String? subTitl
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text('${subTitle1} - ', style: primaryTextStyle()),
-            Text(subTitle2.validate(), style: primaryTextStyle(color: defaultPrimaryColor)),
+            Text(subTitle2.validate(),
+                style: primaryTextStyle(color: defaultPrimaryColor)),
           ],
         ),
       ],
@@ -336,13 +476,15 @@ Widget WebBreadCrumbWidget(BuildContext context, {String? title, String? subTitl
   ).paddingBottom(bottomSpace ?? 50);
 }
 
-Widget customDialogue(BuildContext context, {String? title, required Widget child}) {
+Widget customDialogue(BuildContext context,
+    {String? title, required Widget child}) {
   return SimpleDialog(
     backgroundColor: appStore.isDarkMode ? scaffoldDarkColor : Colors.white,
     contentPadding: EdgeInsets.all(30),
     children: [
       ConstrainedBox(
-        constraints: BoxConstraints(maxHeight: context.height() * 0.6, maxWidth: context.width() * 0.3),
+        constraints: BoxConstraints(
+            maxHeight: context.height() * 0.6, maxWidth: context.width() * 0.3),
         child: ScrollConfiguration(
           behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
           child: SingleChildScrollView(
