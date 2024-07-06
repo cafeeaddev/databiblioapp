@@ -4,13 +4,11 @@ import 'package:granth_flutter/main.dart';
 import 'package:granth_flutter/network/rest_apis.dart';
 import 'package:granth_flutter/screen/auth/change_password_screen.dart';
 import 'package:granth_flutter/screen/auth/sign_in_screen.dart';
-import 'package:granth_flutter/screen/dashboard/fragment/cart_fragment.dart';
 import 'package:granth_flutter/screen/setting/choose_detail_page_variant_screen.dart';
 import 'package:granth_flutter/screen/setting/component/setting_screen_bottom_component.dart';
 import 'package:granth_flutter/screen/setting/component/setting_top_component.dart';
 import 'package:granth_flutter/screen/setting/language_screen.dart';
 import 'package:granth_flutter/screen/setting/transaction_history_screen.dart';
-import 'package:granth_flutter/screen/setting/wishlist_screen.dart';
 import 'package:granth_flutter/utils/colors.dart';
 import 'package:granth_flutter/utils/constants.dart';
 import 'package:granth_flutter/utils/images.dart';
@@ -35,7 +33,8 @@ class _MobileSettingFragmentState extends State<MobileSettingFragment> {
 
   void share() async {
     getPackageInfo().then((value) {
-      Share.share('Share $APP_NAME with your friends.\n\n${getSocialMediaLink(LinkProvider.PLAY_STORE)}${value.packageName}');
+      Share.share(
+          'Share $APP_NAME with your friends.\n\n${getSocialMediaLink(LinkProvider.PLAY_STORE)}${value.packageName}');
     });
   }
 
@@ -52,23 +51,6 @@ class _MobileSettingFragmentState extends State<MobileSettingFragment> {
         color: context.scaffoldBackgroundColor,
         elevation: 0,
         showBack: false,
-        actions: [
-          IconButton(
-            splashRadius: 24,
-            icon: Icon(Icons.shopping_cart_outlined),
-            onPressed: () {
-              CartFragment(isShowBack: true).launch(context);
-            },
-          ).visible(appStore.isLoggedIn),
-          IconButton(
-            padding: EdgeInsets.only(right: defaultRadius),
-            splashRadius: 24,
-            icon: Icon(Icons.favorite_border),
-            onPressed: () {
-              WishListScreen().launch(context);
-            },
-          ).visible(appStore.isLoggedIn),
-        ],
       ),
       body: LayoutBuilder(
         builder: (context, constraint) {
@@ -154,7 +136,9 @@ class _MobileSettingFragmentState extends State<MobileSettingFragment> {
                     Divider(height: 0),
                     SettingItemWidget(
                       title: language!.appTheme,
-                      subTitle: appStore.isDarkMode ? language!.tapToEnableLightMode : language!.tapToEnableDarkMode,
+                      subTitle: appStore.isDarkMode
+                          ? language!.tapToEnableLightMode
+                          : language!.tapToEnableDarkMode,
                       onTap: () async {
                         if (getBoolAsync(IS_DARK_MODE)) {
                           appStore.setDarkMode(false);
@@ -225,15 +209,21 @@ class _MobileSettingFragmentState extends State<MobileSettingFragment> {
                           AppButton(
                             elevation: 0,
                             enableScaleAnimation: false,
-                            shapeBorder: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12), side: BorderSide(color: defaultPrimaryColor)),
+                            shapeBorder: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12),
+                                side: BorderSide(color: defaultPrimaryColor)),
                             width: context.width(),
                             color: white,
                             text: language!.logout,
                             textStyle: boldTextStyle(color: defaultPrimaryColor),
                             onTap: () async {
-                              showConfirmDialogCustom(context, primaryColor: defaultPrimaryColor, onAccept: (c) {
+                              showConfirmDialogCustom(context, primaryColor: defaultPrimaryColor,
+                                  onAccept: (c) {
                                 logout(context);
-                              }, title: language!.areYouSureWantToLogout, positiveText: language!.yes, negativeText: language!.no);
+                              },
+                                  title: language!.areYouSureWantToLogout,
+                                  positiveText: language!.yes,
+                                  negativeText: language!.no);
                             },
                           ).visible(appStore.isLoggedIn),
                         ],

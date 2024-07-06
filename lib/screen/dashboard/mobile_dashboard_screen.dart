@@ -3,7 +3,6 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:granth_flutter/configs.dart';
 import 'package:granth_flutter/main.dart';
 import 'package:granth_flutter/screen/auth/sign_in_screen.dart';
-import 'package:granth_flutter/screen/dashboard/fragment/cart_fragment.dart';
 import 'package:granth_flutter/screen/dashboard/fragment/dashboard_fragment.dart';
 import 'package:granth_flutter/screen/dashboard/fragment/library_fragment.dart';
 import 'package:granth_flutter/screen/dashboard/fragment/setting_fragment.dart';
@@ -20,16 +19,6 @@ class MobileDashboardScreen extends StatefulWidget {
 
 class _MobileDashboardScreenState extends State<MobileDashboardScreen> {
   @override
-  void initState() {
-    super.initState();
-    init();
-  }
-
-  void init() async {
-    //
-  }
-
-  @override
   void setState(fn) {
     if (mounted) super.setState(fn);
   }
@@ -45,39 +34,47 @@ class _MobileDashboardScreenState extends State<MobileDashboardScreen> {
         body: [
           DashboardFragment(),
           LibraryFragment(),
-          appStore.isLoggedIn ? CartFragment() : SignInScreen(),
+          appStore.isLoggedIn ? Container() : SignInScreen(),
           SettingFragment(),
         ][appStore.bottomNavigationBarIndex],
         bottomNavigationBar: NavigationBarTheme(
           data: NavigationBarThemeData(
             indicatorColor: !appStore.isDarkMode ? defaultPrimaryColor.withOpacity(0.8) : null,
             backgroundColor: !appStore.isDarkMode ? defaultPrimaryColor.withOpacity(0.05) : null,
-            labelTextStyle: MaterialStateProperty.all(const TextStyle(color: Colors.grey, fontSize: 12)),
+            labelTextStyle:
+                MaterialStateProperty.all(const TextStyle(color: Colors.grey, fontSize: 12)),
           ),
           child: NavigationBar(
+            indicatorColor: Colors.transparent,
+            backgroundColor: Colors.white,
             selectedIndex: appStore.bottomNavigationBarIndex,
             labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
             height: 60,
             destinations: [
               NavigationDestination(
                 icon: home_icon.iconImage(color: appTextSecondaryColor),
-                selectedIcon: home_icon1.iconImage(color: white),
-                label: language!.dashboard,
+                selectedIcon: home_icon.iconImage(color: Color(0xff1872F6)),
+                label: 'Home',
               ),
               NavigationDestination(
-                icon: library_icon2.iconImage(color: appTextSecondaryColor),
-                selectedIcon: library_icon1.iconImage(color: white),
-                label: language!.library,
+                icon: Icon(Icons.bookmark_outline, color: appTextSecondaryColor),
+                selectedIcon: Icon(Icons.bookmark, color: Color(0xff1872F6)),
+                label: 'Emprestimos',
               ),
               NavigationDestination(
-                icon: cart_icon.iconImage(color: appTextSecondaryColor),
-                selectedIcon: cart_icon1.iconImage(color: white),
-                label: language!.cart,
+                icon: Image.asset(
+                  cart_icon,
+                  height: 24,
+                  width: 24,
+                  fit: BoxFit.cover,
+                ),
+                // selectedIcon: cart_icon.iconImage(color: Color(0xff1872F6)),
+                label: 'Favoritos',
               ),
               NavigationDestination(
                 icon: setting_icon.iconImage(color: appTextSecondaryColor),
-                selectedIcon: setting_icon1.iconImage(color: white),
-                label: language!.profile,
+                selectedIcon: setting_icon.iconImage(color: Color(0xff1872F6)),
+                label: 'Perfil',
               ),
             ],
             onDestinationSelected: (index) {

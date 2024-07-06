@@ -27,8 +27,10 @@ class BookDetailResponse {
   num? totalRating;
   num? totalPage;
   num? isPurchase;
+  String? mediaType;
 
   BookDetailResponse({
+    this.mediaType,
     this.authorName,
     this.backCover,
     this.bookId,
@@ -59,6 +61,7 @@ class BookDetailResponse {
 
   factory BookDetailResponse.fromJson(Map<String, dynamic> json) {
     return BookDetailResponse(
+      mediaType: 'ebook', //TODO: TRAZER DINAMICO DA API
       authorName: json[DashboardKeys.authorName],
       backCover: json[DashboardKeys.backCover] != null ? json[DashboardKeys.backCover] : null,
       bookId: json[CommonKeys.bookId],
