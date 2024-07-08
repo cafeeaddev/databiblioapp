@@ -13,6 +13,7 @@ class DashboardResponse {
   bool? isPaypalConfiguration;
   bool? isPaytmConfiguration;
   String? message;
+
   List<BookDetailResponse>? popularBook;
   int? popularBookCount;
   List<BookDetailResponse>? recommendedBook;
@@ -50,23 +51,53 @@ class DashboardResponse {
 
   factory DashboardResponse.fromJson(Map<String, dynamic> json) {
     return DashboardResponse(
-      categoryBook: json[DashboardKeys.categoryBook] != null ? (json[DashboardKeys.categoryBook] as List).map((i) => CategoryBookResponse.fromJson(i)).toList() : null,
+      categoryBook: json[DashboardKeys.categoryBook] != null
+          ? (json[DashboardKeys.categoryBook] as List)
+              .map((i) => CategoryBookResponse.fromJson(i))
+              .toList()
+          : null,
       categoryBookCount: json[DashboardKeys.categoryBookCount],
-      configuration: json[DashboardKeys.configuration] != null ? (json[DashboardKeys.configuration] as List).map((i) => ConfigurationResponse.fromJson(i)).toList() : null,
+      configuration: json[DashboardKeys.configuration] != null
+          ? (json[DashboardKeys.configuration] as List)
+              .map((i) => ConfigurationResponse.fromJson(i))
+              .toList()
+          : null,
       isPaypalConfiguration: json[DashboardKeys.isPaypalConfiguration],
       isPaytmConfiguration: json[DashboardKeys.isPaytmConfiguration],
       message: json[CommonKeys.message],
-      popularBook: json[DashboardKeys.popularBook] != null ? (json[DashboardKeys.popularBook] as List).map((i) => BookDetailResponse.fromJson(i)).toList() : null,
+      popularBook: json[DashboardKeys.popularBook] != null
+          ? (json[DashboardKeys.popularBook] as List)
+              .map((i) => BookDetailResponse.fromJson(i))
+              .toList()
+          : null,
       popularBookCount: json[DashboardKeys.popularBookCount],
-      recommendedBook: json[DashboardKeys.recommendedBook] != null ? (json[DashboardKeys.recommendedBook] as List).map((i) => BookDetailResponse.fromJson(i)).toList() : null,
+      recommendedBook: json[DashboardKeys.recommendedBook] != null
+          ? (json[DashboardKeys.recommendedBook] as List)
+              .map((i) => BookDetailResponse.fromJson(i))
+              .toList()
+          : null,
       recommendedBookCount: json[DashboardKeys.recommendedBookCount],
-      slider: json[DashboardKeys.slider] != null ? (json[DashboardKeys.slider] as List).map((i) => SliderResponse.fromJson(i)).toList() : null,
+      slider: json[DashboardKeys.slider] != null
+          ? (json[DashboardKeys.slider] as List).map((i) => SliderResponse.fromJson(i)).toList()
+          : null,
       status: json[CommonKeys.status],
-      data: json[CommonKeys.data] != null ? (json[CommonKeys.data] as List).map((i) => BookDetailResponse.fromJson(i)).toList() : null,
-      topAuthor: json[DashboardKeys.topAuthor] != null ? (json[DashboardKeys.topAuthor] as List).map((i) => AuthorResponse.fromJson(i)).toList() : null,
-      topSearchBook: json[DashboardKeys.topSearchBook] != null ? (json[DashboardKeys.topSearchBook] as List).map((i) => BookDetailResponse.fromJson(i)).toList() : null,
+      data: json[CommonKeys.data] != null
+          ? (json[CommonKeys.data] as List).map((i) => BookDetailResponse.fromJson(i)).toList()
+          : null,
+      topAuthor: json[DashboardKeys.topAuthor] != null
+          ? (json[DashboardKeys.topAuthor] as List).map((i) => AuthorResponse.fromJson(i)).toList()
+          : null,
+      topSearchBook: json[DashboardKeys.topSearchBook] != null
+          ? (json[DashboardKeys.topSearchBook] as List)
+              .map((i) => BookDetailResponse.fromJson(i))
+              .toList()
+          : null,
       topSearchBookCount: json[DashboardKeys.topSearchBookCount],
-      topSellBook: json[DashboardKeys.topSellBook] != null ? (json[DashboardKeys.topSellBook] as List).map((i) => BookDetailResponse.fromJson(i)).toList() : null,
+      topSellBook: json[DashboardKeys.topSellBook] != null
+          ? (json[DashboardKeys.topSellBook] as List)
+              .map((i) => BookDetailResponse.fromJson(i))
+              .toList()
+          : null,
       topSellBookCount: json[DashboardKeys.topSellBookCount],
     );
   }
