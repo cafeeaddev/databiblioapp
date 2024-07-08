@@ -58,7 +58,8 @@ class _WebDashboardScreenState extends State<WebDashboardScreen> {
 
   void share() {
     getPackageInfo().then((value) {
-      Share.share('Share $APP_NAME with your friends.\n\n${getSocialMediaLink(LinkProvider.PLAY_STORE)}${value.packageName}');
+      Share.share(
+          'Share $APP_NAME with your friends.\n\n${getSocialMediaLink(LinkProvider.PLAY_STORE)}${value.packageName}');
     });
   }
 
@@ -108,14 +109,14 @@ class _WebDashboardScreenState extends State<WebDashboardScreen> {
                               Image.asset(app_logo, height: 60, width: 60)
                                   .cornerRadiusWithClipRRect(defaultRadius),
                               20.width,
-                              Text('Granth', style: boldTextStyle(size: 24),
+                              Text('Granth',
+                                  style: boldTextStyle(size: 24),
                                   maxLines: 2,
                                   overflow: TextOverflow.ellipsis),
                             ],
                           ).fit(),
                           20.height.visible(appStore.isLoggedIn),
-                          WebSettingTopComponent().visible(
-                              appStore.isLoggedIn),
+                          WebSettingTopComponent().visible(appStore.isLoggedIn),
                         ],
                       ),
                     ),
@@ -124,10 +125,8 @@ class _WebDashboardScreenState extends State<WebDashboardScreen> {
                       children: [
                         SettingItemWidget(
                           title: language!.dashboard,
-                          titleTextStyle: boldTextStyle(
-                              size: 14, color: txtColor(index: 0)),
-                          leading: home_icon.iconImage(
-                              color: txtColor(index: 0)),
+                          titleTextStyle: boldTextStyle(size: 14, color: txtColor(index: 0)),
+                          leading: home_icon.iconImage(color: txtColor(index: 0)),
                           onTap: () {
                             initialPage = 0;
                             setState(() {});
@@ -135,10 +134,8 @@ class _WebDashboardScreenState extends State<WebDashboardScreen> {
                         ),
                         SettingItemWidget(
                           title: language!.login,
-                          titleTextStyle: boldTextStyle(
-                              size: 14, color: txtColor(index: 1)),
-                          leading: Icon(
-                              Icons.login, color: txtColor(index: 1)),
+                          titleTextStyle: boldTextStyle(size: 14, color: txtColor(index: 1)),
+                          leading: Icon(Icons.login, color: txtColor(index: 1)),
                           onTap: () {
                             initialPage = 1;
                             setState(() {});
@@ -146,10 +143,8 @@ class _WebDashboardScreenState extends State<WebDashboardScreen> {
                         ).visible(!appStore.isLoggedIn),
                         SettingItemWidget(
                           title: language!.library,
-                          titleTextStyle: boldTextStyle(
-                              size: 14, color: txtColor(index: 2)),
-                          leading: library_icon2.iconImage(
-                              color: txtColor(index: 2)),
+                          titleTextStyle: boldTextStyle(size: 14, color: txtColor(index: 2)),
+                          leading: library_icon2.iconImage(color: txtColor(index: 2)),
                           onTap: () {
                             initialPage = 2;
                             setState(() {});
@@ -157,10 +152,8 @@ class _WebDashboardScreenState extends State<WebDashboardScreen> {
                         ),
                         SettingItemWidget(
                           title: language!.cart,
-                          titleTextStyle: boldTextStyle(
-                              size: 14, color: txtColor(index: 3)),
-                          leading: cart_icon.iconImage(
-                              color: txtColor(index: 3)),
+                          titleTextStyle: boldTextStyle(size: 14, color: txtColor(index: 3)),
+                          leading: cart_icon.iconImage(color: txtColor(index: 3)),
                           onTap: () {
                             initialPage = 3;
                             setState(() {});
@@ -168,10 +161,8 @@ class _WebDashboardScreenState extends State<WebDashboardScreen> {
                         ).visible(appStore.isLoggedIn),
                         SettingItemWidget(
                           title: language!.myWishlist,
-                          titleTextStyle: boldTextStyle(
-                              size: 14, color: txtColor(index: 4)),
-                          leading: Icon(Icons.favorite_border,
-                              color: txtColor(index: 4)),
+                          titleTextStyle: boldTextStyle(size: 14, color: txtColor(index: 4)),
+                          leading: Icon(Icons.favorite_border, color: txtColor(index: 4)),
                           onTap: () {
                             initialPage = 4;
                             setState(() {});
@@ -179,10 +170,8 @@ class _WebDashboardScreenState extends State<WebDashboardScreen> {
                         ).visible(appStore.isLoggedIn),
                         SettingItemWidget(
                           title: language!.transactionHistory,
-                          titleTextStyle: boldTextStyle(
-                              size: 14, color: txtColor(index: 5)),
-                          leading: Icon(Icons.monetization_on_outlined,
-                              color: txtColor(index: 5)),
+                          titleTextStyle: boldTextStyle(size: 14, color: txtColor(index: 5)),
+                          leading: Icon(Icons.monetization_on_outlined, color: txtColor(index: 5)),
                           onTap: () {
                             initialPage = 5;
                             setState(() {});
@@ -190,10 +179,8 @@ class _WebDashboardScreenState extends State<WebDashboardScreen> {
                         ).visible(appStore.isLoggedIn),
                         SettingItemWidget(
                           title: language!.changePassword,
-                          titleTextStyle: boldTextStyle(
-                              size: 14, color: txtColor(index: 6)),
-                          leading: Icon(Icons.password_rounded,
-                              color: txtColor(index: 6)),
+                          titleTextStyle: boldTextStyle(size: 14, color: txtColor(index: 6)),
+                          leading: Icon(Icons.password_rounded, color: txtColor(index: 6)),
                           onTap: () {
                             initialPage = 6;
                             setState(() {});
@@ -201,10 +188,8 @@ class _WebDashboardScreenState extends State<WebDashboardScreen> {
                         ).visible(appStore.isLoggedIn),
                         SettingItemWidget(
                           title: language!.appLanguage,
-                          titleTextStyle: boldTextStyle(
-                              size: 14, color: txtColor(index: 7)),
-                          leading: Icon(
-                              Icons.language, color: txtColor(index: 7)),
+                          titleTextStyle: boldTextStyle(size: 14, color: txtColor(index: 7)),
+                          leading: Icon(Icons.language, color: txtColor(index: 7)),
                           onTap: () {
                             initialPage = 7;
                             setState(() {});
@@ -255,9 +240,7 @@ class _WebDashboardScreenState extends State<WebDashboardScreen> {
                           title: language!.termsConditions,
                           titleTextStyle: boldTextStyle(size: 14),
                           leading: terms_icon.iconImage(
-                              color: appStore.isDarkMode
-                                  ? Colors.white
-                                  : Colors.black),
+                              color: appStore.isDarkMode ? Colors.white : Colors.black),
                           onTap: () async {
                             await commonLaunchUrl(PRIVACY_POLICY);
                           },
@@ -266,16 +249,13 @@ class _WebDashboardScreenState extends State<WebDashboardScreen> {
                           title: language!.feedback,
                           titleTextStyle: boldTextStyle(size: 14),
                           leading: feed_back.iconImage(
-                              color: appStore.isDarkMode
-                                  ? Colors.white
-                                  : Colors.black),
+                              color: appStore.isDarkMode ? Colors.white : Colors.black),
                           onTap: () {
                             showDialog(
                               context: context,
                               builder: (context) {
-                                return customDialogue(
-                                    context, child: WebFeedbackScreen(),
-                                    title: language!.feedback);
+                                return customDialogue(context,
+                                    child: WebFeedbackScreen(), title: language!.feedback);
                               },
                             );
                           },
@@ -284,16 +264,13 @@ class _WebDashboardScreenState extends State<WebDashboardScreen> {
                           title: language!.aboutApp,
                           titleTextStyle: boldTextStyle(size: 14),
                           leading: about_us_icon.iconImage(
-                              color: appStore.isDarkMode
-                                  ? Colors.white
-                                  : Colors.black),
+                              color: appStore.isDarkMode ? Colors.white : Colors.black),
                           onTap: () {
                             showDialog(
                               context: context,
                               builder: (context) {
-                                return customDialogue(
-                                    context, child: WebAboutUsScreen(),
-                                    title: language!.aboutApp);
+                                return customDialogue(context,
+                                    child: WebAboutUsScreen(), title: language!.aboutApp);
                               },
                             );
                           },
@@ -308,8 +285,7 @@ class _WebDashboardScreenState extends State<WebDashboardScreen> {
                           width: context.width(),
                           color: white,
                           text: language!.logout,
-                          textStyle: boldTextStyle(
-                              color: defaultPrimaryColor),
+                          textStyle: boldTextStyle(color: defaultPrimaryColor),
                           onTap: () async {
                             showConfirmDialogCustom(
                               context,
