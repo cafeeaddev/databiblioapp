@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,7 @@ import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:granth_flutter/app_theme.dart';
+import 'package:granth_flutter/configs.dart';
 import 'package:granth_flutter/firebase/firebase_options.dart';
 import 'package:granth_flutter/locale/app_localizations.dart';
 import 'package:granth_flutter/locale/languages.dart';
@@ -17,7 +19,6 @@ import 'package:granth_flutter/store/app_store.dart';
 import 'package:granth_flutter/theme_notifier.dart';
 import 'package:granth_flutter/utils/colors.dart';
 import 'package:granth_flutter/utils/common.dart';
-import 'package:granth_flutter/configs.dart';
 import 'package:granth_flutter/utils/constants.dart';
 import 'package:granth_flutter/utils/database_helper.dart';
 import 'package:nb_utils/nb_utils.dart';
@@ -67,7 +68,8 @@ void main() async {
 
   await appStore.setLoggedIn(getBoolAsync(IS_LOGGED_IN, defaultValue: false));
 
-  await appStore.setLanguage(getStringAsync(SELECTED_LANGUAGE_CODE, defaultValue: DEFAULT_LANGUAGE));
+  await appStore
+      .setLanguage(getStringAsync(SELECTED_LANGUAGE_CODE, defaultValue: DEFAULT_LANGUAGE));
   await appStore.setDisplayWalkThrough(getBoolAsync(FIRST_TIME, defaultValue: true));
   await appStore.setDisableNotification(getBoolAsync(IS_NOTIFICATION, defaultValue: false));
   await appStore.setDarkMode(getBoolAsync(IS_DARK_MODE));
@@ -142,7 +144,7 @@ class MyAppState extends State<MyApp> {
             home: SplashScreen(),
             theme: AppThemeData.lightTheme,
             darkTheme: AppThemeData.darkTheme,
-            themeMode: themeNotifier.themeMode,
+            themeMode: ThemeMode.light,
             supportedLocales: LanguageDataModel.languageLocales(),
             localizationsDelegates: [
               AppLocalizations(),

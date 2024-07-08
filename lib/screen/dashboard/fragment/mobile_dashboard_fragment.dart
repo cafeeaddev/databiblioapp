@@ -30,14 +30,17 @@ class MobileDashboardFragment extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ///Author List Details
-              if (data!.topAuthor!.isNotEmpty) AuthorListComponent(authorList: data!.topAuthor.validate()),
+              if (data!.topAuthor!.isNotEmpty)
+                AuthorListComponent(authorList: data!.topAuthor.validate()),
 
               ///Top Search Book
               if (data!.topSearchBook!.isNotEmpty) 24.height,
               SeeAllComponent(
+                isShowSeeAll: false,
                 title: language!.topSearchBooks,
                 onClick: () {
-                  ViewAllBookScreen(type: TOP_SEARCH_BOOKS, title: language!.topSearchBooks).launch(context);
+                  ViewAllBookScreen(type: TOP_SEARCH_BOOKS, title: language!.topSearchBooks)
+                      .launch(context);
                 },
               ).paddingSymmetric(horizontal: 16),
               16.height,
@@ -46,9 +49,11 @@ class MobileDashboardFragment extends StatelessWidget {
               ///Popular Search Book
               if (data!.topSearchBook!.isNotEmpty) 24.height,
               SeeAllComponent(
+                isShowSeeAll: false,
                 title: language!.popularBooks,
                 onClick: () {
-                  ViewAllBookScreen(type: POPULAR_BOOKS, title: language!.popularBooks).launch(context);
+                  ViewAllBookScreen(type: POPULAR_BOOKS, title: language!.popularBooks)
+                      .launch(context);
                 },
               ).paddingSymmetric(horizontal: 16),
               16.height,
@@ -57,6 +62,7 @@ class MobileDashboardFragment extends StatelessWidget {
               ///Category
               if (data!.categoryBook!.isNotEmpty) 24.height,
               SeeAllComponent(
+                isShowSeeAll: false,
                 title: language!.categories,
                 onClick: () {
                   CategoryListScreen().launch(context);
@@ -68,24 +74,29 @@ class MobileDashboardFragment extends StatelessWidget {
               ///Top Sell Book
               if (data!.topSellBook!.isNotEmpty) 24.height,
               SeeAllComponent(
+                isShowSeeAll: false,
                 title: language!.topSellBooks,
                 onClick: () {
-                  ViewAllBookScreen(type: TOP_SELL_BOOKS, title: language!.topSellBooks).launch(context);
+                  ViewAllBookScreen(type: TOP_SELL_BOOKS, title: language!.topSellBooks)
+                      .launch(context);
                 },
               ).paddingSymmetric(horizontal: 16),
               16.height,
               BookListComponent(bookDetailsList: data!.topSellBook.validate()),
 
               ///Recommended Books
-              if (data!.recommendedBook!.isNotEmpty) 24.height,
+              if (data!.topSellBook!.isNotEmpty) 24.height,
               SeeAllComponent(
+                isShowSeeAll: false,
                 title: language!.recommendedBooks,
                 onClick: () {
-                  ViewAllBookScreen(type: RECOMMENDED_BOOKS, title: language!.recommendedBooks).launch(context);
+                  ViewAllBookScreen(type: RECOMMENDED_BOOKS, title: language!.recommendedBooks)
+                      .launch(context);
                 },
               ).paddingSymmetric(horizontal: 16),
               16.height,
-              BookListComponent(bookDetailsList: data!.recommendedBook.validate()),
+              if (data!.recommendedBook!.isNotEmpty)
+                BookListComponent(bookDetailsList: data!.recommendedBook.validate()),
               16.height,
             ],
           ),
