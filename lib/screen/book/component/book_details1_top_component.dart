@@ -45,55 +45,55 @@ class BookDetails1TopComponentState extends State<BookDetails1TopComponent> {
           url: widget.bookData!.frontCover.validate(),
           fit: BoxFit.cover,
         ).cornerRadiusWithClipRRect(defaultRadius).center(),
-        Positioned(
-          top: 0,
-          left: rtlSupport.contains(appStore.selectedLanguageCode) ? 16 : null,
-          right: rtlSupport.contains(appStore.selectedLanguageCode) ? null : 16,
-          child: Column(
-            children: [
-              IconButton(
-                onPressed: () {
-                  if (appStore.isLoggedIn) {
-                    CartFragment(isShowBack: true).launch(context);
-                  } else {
-                    SignInScreen().launch(context);
-                  }
-                },
-                icon: Observer(
-                  builder: (context) {
-                    return Badge(
-                      backgroundColor: Colors.red,
-                      isLabelVisible: appStore.cartCount > 0,
-                      label: Text(appStore.cartCount.toString(), style: primaryTextStyle(color: Colors.white, size: 10)),
-                      child: Icon(Icons.shopping_cart_outlined,size: 26,),
-                    );
-                  },
-                ),
-              ),
-              8.height,
-              IconButton(
-                onPressed: () async {
-                  if (appStore.isLoggedIn) {
-                    if (widget.bookData!.isWishlist.validate() == 1) {
-                      appStore.bookWishList.remove(widget.bookData!);
-                      widget.bookData!.isWishlist = 0;
-                    } else {
-                      widget.bookData!.isWishlist = 1;
-                      appStore.bookWishList.add(widget.bookData!);
-                    }
-                    setState(() {});
-                    await addRemoveWishListApi(widget.bookData!.bookId.validate(), widget.bookData!.isWishlist.validate()).then((value) {}).catchError((e) {
-                      log("Error : ${e.toString()}");
-                    });
-                  } else {
-                    SignInScreen().launch(context);
-                  }
-                },
-                icon: Icon(widget.bookData!.isWishlist == 1 ? Icons.favorite : Icons.favorite_outline, color: redColor),
-              ),
-            ],
-          ),
-        )
+        // Positioned(
+        //   top: 0,
+        //   left: rtlSupport.contains(appStore.selectedLanguageCode) ? 16 : null,
+        //   right: rtlSupport.contains(appStore.selectedLanguageCode) ? null : 16,
+        //   child: Column(
+        //     children: [
+        //       IconButton(
+        //         onPressed: () {
+        //           if (appStore.isLoggedIn) {
+        //             CartFragment(isShowBack: true).launch(context);
+        //           } else {
+        //             SignInScreen().launch(context);
+        //           }
+        //         },
+        //         icon: Observer(
+        //           builder: (context) {
+        //             return Badge(
+        //               backgroundColor: Colors.red,
+        //               isLabelVisible: appStore.cartCount > 0,
+        //               label: Text(appStore.cartCount.toString(), style: primaryTextStyle(color: Colors.white, size: 10)),
+        //               child: Icon(Icons.shopping_cart_outlined,size: 26,),
+        //             );
+        //           },
+        //         ),
+        //       ),
+        //       8.height,
+        //       IconButton(
+        //         onPressed: () async {
+        //           if (appStore.isLoggedIn) {
+        //             if (widget.bookData!.isWishlist.validate() == 1) {
+        //               appStore.bookWishList.remove(widget.bookData!);
+        //               widget.bookData!.isWishlist = 0;
+        //             } else {
+        //               widget.bookData!.isWishlist = 1;
+        //               appStore.bookWishList.add(widget.bookData!);
+        //             }
+        //             setState(() {});
+        //             await addRemoveWishListApi(widget.bookData!.bookId.validate(), widget.bookData!.isWishlist.validate()).then((value) {}).catchError((e) {
+        //               log("Error : ${e.toString()}");
+        //             });
+        //           } else {
+        //             SignInScreen().launch(context);
+        //           }
+        //         },
+        //         icon: Icon(widget.bookData!.isWishlist == 1 ? Icons.favorite : Icons.favorite_outline, color: redColor),
+        //       ),
+        //     ],
+        //   ),
+        // )
       ],
     );
   }

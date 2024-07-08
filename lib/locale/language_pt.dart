@@ -319,7 +319,7 @@ class LanguagePt extends BaseLanguage {
   String get noPurchasedBookAvailable => "Nenhum livro comprado disponível";
 
   @override
-  String get introduction => "Introdução";
+  String get introduction => "Descrição";
 
   @override
   String get camera => "Câmera";

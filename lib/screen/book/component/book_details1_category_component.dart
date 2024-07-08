@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:granth_flutter/component/price_component.dart';
 import 'package:granth_flutter/main.dart';
 import 'package:granth_flutter/models/bookdetail_model.dart';
@@ -8,7 +9,8 @@ class BookDetails1CategoryComponent extends StatelessWidget {
   final BookDetailResponse? bookDetailResponse;
   final bool? isCenterInfo;
 
-  BookDetails1CategoryComponent({this.bookDetailResponse, this.isCenterInfo = false});
+  BookDetails1CategoryComponent(
+      {this.bookDetailResponse, this.isCenterInfo = false});
 
   @override
   Widget build(BuildContext context) {
@@ -18,15 +20,20 @@ class BookDetails1CategoryComponent extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Row(
-            crossAxisAlignment: isCenterInfo! ? CrossAxisAlignment.center : CrossAxisAlignment.start,
-            mainAxisAlignment: isCenterInfo! ? MainAxisAlignment.center : MainAxisAlignment.start,
+            crossAxisAlignment: isCenterInfo!
+                ? CrossAxisAlignment.center
+                : CrossAxisAlignment.start,
+            mainAxisAlignment: isCenterInfo!
+                ? MainAxisAlignment.center
+                : MainAxisAlignment.start,
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(language!.category, style: secondaryTextStyle()),
                   8.height,
-                  Text(bookDetailResponse!.categoryName.validate(), style: boldTextStyle(), textAlign: TextAlign.center),
+                  Text(bookDetailResponse!.categoryName.validate(),
+                      style: boldTextStyle(), textAlign: TextAlign.center),
                 ],
               ),
               30.width,
@@ -38,7 +45,8 @@ class BookDetails1CategoryComponent extends StatelessWidget {
                   PriceComponent(
                     isCenter: false,
                     discount: bookDetailResponse!.discount.validate(),
-                    discountedPrice: bookDetailResponse!.discountedPrice.validate(),
+                    discountedPrice:
+                        bookDetailResponse!.discountedPrice.validate(),
                     price: bookDetailResponse!.price.validate(),
                   ),
                 ],
@@ -48,6 +56,8 @@ class BookDetails1CategoryComponent extends StatelessWidget {
         ],
       );
     } else {
+      bool isDarkTheme = Theme.of(context).brightness == Brightness.dark;
+
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -59,25 +69,34 @@ class BookDetails1CategoryComponent extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(language!.category, style: secondaryTextStyle()),
-                  8.height,
-                  Text(bookDetailResponse!.categoryName.validate(), style: boldTextStyle(), textAlign: TextAlign.center),
+                  Container(
+      padding: EdgeInsets.all(14.0), 
+      decoration: BoxDecoration(
+        color: isDarkTheme
+            ? Colors.grey[800]
+            : Colors.grey[300], 
+        borderRadius: BorderRadius.circular(15),
+      ),
+      child: Text(bookDetailResponse!.categoryName.validate(),
+                      style: boldTextStyle(), textAlign: TextAlign.center)
+    ),
+                
                 ],
               ).expand(),
               8.width,
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(language!.price, style: secondaryTextStyle()),
-                  8.height,
-                  PriceComponent(
-                    isCenter: true,
-                    discount: bookDetailResponse!.discount.validate(),
-                    discountedPrice: bookDetailResponse!.discountedPrice.validate(),
-                    price: bookDetailResponse!.price.validate(),
-                  ),
-                ],
-              ).expand(),
+              // Column(
+              //   crossAxisAlignment: CrossAxisAlignment.center,
+              //   children: [
+              //     Text(language!.price, style: secondaryTextStyle()),
+              //     8.height,
+              //     PriceComponent(
+              //       isCenter: true,
+              //       discount: bookDetailResponse!.discount.validate(),
+              //       discountedPrice: bookDetailResponse!.discountedPrice.validate(),
+              //       price: bookDetailResponse!.price.validate(),
+              //     ),
+              //   ],
+              // ).expand(),
             ],
           ),
         ],

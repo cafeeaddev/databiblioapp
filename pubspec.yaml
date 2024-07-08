@@ -10,6 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
 
+
   epub_view_example:
     path: ../databiblio-reader/example/
     # git:
