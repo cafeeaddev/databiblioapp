@@ -95,103 +95,103 @@ class _MobileBookDetailsRes1ComponentState extends State<MobileBookDetailsRes1Co
                     style: primaryTextStyle(),
                     colorClickableText: Colors.grey,
                   ),
-                  if (widget.bookData.bookRatingData!.length != 0) 24.height,
-                  if (widget.bookData.bookRatingData!.length != 0)
+                  // if (widget.bookData.bookRatingData!.length != 0) 24.height,
+                  // if (widget.bookData.bookRatingData!.length != 0)
 
-                    ///Top Review
-                    SeeAllComponent(
-                      isShowSeeAll:
-                          widget.bookData.bookRatingData!.length != 0 ? true : false,
-                      title: language!.topReviews,
-                      onClick: () async {
-                        AllReviewListScreen(
-                          bookRatingData: widget.bookData.bookRatingData.validate(),
-                          totalRatting: widget.bookData
-                              .bookDetailResponse!.first.totalRating
-                              .validate(),
-                          bookId: widget.bookId,
-                        ).launch(context);
-                      },
-                    ),
+                  //   ///Top Review
+                  //   SeeAllComponent(
+                  //     isShowSeeAll:
+                  //         widget.bookData.bookRatingData!.length != 0 ? true : false,
+                  //     title: language!.topReviews,
+                  //     onClick: () async {
+                  //       AllReviewListScreen(
+                  //         bookRatingData: widget.bookData.bookRatingData.validate(),
+                  //         totalRatting: widget.bookData
+                  //             .bookDetailResponse!.first.totalRating
+                  //             .validate(),
+                  //         bookId: widget.bookId,
+                  //       ).launch(context);
+                  //     },
+                  //   ),
 
-                  if (widget.bookData.bookRatingData!
-                      .any((element) => element.userId == appStore.userId))
-                    SizedBox()
-                  else
-                    Align(
-                      alignment: Alignment.topRight,
-                      child: AppButton(
-                        enableScaleAnimation: false,
-                        text: language!.writeReview,
-                        height: 20,
-                        color: defaultPrimaryColor,
-                        onTap: () {
-                          showInDialog(
-                            context,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: radius(defaultRadius)),
-                            contentPadding: EdgeInsets.all(0),
-                            builder: (BuildContext context) {
-                              BookRatingData? mData;
+                  // if (widget.bookData.bookRatingData!
+                  //     .any((element) => element.userId == appStore.userId))
+                  //   SizedBox()
+                  // else
+                  //   Align(
+                  //     alignment: Alignment.topRight,
+                  //     child: AppButton(
+                  //       enableScaleAnimation: false,
+                  //       text: language!.writeReview,
+                  //       height: 20,
+                  //       color: defaultPrimaryColor,
+                  //       onTap: () {
+                  //         showInDialog(
+                  //           context,
+                  //           shape: RoundedRectangleBorder(
+                  //               borderRadius: radius(defaultRadius)),
+                  //           contentPadding: EdgeInsets.all(0),
+                  //           builder: (BuildContext context) {
+                  //             BookRatingData? mData;
 
-                              bool isReview = widget.bookData.bookRatingData!.any(
-                                  (element) =>
-                                      element.userId == appStore.userId);
-                              if (isReview)
-                                mData = widget.bookData.bookRatingData!.firstWhere(
-                                    (element) =>
-                                        element.userId == appStore.userId);
+                  //             bool isReview = widget.bookData.bookRatingData!.any(
+                  //                 (element) =>
+                  //                     element.userId == appStore.userId);
+                  //             if (isReview)
+                  //               mData = widget.bookData.bookRatingData!.firstWhere(
+                  //                   (element) =>
+                  //                       element.userId == appStore.userId);
 
-                              return WriteReviewComponent(
-                                  bookRatingData: mData,
-                                  bookId: widget.bookId,
-                                  isUpdate: false);
-                            },
-                          );
-                        },
-                      ),
-                    ).paddingOnly(top: 16).visible(appStore.isLoggedIn),
-                  16.height,
-                  ListView.builder(
-                    shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
-                    itemCount: widget.bookData.bookRatingData!.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      BookRatingData mData = widget.bookData.bookRatingData![index];
-                      return RattingListComponent(
-                        bookRatingData: mData,
-                        bookId: widget.bookId,
-                      ).paddingSymmetric(vertical: 8);
-                    },
-                  ),
-                  24.height,
-                  if (widget.bookData.recommendedBook!.isNotEmpty)
+                  //             return WriteReviewComponent(
+                  //                 bookRatingData: mData,
+                  //                 bookId: widget.bookId,
+                  //                 isUpdate: false);
+                  //           },
+                  //         );
+                  //       },
+                  //     ),
+                  //   ).paddingOnly(top: 16).visible(appStore.isLoggedIn),
+                  // 16.height,
+                  // ListView.builder(
+                  //   shrinkWrap: true,
+                  //   physics: NeverScrollableScrollPhysics(),
+                  //   itemCount: widget.bookData.bookRatingData!.length,
+                  //   itemBuilder: (BuildContext context, int index) {
+                  //     BookRatingData mData = widget.bookData.bookRatingData![index];
+                  //     return RattingListComponent(
+                  //       bookRatingData: mData,
+                  //       bookId: widget.bookId,
+                  //     ).paddingSymmetric(vertical: 8);
+                  //   },
+                  // ),
+                  // 24.height,
+                  // if (widget.bookData.recommendedBook!.isNotEmpty)
 
-                    ///Recommended Book
-                    SeeAllComponent(
-                      isShowSeeAll: true,
-                      title: language!.recommendedBooks,
-                      onClick: () {
-                        ViewAllBookScreen(
-                                type: RECOMMENDED_BOOKS,
-                                title: language!.recommendedBooks)
-                            .launch(context);
-                      },
-                    ),
-                  16.height,
-                  BookListComponent(
-                      bookDetailsList: widget.bookData.recommendedBook, padding: 0),
-                  24.height,
+                  //   ///Recommended Book
+                  //   SeeAllComponent(
+                  //     isShowSeeAll: true,
+                  //     title: language!.recommendedBooks,
+                  //     onClick: () {
+                  //       ViewAllBookScreen(
+                  //               type: RECOMMENDED_BOOKS,
+                  //               title: language!.recommendedBooks)
+                  //           .launch(context);
+                  //     },
+                  //   ),
+                  // 16.height,
+                  // BookListComponent(
+                  //     bookDetailsList: widget.bookData.recommendedBook, padding: 0),
+                  // 24.height,
 
-                  if (widget.bookData.authorBookList!.isNotEmpty)
+                  // if (widget.bookData.authorBookList!.isNotEmpty)
 
-                    ///Author Book
-                    SeeAllComponent(
-                        isShowSeeAll: false, title: language!.authorBook),
-                  16.height,
-                  BookListComponent(
-                          bookDetailsList: widget.bookData.authorBookList, padding: 0)
-                      .paddingBottom(64),
+                  //   ///Author Book
+                  //   SeeAllComponent(
+                  //       isShowSeeAll: false, title: language!.authorBook),
+                  // 16.height,
+                  // BookListComponent(
+                  //         bookDetailsList: widget.bookData.authorBookList, padding: 0)
+                  //     .paddingBottom(64),
                 ],
               ),
             ),
@@ -211,12 +211,12 @@ class _MobileBookDetailsRes1ComponentState extends State<MobileBookDetailsRes1Co
               ),
               Row(
                 children: [
-                  IconButton(
-                    icon: Icon(Icons.share),
-                    onPressed: () {
+                  // IconButton(
+                  //   icon: Icon(Icons.share),
+                  //   onPressed: () {
                       
-                    },
-                  ),
+                  //   },
+                  // ),
                   IconButton(
                     onPressed: () async {
                       if (appStore.isLoggedIn) {
