@@ -4,6 +4,8 @@ import 'package:granth_flutter/component/app_loader_widget.dart';
 import 'package:granth_flutter/component/download_widget.dart';
 import 'package:granth_flutter/models/all_book_details_model.dart';
 import 'package:granth_flutter/models/book_ratting_list_model.dart';
+import 'package:granth_flutter/network/common_api_call.dart';
+import 'package:granth_flutter/screen/auth/sign_in_screen.dart';
 import 'package:granth_flutter/screen/book/all_review_list_screen.dart';
 import 'package:granth_flutter/screen/book/component/book_button_component.dart';
 import 'package:granth_flutter/screen/book/component/book_details1_category_component.dart';
@@ -20,12 +22,17 @@ import 'package:granth_flutter/utils/common.dart';
 import 'package:granth_flutter/utils/constants.dart';
 import 'package:nb_utils/nb_utils.dart';
 
-class MobileBookDetailsRes1Component extends StatelessWidget {
+class MobileBookDetailsRes1Component extends StatefulWidget {
   final AllBookDetailsModel bookData;
   final int? bookId;
 
   MobileBookDetailsRes1Component({required this.bookData, this.bookId});
 
+  @override
+  State<MobileBookDetailsRes1Component> createState() => _MobileBookDetailsRes1ComponentState();
+}
+
+class _MobileBookDetailsRes1ComponentState extends State<MobileBookDetailsRes1Component> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,10 +46,10 @@ class MobileBookDetailsRes1Component extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   BookDetails1TopComponent(
-                      bookData: bookData.bookDetailResponse!.first),
+                      bookData: widget.bookData.bookDetailResponse!.first),
                   16.height,
                   Text(
-                    bookData.bookDetailResponse!.first.name
+                    widget.bookData.bookDetailResponse!.first.name
                         .validate()
                         .capitalizeFirstLetter(),
                     style: boldTextStyle(size: 18),
@@ -51,7 +58,7 @@ class MobileBookDetailsRes1Component extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                   ).center(),
                   8.height,
-                  Text(bookData.authorDetail!.first.name.validate(),
+                  Text(widget.bookData.authorDetail!.first.name.validate(),
                           style: secondaryTextStyle())
                       .center(),
                   16.height,
@@ -62,12 +69,12 @@ class MobileBookDetailsRes1Component extends StatelessWidget {
 
                   /// category name
                   BookDetails1CategoryComponent(
-                      bookDetailResponse: bookData.bookDetailResponse!.first,
+                      bookDetailResponse: widget.bookData.bookDetailResponse!.first,
                       isCenterInfo: true),
                   24.height,
 
                   BookButtonComponent(
-                      bookDetailResponse: bookData.bookDetailResponse!.first),
+                      bookDetailResponse: widget.bookData.bookDetailResponse!.first),
                   24.height,
 
                   Divider(
@@ -83,31 +90,31 @@ class MobileBookDetailsRes1Component extends StatelessWidget {
                   Text(language!.introduction, style: boldTextStyle(size: 24)),
                   8.height,
                   ReadMoreText(
-                    bookData.bookDetailResponse!.first.description.validate(),
+                    widget.bookData.bookDetailResponse!.first.description.validate(),
                     textAlign: TextAlign.justify,
                     style: primaryTextStyle(),
                     colorClickableText: Colors.grey,
                   ),
-                  if (bookData.bookRatingData!.length != 0) 24.height,
-                  if (bookData.bookRatingData!.length != 0)
+                  if (widget.bookData.bookRatingData!.length != 0) 24.height,
+                  if (widget.bookData.bookRatingData!.length != 0)
 
                     ///Top Review
                     SeeAllComponent(
                       isShowSeeAll:
-                          bookData.bookRatingData!.length != 0 ? true : false,
+                          widget.bookData.bookRatingData!.length != 0 ? true : false,
                       title: language!.topReviews,
                       onClick: () async {
                         AllReviewListScreen(
-                          bookRatingData: bookData.bookRatingData.validate(),
-                          totalRatting: bookData
+                          bookRatingData: widget.bookData.bookRatingData.validate(),
+                          totalRatting: widget.bookData
                               .bookDetailResponse!.first.totalRating
                               .validate(),
-                          bookId: bookId,
+                          bookId: widget.bookId,
                         ).launch(context);
                       },
                     ),
 
-                  if (bookData.bookRatingData!
+                  if (widget.bookData.bookRatingData!
                       .any((element) => element.userId == appStore.userId))
                     SizedBox()
                   else
@@ -127,17 +134,17 @@ class MobileBookDetailsRes1Component extends StatelessWidget {
                             builder: (BuildContext context) {
                               BookRatingData? mData;
 
-                              bool isReview = bookData.bookRatingData!.any(
+                              bool isReview = widget.bookData.bookRatingData!.any(
                                   (element) =>
                                       element.userId == appStore.userId);
                               if (isReview)
-                                mData = bookData.bookRatingData!.firstWhere(
+                                mData = widget.bookData.bookRatingData!.firstWhere(
                                     (element) =>
                                         element.userId == appStore.userId);
 
                               return WriteReviewComponent(
                                   bookRatingData: mData,
-                                  bookId: bookId,
+                                  bookId: widget.bookId,
                                   isUpdate: false);
                             },
                           );
@@ -148,17 +155,17 @@ class MobileBookDetailsRes1Component extends StatelessWidget {
                   ListView.builder(
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
-                    itemCount: bookData.bookRatingData!.length,
+                    itemCount: widget.bookData.bookRatingData!.length,
                     itemBuilder: (BuildContext context, int index) {
-                      BookRatingData mData = bookData.bookRatingData![index];
+                      BookRatingData mData = widget.bookData.bookRatingData![index];
                       return RattingListComponent(
                         bookRatingData: mData,
-                        bookId: bookId,
+                        bookId: widget.bookId,
                       ).paddingSymmetric(vertical: 8);
                     },
                   ),
                   24.height,
-                  if (bookData.recommendedBook!.isNotEmpty)
+                  if (widget.bookData.recommendedBook!.isNotEmpty)
 
                     ///Recommended Book
                     SeeAllComponent(
@@ -173,17 +180,17 @@ class MobileBookDetailsRes1Component extends StatelessWidget {
                     ),
                   16.height,
                   BookListComponent(
-                      bookDetailsList: bookData.recommendedBook, padding: 0),
+                      bookDetailsList: widget.bookData.recommendedBook, padding: 0),
                   24.height,
 
-                  if (bookData.authorBookList!.isNotEmpty)
+                  if (widget.bookData.authorBookList!.isNotEmpty)
 
                     ///Author Book
                     SeeAllComponent(
                         isShowSeeAll: false, title: language!.authorBook),
                   16.height,
                   BookListComponent(
-                          bookDetailsList: bookData.authorBookList, padding: 0)
+                          bookDetailsList: widget.bookData.authorBookList, padding: 0)
                       .paddingBottom(64),
                 ],
               ),
@@ -212,29 +219,32 @@ class MobileBookDetailsRes1Component extends StatelessWidget {
                   ),
                   IconButton(
                     onPressed: () async {
-                      // if (appStore.isLoggedIn) {
-                      //   if (bookData!.isWishlist.validate() == 1) {
-                      //     appStore.bookWishList.remove(bookData!);
-                      //     bookData!.isWishlist = 0;
-                      //   } else {
-                      //     bookData!.isWishlist = 1;
-                      //     appStore.bookWishList.add(bookData!);
-                      //   }
-                      //   setState(() {});
-                      //   await addRemoveWishListApi(
-                      //           bookData!.bookId.validate(),
-                      //           bookData!.isWishlist.validate())
-                      //       .then((value) {})
-                      //       .catchError((e) {
-                      //     log("Error : ${e.toString()}");
-                      //   });
-                      // } else {
-                      //   SignInScreen().launch(context);
-                      // }
+                      if (appStore.isLoggedIn) {
+                        if (widget.bookData!.bookDetailResponse!.first.isWishlist.validate() == 1) {
+                          appStore.bookWishList.remove(widget.bookData!.bookDetailResponse!.first);
+                          widget.bookData!.bookDetailResponse!.first.isWishlist = 0;
+                        } else {
+
+                          widget.bookData!.bookDetailResponse!.first.isWishlist = 1;
+                          appStore.bookWishList.add(widget.bookData!.bookDetailResponse!.first);
+                        }
+                        setState(() {
+                          
+                        });
+                        await addRemoveWishListApi(
+                                widget.bookData!.bookDetailResponse!.first.bookId.validate(),
+                                widget.bookData!.bookDetailResponse!.first.isWishlist.validate())
+                            .then((value) {})
+                            .catchError((e) {
+                          log("Error : ${e.toString()}");
+                        });
+                      } else {
+                        SignInScreen().launch(context);
+                      }
                     },
                     icon: Icon(
-                        // bookData!.isWishlist == 1
-                        //     ? Icons.favorite:
+                        widget.bookData!.bookDetailResponse!.first.isWishlist == 1
+                            ? Icons.favorite:
                              Icons.favorite_outline,
                         color: redColor),
                   )
