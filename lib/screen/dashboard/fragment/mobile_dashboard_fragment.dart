@@ -29,6 +29,27 @@ class MobileDashboardFragment extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              SizedBox(
+                width: double.infinity,
+                height: 150,
+                child: PageView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    Image.asset(
+                      'images/app_images/banner-1.png',
+                      width: double.infinity,
+                      fit: BoxFit.cover,
+                    ),
+                    Image.asset(
+                      'images/app_images/banner-2.png',
+                      width: double.infinity,
+                      fit: BoxFit.cover,
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 24),
+
               ///Author List Details
               if (data!.topAuthor!.isNotEmpty)
                 AuthorListComponent(authorList: data!.topAuthor.validate()),
