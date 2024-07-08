@@ -82,7 +82,98 @@ class BookButtonComponentState extends State<BookButtonComponent> {
   Widget build(BuildContext context) {
     return Container(
       color: transparentColor,
-      child: Row(
+      child: isMobile
+          ? Center(
+            child: Column(
+            
+                children: [
+                  if (widget.bookDetailResponse!.isPurchase != 1 && widget.bookDetailResponse!.price != 0)
+                    Observer(
+                      builder: (context) {
+                        return AppButton(
+                          enableScaleAnimation: false,
+                          color: defaultPrimaryColor,
+                      width: context.width()/2,
+                          child: Marquee(
+                            child: Text(
+                              cartItemListBookId.any((e) => e == widget.bookDetailResponse!.bookId)
+                                  ? language!.goToCart
+                                  : language!.addToCart,
+                              style: boldTextStyle(size: 14, color: whiteColor),
+                            ),
+                          ),
+                          onTap: () async {
+                            bool isCart = cartItemListBookId.any(
+                              (element) {
+                                return element == widget.bookDetailResponse!.bookId;
+                              },
+                            );
+            
+                            if (appStore.isLoggedIn) {
+                              if (isCart) {
+                                CartFragment(isShowBack: true).launch(context);
+                              } else {
+                                await addBookToCart();
+                              }
+                            } else {
+                              SignInScreen().launch(context, pageRouteAnimation: PageRouteAnimation.Slide);
+                            }
+                          },
+                        );
+                      },
+                    ),
+                  if (widget.bookDetailResponse!.isPurchase == 1 || widget.bookDetailResponse!.price == 0)
+                    AppButton(
+                      enableScaleAnimation: false,
+                      child: Marquee(
+                        child: Text(language!.readBook, style: boldTextStyle(size: 14, color: whiteColor)),
+                      ),
+                      color: defaultPrimaryColor,
+                      width: context.width()/2,
+                      onTap: () async {
+                        if (appStore.isDownloading) {
+                          toast(language!.pleaseWait);
+                        } else {
+                          downloadBook(context, bookDetailResponse: widget.bookDetailResponse, isSample: false);
+                        }
+                      },
+                    ),
+                  if (widget.bookDetailResponse!.isPurchase == 1 || widget.bookDetailResponse!.price == 0)
+                    SizedBox(height: 16), // Espaçamento entre os botões
+                    if (widget.bookDetailResponse!.isPurchase == 1 || widget.bookDetailResponse!.price == 0)
+                    AppButton(
+                      enableScaleAnimation: false,
+                      width: context.width()/2,
+                      color: context.cardColor,
+                      shapeBorder: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(8)),
+                        side: BorderSide(color: defaultPrimaryColor),
+                      ),
+                      child: Marquee(
+                        child: Observer(
+                          builder: (context) {
+                            return Text(
+                              appStore.sampleFileExist && !appStore.isDownloading
+                                  ? language!.viewSample
+                                  : language!.downloadSample,
+                              style: boldTextStyle(size: 14),
+                            );
+                          },
+                        ),
+                      ),
+                      onTap: () async {
+                        if (appStore.isDownloading) {
+                          toast(language!.pleaseWait);
+                        } else {
+                          downloadBook(context, bookDetailResponse: widget.bookDetailResponse, isSample: true);
+                        }
+                      },
+                    ),
+                  
+                ],
+              ),
+          )
+          : Row(
         children: [
           widget.bookDetailResponse!.isPurchase != 1 && widget.bookDetailResponse!.price != 0
               ? Observer(

@@ -6,7 +6,6 @@ import 'package:granth_flutter/configs.dart';
 import 'package:granth_flutter/main.dart';
 import 'package:granth_flutter/models/bookdetail_model.dart';
 import 'package:granth_flutter/models/payment_method_list_model.dart';
-import 'package:granth_flutter/screen/book/epub_viewer_screen.dart';
 import 'package:granth_flutter/screen/book/pdf_viewer_screen.dart';
 import 'package:granth_flutter/theme_notifier.dart';
 import 'package:granth_flutter/utils/file_common.dart';

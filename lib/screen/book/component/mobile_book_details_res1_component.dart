@@ -38,26 +38,46 @@ class MobileBookDetailsRes1Component extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  BookDetails1TopComponent(bookData: bookData.bookDetailResponse!.first),
+                  BookDetails1TopComponent(
+                      bookData: bookData.bookDetailResponse!.first),
                   16.height,
                   Text(
-                    bookData.bookDetailResponse!.first.name.validate().capitalizeFirstLetter(),
+                    bookData.bookDetailResponse!.first.name
+                        .validate()
+                        .capitalizeFirstLetter(),
                     style: boldTextStyle(size: 18),
                     maxLines: 2,
                     textAlign: TextAlign.center,
                     overflow: TextOverflow.ellipsis,
                   ).center(),
                   8.height,
-                  Text(bookData.authorDetail!.first.name.validate(), style: secondaryTextStyle()).center(),
+                  Text(bookData.authorDetail!.first.name.validate(),
+                          style: secondaryTextStyle())
+                      .center(),
                   16.height,
 
                   /// ratting list
-                  RattingViewComponent(bookDetailResponse: bookData.bookDetailResponse!.first, isCenterInfo: true),
-                  16.height,
+                  // RattingViewComponent(bookDetailResponse: bookData.bookDetailResponse!.first, isCenterInfo: true),
+                  // 16.height,
 
                   /// category name
-                  BookDetails1CategoryComponent(bookDetailResponse: bookData.bookDetailResponse!.first, isCenterInfo: true),
+                  BookDetails1CategoryComponent(
+                      bookDetailResponse: bookData.bookDetailResponse!.first,
+                      isCenterInfo: true),
                   24.height,
+
+                  BookButtonComponent(
+                      bookDetailResponse: bookData.bookDetailResponse!.first),
+                  24.height,
+
+                  Divider(
+                    color: Colors.grey,
+                    thickness: 1,
+                    indent: 20,
+                    endIndent: 20,
+                  ),
+
+                  12.height,
 
                   ///Introduction title
                   Text(language!.introduction, style: boldTextStyle(size: 24)),
@@ -73,18 +93,22 @@ class MobileBookDetailsRes1Component extends StatelessWidget {
 
                     ///Top Review
                     SeeAllComponent(
-                      isShowSeeAll: bookData.bookRatingData!.length != 0 ? true : false,
+                      isShowSeeAll:
+                          bookData.bookRatingData!.length != 0 ? true : false,
                       title: language!.topReviews,
                       onClick: () async {
                         AllReviewListScreen(
                           bookRatingData: bookData.bookRatingData.validate(),
-                          totalRatting: bookData.bookDetailResponse!.first.totalRating.validate(),
+                          totalRatting: bookData
+                              .bookDetailResponse!.first.totalRating
+                              .validate(),
                           bookId: bookId,
                         ).launch(context);
                       },
                     ),
 
-                  if (bookData.bookRatingData!.any((element) => element.userId == appStore.userId))
+                  if (bookData.bookRatingData!
+                      .any((element) => element.userId == appStore.userId))
                     SizedBox()
                   else
                     Align(
@@ -97,15 +121,24 @@ class MobileBookDetailsRes1Component extends StatelessWidget {
                         onTap: () {
                           showInDialog(
                             context,
-                            shape: RoundedRectangleBorder(borderRadius: radius(defaultRadius)),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: radius(defaultRadius)),
                             contentPadding: EdgeInsets.all(0),
                             builder: (BuildContext context) {
                               BookRatingData? mData;
 
-                              bool isReview = bookData.bookRatingData!.any((element) => element.userId == appStore.userId);
-                              if (isReview) mData = bookData.bookRatingData!.firstWhere((element) => element.userId == appStore.userId);
+                              bool isReview = bookData.bookRatingData!.any(
+                                  (element) =>
+                                      element.userId == appStore.userId);
+                              if (isReview)
+                                mData = bookData.bookRatingData!.firstWhere(
+                                    (element) =>
+                                        element.userId == appStore.userId);
 
-                              return WriteReviewComponent(bookRatingData: mData, bookId: bookId, isUpdate: false);
+                              return WriteReviewComponent(
+                                  bookRatingData: mData,
+                                  bookId: bookId,
+                                  isUpdate: false);
                             },
                           );
                         },
@@ -132,35 +165,84 @@ class MobileBookDetailsRes1Component extends StatelessWidget {
                       isShowSeeAll: true,
                       title: language!.recommendedBooks,
                       onClick: () {
-                        ViewAllBookScreen(type: RECOMMENDED_BOOKS, title: language!.recommendedBooks).launch(context);
+                        ViewAllBookScreen(
+                                type: RECOMMENDED_BOOKS,
+                                title: language!.recommendedBooks)
+                            .launch(context);
                       },
                     ),
                   16.height,
-                  BookListComponent(bookDetailsList: bookData.recommendedBook, padding: 0),
+                  BookListComponent(
+                      bookDetailsList: bookData.recommendedBook, padding: 0),
                   24.height,
 
                   if (bookData.authorBookList!.isNotEmpty)
 
                     ///Author Book
-                    SeeAllComponent(isShowSeeAll: false, title: language!.authorBook),
+                    SeeAllComponent(
+                        isShowSeeAll: false, title: language!.authorBook),
                   16.height,
-                  BookListComponent(bookDetailsList: bookData.authorBookList, padding: 0).paddingBottom(64),
+                  BookListComponent(
+                          bookDetailsList: bookData.authorBookList, padding: 0)
+                      .paddingBottom(64),
                 ],
               ),
             ),
           ),
-          Align(alignment: Alignment.bottomCenter, child: BookButtonComponent(bookDetailResponse: bookData.bookDetailResponse!.first)),
-          Positioned(
-            top: 0,
-            left: rtlSupport.contains(appStore.selectedLanguageCode) ? null : 0,
-            right: rtlSupport.contains(appStore.selectedLanguageCode) ? 0 : null,
-            child: IconButton(
-              icon: Icon(Icons.arrow_back_outlined),
-              onPressed: () {
-                finish(context);
-              },
-            ),
+          // Align(
+          //     alignment: Alignment.bottomCenter,
+          //     child: BookButtonComponent(
+          //         bookDetailResponse: bookData.bookDetailResponse!.first)),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              IconButton(
+                icon: Icon(Icons.arrow_back_outlined),
+                onPressed: () {
+                  finish(context);
+                },
+              ),
+              Row(
+                children: [
+                  IconButton(
+                    icon: Icon(Icons.share),
+                    onPressed: () {
+                      
+                    },
+                  ),
+                  IconButton(
+                    onPressed: () async {
+                      // if (appStore.isLoggedIn) {
+                      //   if (bookData!.isWishlist.validate() == 1) {
+                      //     appStore.bookWishList.remove(bookData!);
+                      //     bookData!.isWishlist = 0;
+                      //   } else {
+                      //     bookData!.isWishlist = 1;
+                      //     appStore.bookWishList.add(bookData!);
+                      //   }
+                      //   setState(() {});
+                      //   await addRemoveWishListApi(
+                      //           bookData!.bookId.validate(),
+                      //           bookData!.isWishlist.validate())
+                      //       .then((value) {})
+                      //       .catchError((e) {
+                      //     log("Error : ${e.toString()}");
+                      //   });
+                      // } else {
+                      //   SignInScreen().launch(context);
+                      // }
+                    },
+                    icon: Icon(
+                        // bookData!.isWishlist == 1
+                        //     ? Icons.favorite:
+                             Icons.favorite_outline,
+                        color: redColor),
+                  )
+                ],
+              )
+            ],
           ),
+
           Observer(builder: (context) {
             return AppLoaderWidget().center().visible(appStore.isLoading);
           }),
