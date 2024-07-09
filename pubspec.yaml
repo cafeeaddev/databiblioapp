@@ -12,11 +12,10 @@ dependencies:
 
 
   epub_view_example:
-    path: ../databiblio-reader/example/
-    # git:
-    #   url: https://github.com/Cafe-EAD/databiblio-reader.git
-    #   ref: main
-    #   path: example/
+    git:
+      url: https://github.com/Cafe-EAD/databiblio-reader.git
+      ref: main
+      path: example/
 
   # COMMON
   nb_utils: ^6.0.7
@@ -94,6 +93,7 @@ dev_dependencies:
     sdk: flutter
   build_runner: ^2.4.6
   mobx_codegen: ^2.4.0
+  flutter_launcher_icons: ^0.11.0
 
 flutter:
   uses-material-design: true

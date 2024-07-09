@@ -44,7 +44,7 @@ class LanguageEn extends BaseLanguage {
   String get topSearchBooks => "Top Search Books";
 
   @override
-  String get popularBooks => "Popular Books";
+  String get popularBooks => "Favorites";
 
   @override
   String get topPopularBooks => "Top Popular Books";
@@ -57,6 +57,19 @@ class LanguageEn extends BaseLanguage {
 
   @override
   String get recommendedBooks => "Recommended Books";
+
+  @override
+  String get historyCategory => "History";
+  @override
+  String get artCategory => "Art";
+  @override
+  String get geographyCategory => "Geography";
+  @override
+  String get mathCategory => "Math";
+  @override
+  String get portugueseCategory => "Portuguese";
+  @override
+  String get scienceCategory => "Science";
 
   @override
   String get authors => "Authors";

@@ -58,6 +58,19 @@ class LanguageVi extends BaseLanguage {
   String get recommendedBooks => "Sách được đề xuất";
 
   @override
+  String get historyCategory => "History";
+  @override
+  String get artCategory => "Art";
+  @override
+  String get geographyCategory => "Geography";
+  @override
+  String get mathCategory => "Math";
+  @override
+  String get portugueseCategory => "Portuguese";
+  @override
+  String get scienceCategory => "Science";
+
+  @override
   String get authors => "Tác giả";
 
   @override

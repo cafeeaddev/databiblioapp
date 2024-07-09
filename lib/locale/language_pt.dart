@@ -43,7 +43,7 @@ class LanguagePt extends BaseLanguage {
   String get topSearchBooks => "Principais livros de pesquisa";
 
   @override
-  String get popularBooks => "Livros populares";
+  String get popularBooks => "Favoritos";
 
   @override
   String get topPopularBooks => "Principais livros populares";
@@ -56,6 +56,19 @@ class LanguagePt extends BaseLanguage {
 
   @override
   String get recommendedBooks => "Livros recomendados";
+
+  @override
+  String get historyCategory => "História";
+  @override
+  String get artCategory => "Arte";
+  @override
+  String get geographyCategory => "Geografia";
+  @override
+  String get mathCategory => "Matemática";
+  @override
+  String get portugueseCategory => "Português";
+  @override
+  String get scienceCategory => "Ciências";
 
   @override
   String get authors => "Autores";

@@ -41,6 +41,13 @@ abstract class BaseLanguage {
 
   String get recommendedBooks;
 
+  String get historyCategory;
+  String get artCategory;
+  String get geographyCategory;
+  String get mathCategory;
+  String get portugueseCategory;
+  String get scienceCategory;
+
   String get authors;
 
   String get authorDetails;

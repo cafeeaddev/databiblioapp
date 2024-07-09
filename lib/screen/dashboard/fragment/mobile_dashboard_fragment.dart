@@ -54,6 +54,7 @@ class MobileDashboardFragment extends StatelessWidget {
               if (data!.topAuthor!.isNotEmpty)
                 AuthorListComponent(authorList: data!.topAuthor.validate()),
 
+              /*
               ///Top Search Book
               if (data!.topSearchBook!.isNotEmpty) 24.height,
               SeeAllComponent(
@@ -66,9 +67,9 @@ class MobileDashboardFragment extends StatelessWidget {
               ).paddingSymmetric(horizontal: 16),
               16.height,
               BookListComponent(bookDetailsList: data!.topSearchBook.validate()),
-
+              */
               ///Popular Search Book
-              if (data!.topSearchBook!.isNotEmpty) 24.height,
+              if (data!.popularBook!.isNotEmpty) 24.height,
               SeeAllComponent(
                 isShowSeeAll: false,
                 title: language!.popularBooks,
@@ -80,6 +81,7 @@ class MobileDashboardFragment extends StatelessWidget {
               16.height,
               BookListComponent(bookDetailsList: data!.popularBook.validate()),
 
+              /*
               ///Category
               if (data!.categoryBook!.isNotEmpty) 24.height,
               SeeAllComponent(
@@ -91,7 +93,8 @@ class MobileDashboardFragment extends StatelessWidget {
               ).paddingSymmetric(horizontal: 16),
               16.height,
               CategoryComponent(categoryBookList: data!.categoryBook.validate()),
-
+              */
+              /*
               ///Top Sell Book
               if (data!.topSellBook!.isNotEmpty) 24.height,
               SeeAllComponent(
@@ -104,6 +107,92 @@ class MobileDashboardFragment extends StatelessWidget {
               ).paddingSymmetric(horizontal: 16),
               16.height,
               BookListComponent(bookDetailsList: data!.topSellBook.validate()),
+              */
+
+              ///Books by category
+              ///History
+              if (data!.historyCategory!.isNotEmpty) 24.height,
+              SeeAllComponent(
+                isShowSeeAll: false,
+                title: language!.historyCategory,
+                onClick: () {
+                  ViewAllBookScreen(type: RECOMMENDED_BOOKS, title: language!.historyCategory)
+                      .launch(context);
+                },
+              ).paddingSymmetric(horizontal: 16),
+              16.height,
+              if (data!.historyCategory!.isNotEmpty)
+                BookListComponent(bookDetailsList: data!.historyCategory.validate()),
+
+              ///Geography
+              if (data!.geographyCategory!.isNotEmpty) 24.height,
+              SeeAllComponent(
+                isShowSeeAll: false,
+                title: language!.geographyCategory,
+                onClick: () {
+                  ViewAllBookScreen(type: RECOMMENDED_BOOKS, title: language!.geographyCategory)
+                      .launch(context);
+                },
+              ).paddingSymmetric(horizontal: 16),
+              16.height,
+              if (data!.geographyCategory!.isNotEmpty)
+                BookListComponent(bookDetailsList: data!.geographyCategory.validate()),
+
+              ///Science
+              if (data!.scienceCategory!.isNotEmpty) 24.height,
+              SeeAllComponent(
+                isShowSeeAll: false,
+                title: language!.scienceCategory,
+                onClick: () {
+                  ViewAllBookScreen(type: RECOMMENDED_BOOKS, title: language!.scienceCategory)
+                      .launch(context);
+                },
+              ).paddingSymmetric(horizontal: 16),
+              16.height,
+              if (data!.scienceCategory!.isNotEmpty)
+                BookListComponent(bookDetailsList: data!.scienceCategory.validate()),
+
+              ///Art
+              if (data!.artCategory!.isNotEmpty) 24.height,
+              SeeAllComponent(
+                isShowSeeAll: false,
+                title: language!.artCategory,
+                onClick: () {
+                  ViewAllBookScreen(type: RECOMMENDED_BOOKS, title: language!.artCategory)
+                      .launch(context);
+                },
+              ).paddingSymmetric(horizontal: 16),
+              16.height,
+              if (data!.artCategory!.isNotEmpty)
+                BookListComponent(bookDetailsList: data!.artCategory.validate()),
+
+              ///Math
+              if (data!.mathCategory!.isNotEmpty) 24.height,
+              SeeAllComponent(
+                isShowSeeAll: false,
+                title: language!.mathCategory,
+                onClick: () {
+                  ViewAllBookScreen(type: RECOMMENDED_BOOKS, title: language!.mathCategory)
+                      .launch(context);
+                },
+              ).paddingSymmetric(horizontal: 16),
+              16.height,
+              if (data!.mathCategory!.isNotEmpty)
+                BookListComponent(bookDetailsList: data!.mathCategory.validate()),
+
+              ///Portuguese
+              if (data!.portugueseCategory!.isNotEmpty) 24.height,
+              SeeAllComponent(
+                isShowSeeAll: false,
+                title: language!.portugueseCategory,
+                onClick: () {
+                  ViewAllBookScreen(type: RECOMMENDED_BOOKS, title: language!.portugueseCategory)
+                      .launch(context);
+                },
+              ).paddingSymmetric(horizontal: 16),
+              16.height,
+              if (data!.portugueseCategory!.isNotEmpty)
+                BookListComponent(bookDetailsList: data!.portugueseCategory.validate()),
 
               ///Recommended Books
               if (data!.topSellBook!.isNotEmpty) 24.height,

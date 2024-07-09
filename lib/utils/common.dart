@@ -372,9 +372,10 @@ void downloadBook(
         );
       } else {
         ///download file from url
+        var token = "2ab3f1e2a757c5bc5e1d3a32c7680395";//should be appStore.token;
         await downloadFile(
           context,
-          filePath: bookDetailResponse.fileSamplePath.toString(),
+          filePath: bookDetailResponse.fileSamplePath.toString() + "?token=$token",
           downloadFileName: fileName,
           onUpdate: (var percentage) {
             appStore.setDownloadPercentageValue(percentage);

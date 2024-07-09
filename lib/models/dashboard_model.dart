@@ -27,6 +27,18 @@ class DashboardResponse {
   int? topSearchBookCount;
   List<BookDetailResponse>? topSellBook;
   int? topSellBookCount;
+  List<BookDetailResponse>? historyCategory;
+  int? historyCategoryCount;
+  List<BookDetailResponse>? artCategory;
+  int? artCategoryCount;
+  List<BookDetailResponse>? mathCategory;
+  int? mathCategoryCount;
+  List<BookDetailResponse>? portugueseCategory;
+  int? portugueseCategoryCount;
+  List<BookDetailResponse>? geographyCategory;
+  int? geographyCategoryCount;
+  List<BookDetailResponse>? scienceCategory;
+  int? scienceCategoryCount;
 
   DashboardResponse({
     this.categoryBook,
@@ -47,6 +59,18 @@ class DashboardResponse {
     this.topSearchBookCount,
     this.topSellBook,
     this.topSellBookCount,
+    this.historyCategory,
+    this.historyCategoryCount,
+    this.artCategory,
+    this.artCategoryCount,
+    this.geographyCategory,
+    this.geographyCategoryCount,
+    this.mathCategory,
+    this.mathCategoryCount,
+    this.portugueseCategory,
+    this.portugueseCategoryCount,
+    this.scienceCategory,
+    this.scienceCategoryCount
   });
 
   factory DashboardResponse.fromJson(Map<String, dynamic> json) {
@@ -99,6 +123,42 @@ class DashboardResponse {
               .toList()
           : null,
       topSellBookCount: json[DashboardKeys.topSellBookCount],
+      historyCategory: json[DashboardKeys.historyCategory] != null
+          ? (json[DashboardKeys.historyCategory] as List)
+          .map((i) => BookDetailResponse.fromJson(i))
+          .toList()
+          : null,
+      historyCategoryCount: json[DashboardKeys.historyCategoryCount],
+      geographyCategory: json[DashboardKeys.geographyCategory] != null
+          ? (json[DashboardKeys.geographyCategory] as List)
+          .map((i) => BookDetailResponse.fromJson(i))
+          .toList()
+          : null,
+      geographyCategoryCount: json[DashboardKeys.geographyCategoryCount],
+      artCategory: json[DashboardKeys.artCategory] != null
+          ? (json[DashboardKeys.artCategory] as List)
+          .map((i) => BookDetailResponse.fromJson(i))
+          .toList()
+          : null,
+      artCategoryCount: json[DashboardKeys.artCategoryCount],
+      scienceCategory: json[DashboardKeys.scienceCategory] != null
+          ? (json[DashboardKeys.scienceCategory] as List)
+          .map((i) => BookDetailResponse.fromJson(i))
+          .toList()
+          : null,
+      scienceCategoryCount: json[DashboardKeys.scienceCategoryCount],
+      mathCategory: json[DashboardKeys.mathCategory] != null
+          ? (json[DashboardKeys.mathCategory] as List)
+          .map((i) => BookDetailResponse.fromJson(i))
+          .toList()
+          : null,
+      mathCategoryCount: json[DashboardKeys.mathCategoryCount],
+      portugueseCategory: json[DashboardKeys.portugueseCategory] != null
+          ? (json[DashboardKeys.portugueseCategory] as List)
+          .map((i) => BookDetailResponse.fromJson(i))
+          .toList()
+          : null,
+      portugueseCategoryCount: json[DashboardKeys.portugueseCategoryCount],
     );
   }
 
