@@ -327,6 +327,9 @@ class LanguageAf extends BaseLanguage {
   String get myLibrary => "mylibrary";
 
   @override
+  String get myChallenges => "My Uitdagings";
+
+  @override
   String get noSampleBooksDownload => "nosamplebookSdownload";
 
   @override
@@ -465,7 +468,8 @@ class LanguageAf extends BaseLanguage {
   String get weHaveSentA => "Wehhavesenta";
 
   @override
-  String get justEnterTheEmail => "Just Enter the email address you have used to register with us and we will send you the reset link!";
+  String get justEnterTheEmail =>
+      "Just Enter the email address you have used to register with us and we will send you the reset link!";
 
   @override
   String get message => "Message";

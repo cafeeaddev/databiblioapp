@@ -113,7 +113,8 @@ class LanguageNl extends BaseLanguage {
   String get thisFieldIsRequired => "dit veld is verplicht";
 
   @override
-  String get passwordMustBeSame => "Wachtwoord moet hetzelfde zijn als hierboven";
+  String get passwordMustBeSame =>
+      "Wachtwoord moet hetzelfde zijn als hierboven";
 
   @override
   String get chooseDetailPageVariant => "Kies Detail Page Variant";
@@ -155,7 +156,8 @@ class LanguageNl extends BaseLanguage {
   String get searchResultFor => "Zoekresultaat voor";
 
   @override
-  String get searchForBooksBy => "Zoek naar boeken door uw woorden hierboven in te voeren";
+  String get searchForBooksBy =>
+      "Zoek naar boeken door uw woorden hierboven in te voeren";
 
   @override
   String get changeYourPassword => "Wijzig uw wachtwoord";
@@ -182,7 +184,8 @@ class LanguageNl extends BaseLanguage {
   String get tapToEnableLightMode => "Tik om de lichtmodus in te schakelen";
 
   @override
-  String get tapToEnableDarkMode => "Tik op om de donkere modus in te schakelen";
+  String get tapToEnableDarkMode =>
+      "Tik op om de donkere modus in te schakelen";
 
   @override
   String get animationMadeEvenBetter => "Animatie is nog beter gemaakt";
@@ -194,7 +197,8 @@ class LanguageNl extends BaseLanguage {
   String get tapToEnableNotification => "Tik op om melding mogelijk te maken";
 
   @override
-  String get tapToDisableNotification => "Tik op om de melding uit te schakelen";
+  String get tapToDisableNotification =>
+      "Tik op om de melding uit te schakelen";
 
   @override
   String get logout => "Uitloggen";
@@ -221,7 +225,8 @@ class LanguageNl extends BaseLanguage {
   String get designation => "Aanduiding";
 
   @override
-  String get areYouSureWant => "Wilt u het boek van de verlanglijstje verwijderen?";
+  String get areYouSureWant =>
+      "Wilt u het boek van de verlanglijstje verwijderen?";
 
   @override
   String get category => "Categorie";
@@ -251,7 +256,8 @@ class LanguageNl extends BaseLanguage {
   String get readBook => "Lees boek";
 
   @override
-  String get areYouSureWantToRemoveCart => "Wilt u het boek uit een winkelwagen verwijderen?";
+  String get areYouSureWantToRemoveCart =>
+      "Wilt u het boek uit een winkelwagen verwijderen?";
 
   @override
   String get fontSize => "Lettertypegrootte";
@@ -326,6 +332,9 @@ class LanguageNl extends BaseLanguage {
   String get myLibrary => "Mijn bibliotheek";
 
   @override
+  String get myChallenges => "Mijn uitdagingen";
+
+  @override
   String get noSampleBooksDownload => "Geen voorbeeldboeken downloaden";
 
   @override
@@ -365,7 +374,8 @@ class LanguageNl extends BaseLanguage {
   String get youCanDownloadBooks => "U kunt boeken gemakkelijk downloaden.";
 
   @override
-  String get youCanReadBooks => "U kunt boeken lezen zonder de internetverbinding.";
+  String get youCanReadBooks =>
+      "U kunt boeken lezen zonder de internetverbinding.";
 
   @override
   String get readBookAnywhere => "Lees overal boek";
@@ -428,7 +438,8 @@ class LanguageNl extends BaseLanguage {
   String get buyNow => "Nu kopen";
 
   @override
-  String get areYouSureWantToRemoveReview => "Wilt u zeker de beoordeling verwijderen?";
+  String get areYouSureWantToRemoveReview =>
+      "Wilt u zeker de beoordeling verwijderen?";
 
   @override
   String get processing => "Verwerken";
@@ -452,19 +463,23 @@ class LanguageNl extends BaseLanguage {
   String get createANewPassword => "Maak een nieuw wachtwoord";
 
   @override
-  String get youNewPasswordMust => "Uw nieuwe wachtwoord moet verschillen van eerder gebruikte wachtwoord.";
+  String get youNewPasswordMust =>
+      "Uw nieuwe wachtwoord moet verschillen van eerder gebruikte wachtwoord.";
 
   @override
   String get oldPassword => "Oud Wachtwoord";
 
   @override
-  String get pleaseEnterInfoTo => "Voer informatie in om een ​​account aan te maken";
+  String get pleaseEnterInfoTo =>
+      "Voer informatie in om een ​​account aan te maken";
 
   @override
-  String get weHaveSentA => "We hebben een wachtwoord verzonden dat de instructies herstellen naar uw e -mail.";
+  String get weHaveSentA =>
+      "We hebben een wachtwoord verzonden dat de instructies herstellen naar uw e -mail.";
 
   @override
-  String get justEnterTheEmail => "Voer gewoon het e -mailadres in dat u bij ons hebt gebruikt en wij sturen u de reset -link!";
+  String get justEnterTheEmail =>
+      "Voer gewoon het e -mailadres in dat u bij ons hebt gebruikt en wij sturen u de reset -link!";
 
   @override
   String get message => "Bericht";

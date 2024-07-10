@@ -217,3 +217,11 @@ class CheckSumKey {
   static String orderData = 'order_data';
   static String checkSumData = 'checksum_data';
 }
+
+class ChallengeKeys {
+  static String id = 'id';
+  static String pages = 'pages';
+  static String tipo = 'tipo';
+  static String obs = 'obs';
+  static String faixa_etaria = 'faixa_etaria';
+}

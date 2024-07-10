@@ -200,7 +200,8 @@ class LanguageGu extends BaseLanguage {
   String get logout => 'લૉગ આઉટ';
 
   @override
-  String get areYouSureWantToLogout => 'શું તમને ખાતરી છે કે લ log ગઆઉટ કરવા માંગો છો?';
+  String get areYouSureWantToLogout =>
+      'શું તમને ખાતરી છે કે લ log ગઆઉટ કરવા માંગો છો?';
 
   @override
   String get yes => 'હા';
@@ -221,7 +222,8 @@ class LanguageGu extends BaseLanguage {
   String get designation => 'હોદ્દો';
 
   @override
-  String get areYouSureWant => 'શું તમને ખાતરી છે કે ઇચ્છા સૂચિમાંથી પુસ્તક દૂર કરવા માંગો છો?';
+  String get areYouSureWant =>
+      'શું તમને ખાતરી છે કે ઇચ્છા સૂચિમાંથી પુસ્તક દૂર કરવા માંગો છો?';
 
   @override
   String get category => 'શ્રેણી';
@@ -251,7 +253,8 @@ class LanguageGu extends BaseLanguage {
   String get readBook => 'પુસ્તક વાંચો';
 
   @override
-  String get areYouSureWantToRemoveCart => 'શું તમને ખાતરી છે કે કાર્ટમાંથી પુસ્તક દૂર કરવા માંગો છો?';
+  String get areYouSureWantToRemoveCart =>
+      'શું તમને ખાતરી છે કે કાર્ટમાંથી પુસ્તક દૂર કરવા માંગો છો?';
 
   @override
   String get fontSize => 'અક્ષર ની જાડાઈ';
@@ -305,7 +308,8 @@ class LanguageGu extends BaseLanguage {
   String get yourReview => 'તમારી સમીક્ષા';
 
   @override
-  String get areYouSureWantToDelete => "શું તમને ખાતરી છે કે કા delete ી નાખવા માંગો છો?";
+  String get areYouSureWantToDelete =>
+      "શું તમને ખાતરી છે કે કા delete ી નાખવા માંગો છો?";
 
   @override
   String get language => "ભાષા";
@@ -324,6 +328,9 @@ class LanguageGu extends BaseLanguage {
 
   @override
   String get myLibrary => "મારું પુસ્તકાલય";
+
+  @override
+  String get myChallenges => "મારા પડકારો";
 
   @override
   String get noSampleBooksDownload => "કોઈ નમૂના પુસ્તકો ડાઉનલોડ નથી";
@@ -365,7 +372,8 @@ class LanguageGu extends BaseLanguage {
   String get youCanDownloadBooks => "તમે પુસ્તકો સરળતાથી ડાઉનલોડ કરી શકો છો.";
 
   @override
-  String get youCanReadBooks => "તમે ઇન્ટરનેટ કનેક્શન વિના પુસ્તકો વાંચી શકો છો.";
+  String get youCanReadBooks =>
+      "તમે ઇન્ટરનેટ કનેક્શન વિના પુસ્તકો વાંચી શકો છો.";
 
   @override
   String get readBookAnywhere => "ગમે ત્યાં પુસ્તક વાંચો";
@@ -428,7 +436,8 @@ class LanguageGu extends BaseLanguage {
   String get buyNow => "હમણાં જ ખરીદો";
 
   @override
-  String get areYouSureWantToRemoveReview => "શું તમને ખાતરી છે કે સમીક્ષા દૂર કરવા માંગો છો?";
+  String get areYouSureWantToRemoveReview =>
+      "શું તમને ખાતરી છે કે સમીક્ષા દૂર કરવા માંગો છો?";
 
   @override
   String get processing => "પ્રક્રિયા";
@@ -452,19 +461,23 @@ class LanguageGu extends BaseLanguage {
   String get createANewPassword => "નવો પાસવર્ડ બનાવો";
 
   @override
-  String get youNewPasswordMust => "તમારો નવો પાસવર્ડ પાછલા વપરાયેલ પાસવર્ડથી અલગ હોવો જોઈએ.";
+  String get youNewPasswordMust =>
+      "તમારો નવો પાસવર્ડ પાછલા વપરાયેલ પાસવર્ડથી અલગ હોવો જોઈએ.";
 
   @override
   String get oldPassword => "જુનો પાસવર્ડ";
 
   @override
-  String get pleaseEnterInfoTo => "કૃપા કરીને એકાઉન્ટ બનાવવા માટે માહિતી દાખલ કરો";
+  String get pleaseEnterInfoTo =>
+      "કૃપા કરીને એકાઉન્ટ બનાવવા માટે માહિતી દાખલ કરો";
 
   @override
-  String get weHaveSentA => "અમે તમારા ઇમેઇલ પર પાસવર્ડ પુન recover પ્રાપ્ત સૂચનાઓ મોકલી છે.";
+  String get weHaveSentA =>
+      "અમે તમારા ઇમેઇલ પર પાસવર્ડ પુન recover પ્રાપ્ત સૂચનાઓ મોકલી છે.";
 
   @override
-  String get justEnterTheEmail => "તમે અમારી સાથે નોંધણી કરવા માટે ઉપયોગમાં લીધેલા ઇમેઇલ સરનામાંને ફક્ત દાખલ કરો અને અમે તમને રીસેટ લિંક મોકલીશું!";
+  String get justEnterTheEmail =>
+      "તમે અમારી સાથે નોંધણી કરવા માટે ઉપયોગમાં લીધેલા ઇમેઇલ સરનામાંને ફક્ત દાખલ કરો અને અમે તમને રીસેટ લિંક મોકલીશું!";
 
   @override
   String get message => "સંદેશ";

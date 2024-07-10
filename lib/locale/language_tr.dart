@@ -155,7 +155,8 @@ class LanguageTr extends BaseLanguage {
   String get searchResultFor => "Ara sonucu";
 
   @override
-  String get searchForBooksBy => "Yukarıdaki kelimelerinizi girerek kitap arayın";
+  String get searchForBooksBy =>
+      "Yukarıdaki kelimelerinizi girerek kitap arayın";
 
   @override
   String get changeYourPassword => "Şifreni değiştir";
@@ -194,7 +195,8 @@ class LanguageTr extends BaseLanguage {
   String get tapToEnableNotification => "Bildirimi etkinleştirmek için dokunun";
 
   @override
-  String get tapToDisableNotification => "Bildirimi devre dışı bırakmak için dokunun";
+  String get tapToDisableNotification =>
+      "Bildirimi devre dışı bırakmak için dokunun";
 
   @override
   String get logout => "Çıkış Yap";
@@ -221,7 +223,8 @@ class LanguageTr extends BaseLanguage {
   String get designation => "Belirleme";
 
   @override
-  String get areYouSureWant => "Kitabı istek listesinden kaldırmak istiyorsunuz?";
+  String get areYouSureWant =>
+      "Kitabı istek listesinden kaldırmak istiyorsunuz?";
 
   @override
   String get category => "Kategori";
@@ -251,7 +254,8 @@ class LanguageTr extends BaseLanguage {
   String get readBook => "Kitap oku";
 
   @override
-  String get areYouSureWantToRemoveCart => "Sepetten kitabı kaldırmak istiyorsunuz?";
+  String get areYouSureWantToRemoveCart =>
+      "Sepetten kitabı kaldırmak istiyorsunuz?";
 
   @override
   String get fontSize => "Yazı Boyutu";
@@ -326,6 +330,9 @@ class LanguageTr extends BaseLanguage {
   String get myLibrary => "Benim kutuphanem";
 
   @override
+  String get myChallenges => "Benim Zorluklarim";
+
+  @override
   String get noSampleBooksDownload => "Örnek Kitap Yok İndir";
 
   @override
@@ -365,7 +372,8 @@ class LanguageTr extends BaseLanguage {
   String get youCanDownloadBooks => "Kitapları kolayca indirebilirsiniz.";
 
   @override
-  String get youCanReadBooks => "İnternet bağlantısı olmadan kitapları okuyabilirsiniz.";
+  String get youCanReadBooks =>
+      "İnternet bağlantısı olmadan kitapları okuyabilirsiniz.";
 
   @override
   String get readBookAnywhere => "Her Yerde Kitabı Oku";
@@ -428,7 +436,8 @@ class LanguageTr extends BaseLanguage {
   String get buyNow => "Şimdi al";
 
   @override
-  String get areYouSureWantToRemoveReview => "İncelemeyi kaldırmak istiyorsunuz?";
+  String get areYouSureWantToRemoveReview =>
+      "İncelemeyi kaldırmak istiyorsunuz?";
 
   @override
   String get processing => "İşleme";
@@ -452,7 +461,8 @@ class LanguageTr extends BaseLanguage {
   String get createANewPassword => "Yeni bir şifre oluştur";
 
   @override
-  String get youNewPasswordMust => "Yeni şifreniz önceki kullanılan şifreden farklı olmalıdır.";
+  String get youNewPasswordMust =>
+      "Yeni şifreniz önceki kullanılan şifreden farklı olmalıdır.";
 
   @override
   String get oldPassword => "eski Şifre";
@@ -461,10 +471,12 @@ class LanguageTr extends BaseLanguage {
   String get pleaseEnterInfoTo => "Hesap oluşturmak için lütfen bilgi girin";
 
   @override
-  String get weHaveSentA => "E -postanıza bir şifre kurtarma talimatları gönderdik.";
+  String get weHaveSentA =>
+      "E -postanıza bir şifre kurtarma talimatları gönderdik.";
 
   @override
-  String get justEnterTheEmail => "Sadece bize kaydolmak için kullandığınız e -posta adresini girin ve size sıfırlama bağlantısını gönderelim!";
+  String get justEnterTheEmail =>
+      "Sadece bize kaydolmak için kullandığınız e -posta adresini girin ve size sıfırlama bağlantısını gönderelim!";
 
   @override
   String get message => "İleti";

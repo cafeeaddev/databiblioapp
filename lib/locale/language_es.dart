@@ -113,10 +113,12 @@ class LanguageEs extends BaseLanguage {
   String get thisFieldIsRequired => "Este campo es obligatorio";
 
   @override
-  String get passwordMustBeSame => "La contraseña debe ser la misma que la anterior";
+  String get passwordMustBeSame =>
+      "La contraseña debe ser la misma que la anterior";
 
   @override
-  String get chooseDetailPageVariant => "Elija la variante de la página de detalles";
+  String get chooseDetailPageVariant =>
+      "Elija la variante de la página de detalles";
 
   @override
   String get enterYourName => "Introduzca su nombre";
@@ -155,7 +157,8 @@ class LanguageEs extends BaseLanguage {
   String get searchResultFor => "Resultado de la búsqueda para";
 
   @override
-  String get searchForBooksBy => "Busque libros ingresando sus palabras anteriores";
+  String get searchForBooksBy =>
+      "Busque libros ingresando sus palabras anteriores";
 
   @override
   String get changeYourPassword => "Cambia tu contraseña";
@@ -164,7 +167,8 @@ class LanguageEs extends BaseLanguage {
   String get transactionHistory => "Historial de transacciones";
 
   @override
-  String get transactionHistoryReport => "Informe del historial de transacciones";
+  String get transactionHistoryReport =>
+      "Informe del historial de transacciones";
 
   @override
   String get changePassword => "Cambia la contraseña";
@@ -194,13 +198,15 @@ class LanguageEs extends BaseLanguage {
   String get tapToEnableNotification => "Toque para habilitar la notificación";
 
   @override
-  String get tapToDisableNotification => "Toque para deshabilitar la notificación";
+  String get tapToDisableNotification =>
+      "Toque para deshabilitar la notificación";
 
   @override
   String get logout => "Cerrar sesión";
 
   @override
-  String get areYouSureWantToLogout => "¿Estás seguro de que quieres cerrar sesión?";
+  String get areYouSureWantToLogout =>
+      "¿Estás seguro de que quieres cerrar sesión?";
 
   @override
   String get yes => "Sí";
@@ -221,7 +227,8 @@ class LanguageEs extends BaseLanguage {
   String get designation => "Designacion";
 
   @override
-  String get areYouSureWant => "¿Está seguro de que quiere eliminar el libro de la lista de deseos?";
+  String get areYouSureWant =>
+      "¿Está seguro de que quiere eliminar el libro de la lista de deseos?";
 
   @override
   String get category => "Categoría";
@@ -251,7 +258,8 @@ class LanguageEs extends BaseLanguage {
   String get readBook => "Leer el libro";
 
   @override
-  String get areYouSureWantToRemoveCart => "¿Estás seguro de que quieres eliminar el libro del carrito?";
+  String get areYouSureWantToRemoveCart =>
+      "¿Estás seguro de que quieres eliminar el libro del carrito?";
 
   @override
   String get fontSize => "Tamaño de fuente";
@@ -324,6 +332,9 @@ class LanguageEs extends BaseLanguage {
 
   @override
   String get myLibrary => "Mi biblioteca";
+
+  @override
+  String get myChallenges => "Mis desafíos";
 
   @override
   String get noSampleBooksDownload => "Descarga de libros sin muestra";
@@ -428,7 +439,8 @@ class LanguageEs extends BaseLanguage {
   String get buyNow => "Comprar ahora";
 
   @override
-  String get areYouSureWantToRemoveReview => "¿Está seguro de que quiere eliminar la revisión?";
+  String get areYouSureWantToRemoveReview =>
+      "¿Está seguro de que quiere eliminar la revisión?";
 
   @override
   String get processing => "Procesando";
@@ -452,19 +464,23 @@ class LanguageEs extends BaseLanguage {
   String get createANewPassword => "Crear una nueva contraseña";
 
   @override
-  String get youNewPasswordMust => "Su nueva contraseña debe ser diferente de la contraseña usada anterior.";
+  String get youNewPasswordMust =>
+      "Su nueva contraseña debe ser diferente de la contraseña usada anterior.";
 
   @override
   String get oldPassword => "Contraseña anterior";
 
   @override
-  String get pleaseEnterInfoTo => "Ingrese la información para crear una cuenta";
+  String get pleaseEnterInfoTo =>
+      "Ingrese la información para crear una cuenta";
 
   @override
-  String get weHaveSentA => "Hemos enviado una contraseña de recuperación de instrucciones a su correo electrónico.";
+  String get weHaveSentA =>
+      "Hemos enviado una contraseña de recuperación de instrucciones a su correo electrónico.";
 
   @override
-  String get justEnterTheEmail => "¡Solo ingrese la dirección de correo electrónico que ha utilizado para registrarse con nosotros y le enviaremos el enlace de reinicio!";
+  String get justEnterTheEmail =>
+      "¡Solo ingrese la dirección de correo electrónico que ha utilizado para registrarse con nosotros y le enviaremos el enlace de reinicio!";
 
   @override
   String get message => "Mensaje";

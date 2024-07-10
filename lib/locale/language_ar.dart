@@ -222,7 +222,8 @@ class LanguageAr extends BaseLanguage {
   String get designation => "تعيين";
 
   @override
-  String get areYouSureWant => "هل أنت متأكد من إزالة الكتاب من قائمة الأمنيات؟";
+  String get areYouSureWant =>
+      "هل أنت متأكد من إزالة الكتاب من قائمة الأمنيات؟";
 
   @override
   String get category => "فئة";
@@ -252,7 +253,8 @@ class LanguageAr extends BaseLanguage {
   String get readBook => "اقرأ كتابا";
 
   @override
-  String get areYouSureWantToRemoveCart => "هل أنت متأكد من إزالة الكتاب من العربة؟";
+  String get areYouSureWantToRemoveCart =>
+      "هل أنت متأكد من إزالة الكتاب من العربة؟";
 
   @override
   String get fontSize => "حجم الخط";
@@ -325,6 +327,9 @@ class LanguageAr extends BaseLanguage {
 
   @override
   String get myLibrary => "مكتبتي";
+
+  @override
+  String get myChallenges => "تحدياتي";
 
   @override
   String get noSampleBooksDownload => "لا توجد عينة من الكتب تنزيل";
@@ -453,7 +458,8 @@ class LanguageAr extends BaseLanguage {
   String get createANewPassword => "أنشئ كلمة مرور جديدة";
 
   @override
-  String get youNewPasswordMust => "يجب أن تكون كلمة المرور الجديدة مختلفة عن كلمة المرور السابقة المستخدمة.";
+  String get youNewPasswordMust =>
+      "يجب أن تكون كلمة المرور الجديدة مختلفة عن كلمة المرور السابقة المستخدمة.";
 
   @override
   String get oldPassword => "كلمة المرور القديمة";
@@ -462,10 +468,12 @@ class LanguageAr extends BaseLanguage {
   String get pleaseEnterInfoTo => "الرجاء إدخال المعلومات لإنشاء حساب";
 
   @override
-  String get weHaveSentA => "لقد أرسلنا إرشادات استرداد كلمة المرور إلى بريدك الإلكتروني.";
+  String get weHaveSentA =>
+      "لقد أرسلنا إرشادات استرداد كلمة المرور إلى بريدك الإلكتروني.";
 
   @override
-  String get justEnterTheEmail => "ما عليك سوى إدخال عنوان البريد الإلكتروني الذي استخدمته للتسجيل معنا وسنرسل لك رابط إعادة التعيين!";
+  String get justEnterTheEmail =>
+      "ما عليك سوى إدخال عنوان البريد الإلكتروني الذي استخدمته للتسجيل معنا وسنرسل لك رابط إعادة التعيين!";
 
   @override
   String get message => "رسالة";

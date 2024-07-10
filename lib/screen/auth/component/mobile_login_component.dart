@@ -49,20 +49,24 @@ class _MobileLoginComponentState extends State<MobileLoginComponent> {
       formKey.currentState!.save();
       hideKeyboard(context);
 
-
-
       appStore.setLoading(true);
 
-      await moodleLogin(usernameController.text.trim(), passwordController.text.trim()).then((res) async {
+      await moodleLogin(
+              usernameController.text.trim(), passwordController.text.trim())
+          .then((res) async {
         if (res.error != null) {
           toast(res.error);
         } else if (res.token != null) {
-          MoodleBasicUserData userBasicData = await getBasicUserData(res.token!);
+          MoodleBasicUserData userBasicData =
+              await getBasicUserData(res.token!);
           if (userBasicData.userid != null) {
-            MoodleUserData userData = await getUserData(res.token!, userBasicData.userid!);
-            UserData user = UserData.fromMoodleData(userBasicData, userData, res.token!);
+            MoodleUserData userData =
+                await getUserData(res.token!, userBasicData.userid!);
+            UserData user =
+                UserData.fromMoodleData(userBasicData, userData, res.token!);
             await saveUserData(user);
-            DashboardScreen().launch(context, isNewTask: true, pageRouteAnimation: PageRouteAnimation.Fade);
+            DashboardScreen().launch(context,
+                isNewTask: true, pageRouteAnimation: PageRouteAnimation.Fade);
             toast(language!.loginSuccessfully);
           }
         }
@@ -82,7 +86,8 @@ class _MobileLoginComponentState extends State<MobileLoginComponent> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBarWidget('', elevation: 0, color: context.scaffoldBackgroundColor),
+      appBar: appBarWidget('',
+          elevation: 0, color: context.scaffoldBackgroundColor),
       body: Stack(
         children: [
           Form(
@@ -95,9 +100,11 @@ class _MobileLoginComponentState extends State<MobileLoginComponent> {
                   SignInTopComponent(),
                   Column(
                     children: [
-                      Text(language!.login, style: boldTextStyle(size: 28)).center(),
+                      Text(language!.login, style: boldTextStyle(size: 28))
+                          .center(),
                       8.height,
-                      Text(language!.signInToContinue, style: secondaryTextStyle()),
+                      Text(language!.signInToContinue,
+                          style: secondaryTextStyle()),
                       32.height,
                       AppTextField(
                         controller: usernameController,
@@ -105,7 +112,8 @@ class _MobileLoginComponentState extends State<MobileLoginComponent> {
                         textFieldType: TextFieldType.USERNAME,
                         focus: emailFocusNode,
                         nextFocus: passwordFocusNode,
-                        decoration: inputDecoration(context, hintText: language!.userName),
+                        decoration: inputDecoration(context,
+                            hintText: language!.userName),
                       ),
                       16.height,
                       AppTextField(
@@ -113,7 +121,8 @@ class _MobileLoginComponentState extends State<MobileLoginComponent> {
                         autoFocus: false,
                         textFieldType: TextFieldType.PASSWORD,
                         focus: passwordFocusNode,
-                        decoration: inputDecoration(context, hintText: language!.password),
+                        decoration: inputDecoration(context,
+                            hintText: language!.password),
                         onFieldSubmitted: (value) {
                           loginApi(context);
                         },
@@ -122,9 +131,12 @@ class _MobileLoginComponentState extends State<MobileLoginComponent> {
                         alignment: Alignment.topRight,
                         child: TextButton(
                           onPressed: () {
-                            ForgotPasswordScreen().launch(context, pageRouteAnimation: PageRouteAnimation.Slide);
+                            ForgotPasswordScreen().launch(context,
+                                pageRouteAnimation: PageRouteAnimation.Slide);
                           },
-                          child: Text(language!.lblForgotPassword, style: boldTextStyle(color: defaultPrimaryColor, size: 14)),
+                          child: Text(language!.lblForgotPassword,
+                              style: boldTextStyle(
+                                  color: defaultPrimaryColor, size: 14)),
                         ),
                       ),
                       24.height,
@@ -143,7 +155,8 @@ class _MobileLoginComponentState extends State<MobileLoginComponent> {
                         title: language!.donTHaveAnAccount,
                         subTitle: language!.register,
                         onTap: () {
-                          SignupScreen().launch(context, pageRouteAnimation: PageRouteAnimation.Slide);
+                          SignupScreen().launch(context,
+                              pageRouteAnimation: PageRouteAnimation.Slide);
                         },
                       )
                     ],

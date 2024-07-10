@@ -116,7 +116,8 @@ class LanguagePt extends BaseLanguage {
   String get passwordMustBeSame => "A senha deve ser a mesma que acima";
 
   @override
-  String get chooseDetailPageVariant => "Escolha a variante da página de detalhes";
+  String get chooseDetailPageVariant =>
+      "Escolha a variante da página de detalhes";
 
   @override
   String get enterYourName => "Digite seu nome";
@@ -200,7 +201,8 @@ class LanguagePt extends BaseLanguage {
   String get logout => "Sair";
 
   @override
-  String get areYouSureWantToLogout => "Você tem certeza que deseja fazer logout?";
+  String get areYouSureWantToLogout =>
+      "Você tem certeza que deseja fazer logout?";
 
   @override
   String get yes => "Sim";
@@ -221,7 +223,8 @@ class LanguagePt extends BaseLanguage {
   String get designation => "Designação";
 
   @override
-  String get areYouSureWant => "Você tem certeza que deseja remover o livro da lista de desejos?";
+  String get areYouSureWant =>
+      "Você tem certeza que deseja remover o livro da lista de desejos?";
 
   @override
   String get category => "Categoria";
@@ -251,7 +254,8 @@ class LanguagePt extends BaseLanguage {
   String get readBook => "Ler livro";
 
   @override
-  String get areYouSureWantToRemoveCart => "Você tem certeza que deseja remover o livro do carrinho?";
+  String get areYouSureWantToRemoveCart =>
+      "Você tem certeza que deseja remover o livro do carrinho?";
 
   @override
   String get fontSize => "Tamanho da fonte";
@@ -326,6 +330,9 @@ class LanguagePt extends BaseLanguage {
   String get myLibrary => "Minha biblioteca";
 
   @override
+  String get myChallenges => "Meus Desafios";
+
+  @override
   String get noSampleBooksDownload => "Sem amostras de livros download";
 
   @override
@@ -365,7 +372,8 @@ class LanguagePt extends BaseLanguage {
   String get youCanDownloadBooks => "Você pode baixar livros facilmente.";
 
   @override
-  String get youCanReadBooks => "Você pode ler livros sem a conexão com a Internet.";
+  String get youCanReadBooks =>
+      "Você pode ler livros sem a conexão com a Internet.";
 
   @override
   String get readBookAnywhere => "Leia o livro em qualquer lugar";
@@ -428,7 +436,8 @@ class LanguagePt extends BaseLanguage {
   String get buyNow => "Compre Agora";
 
   @override
-  String get areYouSureWantToRemoveReview => "Você tem certeza que deseja remover a revisão?";
+  String get areYouSureWantToRemoveReview =>
+      "Você tem certeza que deseja remover a revisão?";
 
   @override
   String get processing => "Em processamento";
@@ -452,19 +461,23 @@ class LanguagePt extends BaseLanguage {
   String get createANewPassword => "Criar uma nova senha";
 
   @override
-  String get youNewPasswordMust => "Sua nova senha deve ser diferente da senha usada anterior.";
+  String get youNewPasswordMust =>
+      "Sua nova senha deve ser diferente da senha usada anterior.";
 
   @override
   String get oldPassword => "Senha Antiga";
 
   @override
-  String get pleaseEnterInfoTo => "Por favor, insira informações para criar conta";
+  String get pleaseEnterInfoTo =>
+      "Por favor, insira informações para criar conta";
 
   @override
-  String get weHaveSentA => "Enviamos uma senha de recuperação de instruções para o seu email.";
+  String get weHaveSentA =>
+      "Enviamos uma senha de recuperação de instruções para o seu email.";
 
   @override
-  String get justEnterTheEmail => "Basta inserir o endereço de e -mail que você usou para se registrar conosco e enviaremos o link de redefinição!";
+  String get justEnterTheEmail =>
+      "Basta inserir o endereço de e -mail que você usou para se registrar conosco e enviaremos o link de redefinição!";
 
   @override
   String get message => "Mensagem";

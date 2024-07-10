@@ -113,10 +113,12 @@ class LanguageFr extends BaseLanguage {
   String get thisFieldIsRequired => "Ce champ est requis";
 
   @override
-  String get passwordMustBeSame => "Le mot de passe doit être le même que ci-dessus";
+  String get passwordMustBeSame =>
+      "Le mot de passe doit être le même que ci-dessus";
 
   @override
-  String get chooseDetailPageVariant => "Choisissez la variante de la page détaillée";
+  String get chooseDetailPageVariant =>
+      "Choisissez la variante de la page détaillée";
 
   @override
   String get enterYourName => "Entrez votre nom";
@@ -155,7 +157,8 @@ class LanguageFr extends BaseLanguage {
   String get searchResultFor => "Résultat de la recherche pour";
 
   @override
-  String get searchForBooksBy => "Recherchez des livres en entrant vos mots ci-dessus";
+  String get searchForBooksBy =>
+      "Recherchez des livres en entrant vos mots ci-dessus";
 
   @override
   String get changeYourPassword => "Changez votre mot de passe";
@@ -164,7 +167,8 @@ class LanguageFr extends BaseLanguage {
   String get transactionHistory => "Historique des transactions";
 
   @override
-  String get transactionHistoryReport => "Rapport sur l'historique des transactions";
+  String get transactionHistoryReport =>
+      "Rapport sur l'historique des transactions";
 
   @override
   String get changePassword => "Changer le mot de passe";
@@ -194,13 +198,15 @@ class LanguageFr extends BaseLanguage {
   String get tapToEnableNotification => "Appuyez pour activer la notification";
 
   @override
-  String get tapToDisableNotification => "Appuyez pour désactiver la notification";
+  String get tapToDisableNotification =>
+      "Appuyez pour désactiver la notification";
 
   @override
   String get logout => "Se déconnecter";
 
   @override
-  String get areYouSureWantToLogout => "Êtes-vous sûr de vouloir vous connecter?";
+  String get areYouSureWantToLogout =>
+      "Êtes-vous sûr de vouloir vous connecter?";
 
   @override
   String get yes => "Oui";
@@ -221,7 +227,8 @@ class LanguageFr extends BaseLanguage {
   String get designation => "La désignation";
 
   @override
-  String get areYouSureWant => "Êtes-vous sûr de vouloir supprimer le livre de la liste des souhaits?";
+  String get areYouSureWant =>
+      "Êtes-vous sûr de vouloir supprimer le livre de la liste des souhaits?";
 
   @override
   String get category => "Catégorie";
@@ -251,7 +258,8 @@ class LanguageFr extends BaseLanguage {
   String get readBook => "Lire un livre";
 
   @override
-  String get areYouSureWantToRemoveCart => "Êtes-vous sûr de vouloir supprimer le livre du panier?";
+  String get areYouSureWantToRemoveCart =>
+      "Êtes-vous sûr de vouloir supprimer le livre du panier?";
 
   @override
   String get fontSize => "Taille de police";
@@ -326,6 +334,9 @@ class LanguageFr extends BaseLanguage {
   String get myLibrary => "Ma bibliothèque";
 
   @override
+  String get myChallenges => "Mes défis";
+
+  @override
   String get noSampleBooksDownload => "Aucun exemple de livres à télécharger";
 
   @override
@@ -362,10 +373,12 @@ class LanguageFr extends BaseLanguage {
   String get youCanReadBooksEasily => "Vous pouvez lire facilement des livres.";
 
   @override
-  String get youCanDownloadBooks => "Vous pouvez télécharger facilement des livres.";
+  String get youCanDownloadBooks =>
+      "Vous pouvez télécharger facilement des livres.";
 
   @override
-  String get youCanReadBooks => "Vous pouvez lire des livres sans connexion Internet.";
+  String get youCanReadBooks =>
+      "Vous pouvez lire des livres sans connexion Internet.";
 
   @override
   String get readBookAnywhere => "Lire le livre n'importe où";
@@ -428,7 +441,8 @@ class LanguageFr extends BaseLanguage {
   String get buyNow => "Acheter maintenant";
 
   @override
-  String get areYouSureWantToRemoveReview => "Are You sure want to remove review?";
+  String get areYouSureWantToRemoveReview =>
+      "Are You sure want to remove review?";
 
   @override
   String get processing => "Traitement";
@@ -452,19 +466,23 @@ class LanguageFr extends BaseLanguage {
   String get createANewPassword => "Crée un nouveau mot de passe";
 
   @override
-  String get youNewPasswordMust => "Votre nouveau mot de passe doit être différent du mot de passe utilisé précédent.";
+  String get youNewPasswordMust =>
+      "Votre nouveau mot de passe doit être différent du mot de passe utilisé précédent.";
 
   @override
   String get oldPassword => "ancien mot de passe";
 
   @override
-  String get pleaseEnterInfoTo => "Veuillez saisir des informations pour créer un compte";
+  String get pleaseEnterInfoTo =>
+      "Veuillez saisir des informations pour créer un compte";
 
   @override
-  String get weHaveSentA => "Nous avons envoyé un mot de passe de récupération des instructions à votre e-mail.";
+  String get weHaveSentA =>
+      "Nous avons envoyé un mot de passe de récupération des instructions à votre e-mail.";
 
   @override
-  String get justEnterTheEmail => "Entrez simplement l'adresse e-mail que vous avez utilisée pour vous inscrire avec nous et nous vous enverrons le lien de réinitialisation!";
+  String get justEnterTheEmail =>
+      "Entrez simplement l'adresse e-mail que vous avez utilisée pour vous inscrire avec nous et nous vous enverrons le lien de réinitialisation!";
 
   @override
   String get message => "Message";

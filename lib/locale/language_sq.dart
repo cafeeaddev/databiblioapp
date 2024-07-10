@@ -113,10 +113,12 @@ class LanguageSq extends BaseLanguage {
   String get thisFieldIsRequired => "Kjo fushë është e nevojshme";
 
   @override
-  String get passwordMustBeSame => "Fjalëkalimi duhet të jetë i njëjtë si më sipër";
+  String get passwordMustBeSame =>
+      "Fjalëkalimi duhet të jetë i njëjtë si më sipër";
 
   @override
-  String get chooseDetailPageVariant => "Zgjidhni Variantin e Faqeve të Detajeve";
+  String get chooseDetailPageVariant =>
+      "Zgjidhni Variantin e Faqeve të Detajeve";
 
   @override
   String get enterYourName => "Shkruaj emrin tend";
@@ -155,7 +157,8 @@ class LanguageSq extends BaseLanguage {
   String get searchResultFor => "Rezultati i kërkimit për";
 
   @override
-  String get searchForBooksBy => "Kërkoni për libra duke futur fjalët tuaja më lart";
+  String get searchForBooksBy =>
+      "Kërkoni për libra duke futur fjalët tuaja më lart";
 
   @override
   String get changeYourPassword => "Ndryshoni fjalëkalimin tuaj";
@@ -179,10 +182,12 @@ class LanguageSq extends BaseLanguage {
   String get appTheme => "Temë e aplikacionit";
 
   @override
-  String get tapToEnableLightMode => "Trokitni lehtë mbi për të aktivizuar modalitetin e dritës";
+  String get tapToEnableLightMode =>
+      "Trokitni lehtë mbi për të aktivizuar modalitetin e dritës";
 
   @override
-  String get tapToEnableDarkMode => "Trokitni lehtë mbi për të aktivizuar modalitetin e errët";
+  String get tapToEnableDarkMode =>
+      "Trokitni lehtë mbi për të aktivizuar modalitetin e errët";
 
   @override
   String get animationMadeEvenBetter => "Animacioni u bë edhe më mirë";
@@ -191,10 +196,12 @@ class LanguageSq extends BaseLanguage {
   String get disablePushNotification => "Çaktivizo njoftimin e shtytjes";
 
   @override
-  String get tapToEnableNotification => "Trokitni lehtë mbi për të aktivizuar njoftimin";
+  String get tapToEnableNotification =>
+      "Trokitni lehtë mbi për të aktivizuar njoftimin";
 
   @override
-  String get tapToDisableNotification => "Trokitni lehtë mbi për të çaktivizuar njoftimin";
+  String get tapToDisableNotification =>
+      "Trokitni lehtë mbi për të çaktivizuar njoftimin";
 
   @override
   String get logout => "Shkyç";
@@ -221,7 +228,8 @@ class LanguageSq extends BaseLanguage {
   String get designation => "Përcaktim";
 
   @override
-  String get areYouSureWant => "A jeni i sigurt që doni të hiqni librin nga lista e dëshirave?";
+  String get areYouSureWant =>
+      "A jeni i sigurt që doni të hiqni librin nga lista e dëshirave?";
 
   @override
   String get category => "Kategori";
@@ -251,7 +259,8 @@ class LanguageSq extends BaseLanguage {
   String get readBook => "Lexo Libër";
 
   @override
-  String get areYouSureWantToRemoveCart => "A jeni i sigurt që doni të hiqni librin nga karroca?";
+  String get areYouSureWantToRemoveCart =>
+      "A jeni i sigurt që doni të hiqni librin nga karroca?";
 
   @override
   String get fontSize => "Përmasa e germave";
@@ -325,6 +334,9 @@ class LanguageSq extends BaseLanguage {
   String get myLibrary => "Biblioteka ime";
 
   @override
+  String get myChallenges => "Sfida ime";
+
+  @override
   String get noSampleBooksDownload => "Asnjë shkarkim i librave të mostrave";
 
   @override
@@ -364,7 +376,8 @@ class LanguageSq extends BaseLanguage {
   String get youCanDownloadBooks => "Ju mund të shkarkoni libra me lehtësi.";
 
   @override
-  String get youCanReadBooks => "Ju mund të lexoni libra pa lidhjen e internetit.";
+  String get youCanReadBooks =>
+      "Ju mund të lexoni libra pa lidhjen e internetit.";
 
   @override
   String get readBookAnywhere => "Lexoni librin kudo";
@@ -427,7 +440,8 @@ class LanguageSq extends BaseLanguage {
   String get buyNow => "Blej tani";
 
   @override
-  String get areYouSureWantToRemoveReview => "A jeni i sigurt që doni të hiqni rishikimin?";
+  String get areYouSureWantToRemoveReview =>
+      "A jeni i sigurt që doni të hiqni rishikimin?";
 
   @override
   String get processing => "Përpunim";
@@ -451,19 +465,23 @@ class LanguageSq extends BaseLanguage {
   String get createANewPassword => "Krijoni një fjalëkalim të ri";
 
   @override
-  String get youNewPasswordMust => "Ju fjalëkalimi i ri duhet të jetë i ndryshëm nga fjalëkalimi i mëparshëm i përdorur.";
+  String get youNewPasswordMust =>
+      "Ju fjalëkalimi i ri duhet të jetë i ndryshëm nga fjalëkalimi i mëparshëm i përdorur.";
 
   @override
   String get oldPassword => "Fjalëkalimi i vjetër";
 
   @override
-  String get pleaseEnterInfoTo => "Ju lutemi shkruani informacione për të krijuar llogari";
+  String get pleaseEnterInfoTo =>
+      "Ju lutemi shkruani informacione për të krijuar llogari";
 
   @override
-  String get weHaveSentA => "Ne kemi dërguar një fjalëkalim të rikuperojë udhëzimet në emailin tuaj.";
+  String get weHaveSentA =>
+      "Ne kemi dërguar një fjalëkalim të rikuperojë udhëzimet në emailin tuaj.";
 
   @override
-  String get justEnterTheEmail => "Thjesht shkruani adresën e postës elektronike që keni përdorur për t'u regjistruar me ne dhe ne do t'ju dërgojmë lidhjen e rivendosjes!";
+  String get justEnterTheEmail =>
+      "Thjesht shkruani adresën e postës elektronike që keni përdorur për t'u regjistruar me ne dhe ne do t'ju dërgojmë lidhjen e rivendosjes!";
 
   @override
   String get message => "Mesazh";

@@ -7,6 +7,7 @@ import 'package:granth_flutter/models/author_list_model.dart';
 import 'package:granth_flutter/models/bookdetail_model.dart';
 import 'package:granth_flutter/models/cart_response.dart';
 import 'package:granth_flutter/models/category_list_model.dart';
+import 'package:granth_flutter/models/challenge_model.dart';
 import 'package:granth_flutter/models/dashboard_model.dart';
 import 'package:granth_flutter/models/locator_model.dart';
 import 'package:granth_flutter/models/login_model.dart';
@@ -26,39 +27,43 @@ import '../configs.dart';
 
 ///region Login Api
 Future<LoginResponse> login(Map request) async {
-  return LoginResponse.fromJson(await (handleResponse(await buildHttpResponse('login', request: request, method: HttpMethod.POST))));
+  return LoginResponse.fromJson(await (handleResponse(await buildHttpResponse(
+      'login',
+      request: request,
+      method: HttpMethod.POST))));
 }
 
-Future<MoodleLoginResponse> moodleLogin(String username, String password) async {
+Future<MoodleLoginResponse> moodleLogin(
+    String username, String password) async {
   return MoodleLoginResponse.fromJson(await (handleResponse(await buildHttpResponse(
       'https://databiblion.cafeeadhost.com.br/login/token.php?service=moodle_mobile_app'
-          '&username=$username'
-          '&password=$password',
+      '&username=$username'
+      '&password=$password',
       method: HttpMethod.GET))));
 }
 
 Future<MoodleBasicUserData> getBasicUserData(String token) async {
   return MoodleBasicUserData.fromJson(await (handleResponse(await buildHttpResponse(
       'https://databiblion.cafeeadhost.com.br/webservice/rest/server.php?moodlewsrestformat=json'
-          '&wsfunction=core_webservice_get_site_info'
-          '&wstoken=$token'
-  ))));
+      '&wsfunction=core_webservice_get_site_info'
+      '&wstoken=$token'))));
 }
 
 Future<MoodleUserData> getUserData(String token, int userId) async {
   List<dynamic> response = await (handleResponse(await buildHttpResponse(
       'https://databiblion.cafeeadhost.com.br/webservice/rest/server.php?moodlewsrestformat=json'
-          '&wstoken=$token'
-          '&wsfunction=core_user_get_users_by_field'
-          '&field=id&values[0]=$userId'
-  )));
-  List<MoodleUserData> result = List<MoodleUserData>.from(response.map((model) => MoodleUserData.fromJson(model)));
+      '&wstoken=$token'
+      '&wsfunction=core_user_get_users_by_field'
+      '&field=id&values[0]=$userId')));
+  List<MoodleUserData> result = List<MoodleUserData>.from(
+      response.map((model) => MoodleUserData.fromJson(model)));
   return result.first;
 }
 
 ///Change Password Api
 Future<void> saveUserData(UserData data) async {
-  if (data.apiToken.validate().isNotEmpty) await appStore.setToken(data.apiToken.validate());
+  if (data.apiToken.validate().isNotEmpty)
+    await appStore.setToken(data.apiToken.validate());
   await appStore.setUserId(data.id.validate());
   await appStore.setName(data.name.validate());
   await appStore.setUserEmail(data.email.validate());
@@ -72,33 +77,46 @@ Future<void> saveUserData(UserData data) async {
 
 /// login api call
 Future<LoginResponse> createUser(Map request) async {
-  return LoginResponse.fromJson(await (handleResponse(await buildHttpResponse('register', request: request, method: HttpMethod.POST))));
+  return LoginResponse.fromJson(await (handleResponse(await buildHttpResponse(
+      'register',
+      request: request,
+      method: HttpMethod.POST))));
 }
 
 ///end region
 
 ///change password api
 Future<BaseResponse> changePassword(Map request) async {
-  return BaseResponse.fromJson(await handleResponse(await buildHttpResponse('change-password', request: request, method: HttpMethod.POST)));
+  return BaseResponse.fromJson(await handleResponse(await buildHttpResponse(
+      'change-password',
+      request: request,
+      method: HttpMethod.POST)));
 }
 
 ///end region
 
 /// forgot password
 Future<BaseResponse> forgotPassword(Map request) async {
-  return BaseResponse.fromJson(await (handleResponse(await buildHttpResponse('forgot-password', request: request, method: HttpMethod.POST))));
+  return BaseResponse.fromJson(await (handleResponse(await buildHttpResponse(
+      'forgot-password',
+      request: request,
+      method: HttpMethod.POST))));
 }
 
 ///end region
 
 /// feedback Api
 Future<BaseResponse> addFeedback(Map request) async {
-  BaseResponse baseModel = BaseResponse.fromJson(await handleResponse(await buildHttpResponse('add-feedback', request: request, method: HttpMethod.POST)));
+  BaseResponse baseModel = BaseResponse.fromJson(await handleResponse(
+      await buildHttpResponse('add-feedback',
+          request: request, method: HttpMethod.POST)));
   return baseModel;
 }
 
 Future<BaseResponse> addToCart(request) async {
-  BaseResponse baseModel = BaseResponse.fromJson(await handleResponse(await buildHttpResponse('add-to-cart', request: request, method: HttpMethod.POST)));
+  BaseResponse baseModel = BaseResponse.fromJson(await handleResponse(
+      await buildHttpResponse('add-to-cart',
+          request: request, method: HttpMethod.POST)));
   return baseModel;
 }
 
@@ -106,7 +124,9 @@ Future<BaseResponse> addToCart(request) async {
 
 /// transaction history
 Future<TransactionHistoryResponse> getTransactionDetails() async {
-  return TransactionHistoryResponse.fromJson(await (handleResponse(await buildHttpResponse('get-transaction-history', method: HttpMethod.GET))));
+  return TransactionHistoryResponse.fromJson(await (handleResponse(
+      await buildHttpResponse('get-transaction-history',
+          method: HttpMethod.GET))));
 }
 
 ///end region
@@ -115,15 +135,18 @@ Future<TransactionHistoryResponse> getTransactionDetails() async {
 Future<DashboardResponse> getDashboardDetails({String? type, int? page}) async {
   DashboardResponse response;
 
-  response = DashboardResponse.fromJson(await handleResponse(await buildHttpResponse('dashboard-detail', method: HttpMethod.GET)));
+  response = DashboardResponse.fromJson(await handleResponse(
+      await buildHttpResponse('dashboard-detail', method: HttpMethod.GET)));
   return response;
 }
 
-Future<DashboardResponse> getDashboardDetailsMoodle({String? type, int? page}) async {
+Future<DashboardResponse> getDashboardDetailsMoodle(
+    {String? type, int? page}) async {
   var response = await handleResponse(await buildHttpResponse(
       'https://databiblion.cafeeadhost.com.br/webservice/rest/server.php?moodlewsrestformat=json'
-          '&wstoken=2ab3f1e2a757c5bc5e1d3a32c7680395'
-          '&wsfunction=local_wsgetbooks_get_dashboard', method: HttpMethod.GET));
+      '&wstoken=2ab3f1e2a757c5bc5e1d3a32c7680395'
+      '&wsfunction=local_wsgetbooks_get_dashboard',
+      method: HttpMethod.GET));
 
   return DashboardResponse.fromJson(response);
 }
@@ -137,7 +160,9 @@ Future purchasedBookList() async {
 }
 
 Future<BaseResponse> removeFromCart(request) async {
-  BaseResponse baseResponse = BaseResponse.fromJson(await handleResponse(await buildHttpResponse('remove-from-cart', request: request, method: HttpMethod.POST)));
+  BaseResponse baseResponse = BaseResponse.fromJson(await handleResponse(
+      await buildHttpResponse('remove-from-cart',
+          request: request, method: HttpMethod.POST)));
 
   return baseResponse;
 }
@@ -146,19 +171,31 @@ Future<BaseResponse> removeFromCart(request) async {
 
 ///view all api call
 Future<DashboardResponse> getAllBooks({String? type, int? page}) async {
-  return DashboardResponse.fromJson(await (handleResponse(await buildHttpResponse('dashboard-detail?type=$type&page=$page&per_page=$PER_PAGE_ITEM', method: HttpMethod.GET))));
+  return DashboardResponse.fromJson(await (handleResponse(
+      await buildHttpResponse(
+          'dashboard-detail?type=$type&page=$page&per_page=$PER_PAGE_ITEM',
+          method: HttpMethod.GET))));
 }
 
 ///end region
 
 ///Category Wise book api call
-Future<List<BookDetailResponse>> getCategoryWiseBookDetail({int? page, int? categoryId, int? subCategoryId, List<BookDetailResponse> books = const [], Function(bool)? callback}) async {
+Future<List<BookDetailResponse>> getCategoryWiseBookDetail(
+    {int? page,
+    int? categoryId,
+    int? subCategoryId,
+    List<BookDetailResponse> books = const [],
+    Function(bool)? callback}) async {
   appStore.setLoading(true);
   CategoryWiseBookModel response;
   if (subCategoryId != null) {
-    response = CategoryWiseBookModel.fromJson(await (handleResponse(await buildHttpResponse('book-list?page=$page&per_page=$PER_PAGE_ITEM&category_id=$categoryId&subcategory_id=$subCategoryId'))));
+    response = CategoryWiseBookModel.fromJson(await (handleResponse(
+        await buildHttpResponse(
+            'book-list?page=$page&per_page=$PER_PAGE_ITEM&category_id=$categoryId&subcategory_id=$subCategoryId'))));
   } else {
-    response = CategoryWiseBookModel.fromJson(await (handleResponse(await buildHttpResponse('book-list?page=$page&per_page=$PER_PAGE_ITEM&category_id=$categoryId'))));
+    response = CategoryWiseBookModel.fromJson(await (handleResponse(
+        await buildHttpResponse(
+            'book-list?page=$page&per_page=$PER_PAGE_ITEM&category_id=$categoryId'))));
   }
   if (page == 1) books.clear();
   books.addAll(response.data.validate());
@@ -171,48 +208,61 @@ Future<List<BookDetailResponse>> getCategoryWiseBookDetail({int? page, int? cate
 }
 
 Future<CategoryListModel> getAllCategoryList({String? type, int? page}) async {
-  return CategoryListModel.fromJson(await (handleResponse(await buildHttpResponse('category-list?type=$type&page=$page&per_page=$PER_PAGE_ITEM', method: HttpMethod.GET))));
+  return CategoryListModel.fromJson(await (handleResponse(
+      await buildHttpResponse(
+          'category-list?type=$type&page=$page&per_page=$PER_PAGE_ITEM',
+          method: HttpMethod.GET))));
 }
 
 Future<AllBookDetailsModel> getBookDetails(Map request) async {
-  return AllBookDetailsModel.fromJson(await (handleResponse(await buildHttpResponse('book-detail', request: request, method: HttpMethod.POST))));
+  return AllBookDetailsModel.fromJson(await (handleResponse(
+      await buildHttpResponse('book-detail',
+          request: request, method: HttpMethod.POST))));
 }
 
-Future<AllBookDetailsModel> getBookDetailsMoodle({int? bookid, int? userid}) async {
+Future<AllBookDetailsModel> getBookDetailsMoodle(
+    {int? bookid, int? userid}) async {
   return AllBookDetailsModel.fromJson(await (handleResponse(await buildHttpResponse(
       'https://databiblion.cafeeadhost.com.br/webservice/rest/server.php?wstoken=2ab3f1e2a757c5bc5e1d3a32c7680395'
-          '&wsfunction=local_wsgetbooks_get_bookdetails'
-          '&moodlewsrestformat=json'
-          '&bookid=$bookid&userid=$userid', method: HttpMethod.GET))));
+      '&wsfunction=local_wsgetbooks_get_bookdetails'
+      '&moodlewsrestformat=json'
+      '&bookid=$bookid&userid=$userid',
+      method: HttpMethod.GET))));
 }
 
 Future<PostLocatorResponse> postLocatorData(Map request) async {
   return PostLocatorResponse.fromJson(await (handleResponse(await buildHttpResponse(
       'https://databiblion.cafeeadhost.com.br/webservice/rest/server.php?wstoken=2ab3f1e2a757c5bc5e1d3a32c7680395'
-          '&wsfunction=local_wsgetbooks_post_locator'
-          '&moodlewsrestformat=json'
-          '&params='+jsonEncode(request),
-      request: request, method: HttpMethod.POST))));
+              '&wsfunction=local_wsgetbooks_post_locator'
+              '&moodlewsrestformat=json'
+              '&params=' +
+          jsonEncode(request),
+      request: request,
+      method: HttpMethod.POST))));
 }
 
 Future<List<LocatorModel>> getLocatorData(int userId, int bookId) async {
   List<dynamic> response = await (handleResponse(await buildHttpResponse(
       'https://databiblion.cafeeadhost.com.br/webservice/rest/server.php?wstoken=2ab3f1e2a757c5bc5e1d3a32c7680395'
-          '&wsfunction=local_wsgetbooks_get_locator'
-          '&moodlewsrestformat=json'
-          '&userid=$userId&bookid=$bookId',
+      '&wsfunction=local_wsgetbooks_get_locator'
+      '&moodlewsrestformat=json'
+      '&userid=$userId&bookid=$bookId',
       method: HttpMethod.GET)));
-  List<LocatorModel> result = List<LocatorModel>.from(response.map((model) => LocatorModel.fromJson(model)));
+  List<LocatorModel> result = List<LocatorModel>.from(
+      response.map((model) => LocatorModel.fromJson(model)));
 
   return result;
 }
 
 Future<SubCategoryResponse> subCategories(request) async {
-  return SubCategoryResponse.fromJson(await (handleResponse(await buildHttpResponse('sub-category-list', request: request, method: HttpMethod.POST))));
+  return SubCategoryResponse.fromJson(await (handleResponse(
+      await buildHttpResponse('sub-category-list',
+          request: request, method: HttpMethod.POST))));
 }
 
 Future<CartResponse> getCart() async {
-  CartResponse cartModel = CartResponse.fromJson(await handleResponse(await buildHttpResponse('user-cart')));
+  CartResponse cartModel = CartResponse.fromJson(
+      await handleResponse(await buildHttpResponse('user-cart')));
   appStore.setCartCount(cartModel.data!.length.validate());
   return cartModel;
 }
@@ -220,14 +270,19 @@ Future<CartResponse> getCart() async {
 ///end region
 
 ///book list api
-Future<CategoryWiseBookModel> bookListApi({int? page, String? searchText, int? authorId}) async {
+Future<CategoryWiseBookModel> bookListApi(
+    {int? page, String? searchText, int? authorId}) async {
   CategoryWiseBookModel response;
   if (authorId != null) {
     ///author wise book list api call
-    response = CategoryWiseBookModel.fromJson(await (handleResponse(await buildHttpResponse('book-list?page=$page&per_page=$PER_PAGE_ITEM&author_id=$authorId'))));
+    response = CategoryWiseBookModel.fromJson(await (handleResponse(
+        await buildHttpResponse(
+            'book-list?page=$page&per_page=$PER_PAGE_ITEM&author_id=$authorId'))));
   } else {
     ///search book list api call
-    response = CategoryWiseBookModel.fromJson(await (handleResponse(await buildHttpResponse('book-list?page=$page&per_page=$PER_PAGE_ITEM&search_text=$searchText'))));
+    response = CategoryWiseBookModel.fromJson(await (handleResponse(
+        await buildHttpResponse(
+            'book-list?page=$page&per_page=$PER_PAGE_ITEM&search_text=$searchText'))));
   }
   return response;
 }
@@ -236,45 +291,63 @@ Future<CategoryWiseBookModel> bookListApi({int? page, String? searchText, int? a
 
 ///author list api call
 Future<AuthorListResponse> getAuthorList() async {
-  return AuthorListResponse.fromJson(await (handleResponse(await buildHttpResponse('author-list'))));
+  return AuthorListResponse.fromJson(
+      await (handleResponse(await buildHttpResponse('author-list'))));
 }
 
 ///end Region
 
 ///My Wishlist Book
 Future<CategoryWiseBookModel> getWishList() async {
-  return CategoryWiseBookModel.fromJson(await (handleResponse(await buildHttpResponse('user-wishlist-book'))));
+  return CategoryWiseBookModel.fromJson(
+      await (handleResponse(await buildHttpResponse('user-wishlist-book'))));
 }
 
 ///end region
 
 ///add remove wishlist  book
 Future<BaseResponse> addRemoveWishList(request) async {
-  return BaseResponse.fromJson(await handleResponse(await buildHttpResponse('add-remove-wishlist-book', method: HttpMethod.POST, request: request)));
+  return BaseResponse.fromJson(await handleResponse(await buildHttpResponse(
+      'add-remove-wishlist-book',
+      method: HttpMethod.POST,
+      request: request)));
 }
 
 ///end region
 Future<BaseResponse> addReview(request) async {
-  return BaseResponse.fromJson(await handleResponse(await buildHttpResponse('add-book-rating', method: HttpMethod.POST, request: request)));
+  return BaseResponse.fromJson(await handleResponse(await buildHttpResponse(
+      'add-book-rating',
+      method: HttpMethod.POST,
+      request: request)));
 }
 
 Future<BaseResponse> deleteReview(request) async {
-  return BaseResponse.fromJson(await handleResponse(await buildHttpResponse('delete-book-rating', method: HttpMethod.POST, request: request)));
+  return BaseResponse.fromJson(await handleResponse(await buildHttpResponse(
+      'delete-book-rating',
+      method: HttpMethod.POST,
+      request: request)));
 }
 
 Future<BaseResponse> updateReview(request) async {
-  return BaseResponse.fromJson(await handleResponse(await buildHttpResponse('update-book-rating', method: HttpMethod.POST, request: request)));
+  return BaseResponse.fromJson(await handleResponse(await buildHttpResponse(
+      'update-book-rating',
+      method: HttpMethod.POST,
+      request: request)));
 }
 
 Future<RatingModel> getAllBookReview(request) async {
-  return RatingModel.fromJson(await handleResponse(await buildHttpResponse('book-rating-list', method: HttpMethod.POST, request: request)));
+  return RatingModel.fromJson(await handleResponse(await buildHttpResponse(
+      'book-rating-list',
+      method: HttpMethod.POST,
+      request: request)));
 }
 
 ///end region
 
 ///logout api call
 Future logoutApi() async {
-  return await handleResponse(await buildHttpResponse('logout', method: HttpMethod.POST));
+  return await handleResponse(
+      await buildHttpResponse('logout', method: HttpMethod.POST));
 }
 
 ///end region
@@ -295,14 +368,22 @@ Future<void> logout(BuildContext context) async {
 
     appStore.setLoading(false);
     finish(context);
-    DashboardScreen().launch(context, isNewTask: true, pageRouteAnimation: PageRouteAnimation.Fade);
+    DashboardScreen().launch(context,
+        isNewTask: true, pageRouteAnimation: PageRouteAnimation.Fade);
   } else {
     toast(errorInternetNotAvailable);
   }
 }
 
-Future updateUser(userDetail, {mSelectedImage, id, userName, name, contactNumber, List<int>? imageFile}) async {
-  var request = http.MultipartRequest("POST", Uri.parse('${BASE_URL}save-user-profile'));
+Future updateUser(userDetail,
+    {mSelectedImage,
+    id,
+    userName,
+    name,
+    contactNumber,
+    List<int>? imageFile}) async {
+  var request =
+      http.MultipartRequest("POST", Uri.parse('${BASE_URL}save-user-profile'));
   request.fields['id'] = id.toString();
   request.fields['username'] = userName;
   request.fields['name'] = name;
@@ -310,10 +391,13 @@ Future updateUser(userDetail, {mSelectedImage, id, userName, name, contactNumber
 
   if (imageFile != null) {
     if (isMobile) {
-      final file = await http.MultipartFile.fromPath('profile_image', mSelectedImage.path);
+      final file = await http.MultipartFile.fromPath(
+          'profile_image', mSelectedImage.path);
       request.files.add(file);
     } else {
-      final file = await http.MultipartFile.fromBytes('profile_image', imageFile, filename: "Test");
+      final file = await http.MultipartFile.fromBytes(
+          'profile_image', imageFile,
+          filename: "Test");
       request.files.add(file);
     }
   }
@@ -355,11 +439,14 @@ Future<void> clearPreferences() async {
 ///end region
 
 Future getChecksum(request) async {
-  return await handleResponse(await buildHttpResponse('generate-check-sum', request: request, method: HttpMethod.POST));
+  return await handleResponse(await buildHttpResponse('generate-check-sum',
+      request: request, method: HttpMethod.POST));
 }
 
-Future saveTransaction(Map<String, String?> transactionDetails, orderDetails, type, status, totalAmount) async {
-  var request = http.MultipartRequest("POST", Uri.parse('${BASE_URL}save-transaction'));
+Future saveTransaction(Map<String, String?> transactionDetails, orderDetails,
+    type, status, totalAmount) async {
+  var request =
+      http.MultipartRequest("POST", Uri.parse('${BASE_URL}save-transaction'));
   request.fields['transaction_detail'] = jsonEncode(transactionDetails);
   request.fields['order_detail'] = orderDetails;
   request.fields['type'] = type.toString();
@@ -377,4 +464,15 @@ Future saveTransaction(Map<String, String?> transactionDetails, orderDetails, ty
   }).catchError((error) {
     throw error;
   });
+}
+
+Future<List<ChallengeModel>> getChallengesData(String userId) async {
+  List<dynamic> response = await (handleResponse(await buildHttpResponse(
+    'https://databiblion.cafeeadhost.com.br/webservice/rest/server.php?moodlewsrestformat=json'
+    '&wsfunction=local_wsgetbooks_get_desafios&wstoken=2ab3f1e2a757c5bc5e1d3a32c7680395'
+    '&userid=$userId',
+  )));
+  List<ChallengeModel> result = List<ChallengeModel>.from(
+      response.map((model) => ChallengeModel.fromJson(model)));
+  return result;
 }
