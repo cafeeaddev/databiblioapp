@@ -144,7 +144,7 @@ class MyAppState extends State<MyApp> {
             home: SplashScreen(),
             theme: AppThemeData.lightTheme,
             darkTheme: AppThemeData.darkTheme,
-            themeMode: ThemeMode.light,
+            themeMode: themeNotifier.themeMode,
             supportedLocales: LanguageDataModel.languageLocales(),
             localizationsDelegates: [
               AppLocalizations(),
