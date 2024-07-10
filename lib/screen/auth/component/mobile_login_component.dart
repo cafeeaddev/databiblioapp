@@ -114,6 +114,12 @@ class _MobileLoginComponentState extends State<MobileLoginComponent> {
                         nextFocus: passwordFocusNode,
                         decoration: inputDecoration(context,
                             hintText: language!.userName),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Este campo é obrigatório';
+                          }
+                          return null;
+                        },
                       ),
                       16.height,
                       AppTextField(
@@ -125,6 +131,14 @@ class _MobileLoginComponentState extends State<MobileLoginComponent> {
                             hintText: language!.password),
                         onFieldSubmitted: (value) {
                           loginApi(context);
+                        },
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Este campo é obrigatório';
+                          } else if (value.length < 6) {
+                            return 'A senha deve ter no mínimo 6 caracteres';
+                          }
+                          return null;
                         },
                       ),
                       Align(
