@@ -77,22 +77,7 @@ class _MobileSettingFragmentState extends State<MobileSettingFragment> {
                     ).visible(!appStore.isLoggedIn),
                     16.height.visible(appStore.isLoggedIn),
                     Divider(height: 0),
-                    SettingItemWidget(
-                      title: language!.transactionHistory,
-                      subTitle: language!.transactionHistoryReport,
-                      onTap: () {
-                        TransactionHistoryScreen().launch(context);
-                      },
-                      trailing: IconButton(
-                        constraints: BoxConstraints(),
-                        padding: EdgeInsets.only(left: defaultRadius),
-                        onPressed: () {},
-                        splashColor: transparentColor,
-                        highlightColor: transparentColor,
-                        icon: Icon(Icons.monetization_on_outlined),
-                      ),
-                    ).visible(appStore.isLoggedIn),
-                    Divider(height: 0).visible(appStore.isLoggedIn),
+                    
                     SettingItemWidget(
                       title: language!.changePassword,
                       subTitle: language!.changeYourPassword,
@@ -133,54 +118,8 @@ class _MobileSettingFragmentState extends State<MobileSettingFragment> {
                         },
                       ),
                     ),
-                    Divider(height: 0),
-                    SettingItemWidget(
-                      title: language!.appTheme,
-                      subTitle: appStore.isDarkMode
-                          ? language!.tapToEnableLightMode
-                          : language!.tapToEnableDarkMode,
-                      onTap: () async {
-                        if (getBoolAsync(IS_DARK_MODE)) {
-                          appStore.setDarkMode(false);
-                          await setValue(IS_DARK_MODE, false);
-                        } else {
-                          appStore.setDarkMode(true);
-                          await setValue(IS_DARK_MODE, true);
-                        }
-                      },
-                      trailing: Container(
-                        padding: EdgeInsets.only(left: defaultRadius),
-                        height: 20,
-                        width: 50,
-                        child: Switch(
-                          value: appStore.isDarkMode,
-                          activeColor: defaultPrimaryColor,
-                          activeTrackColor: grey.withOpacity(.6),
-                          inactiveThumbColor: secondaryPrimaryColor,
-                          inactiveTrackColor: grey.withOpacity(.6),
-                          onChanged: (val) async {
-                            appStore.setDarkMode(val);
-                            await setValue(IS_DARK_MODE, val);
-                          },
-                        ),
-                      ),
-                    ),
-                    Divider(height: 0),
-                    SettingItemWidget(
-                      title: language!.chooseDetailPageVariant,
-                      subTitle: language!.animationMadeEvenBetter,
-                      onTap: () {
-                        ChooseDetailPageVariantScreen().launch(context);
-                      },
-                      trailing: IconButton(
-                        constraints: BoxConstraints(),
-                        padding: EdgeInsets.only(left: defaultRadius),
-                        onPressed: () {},
-                        splashColor: transparentColor,
-                        highlightColor: transparentColor,
-                        icon: Icon(Icons.check_circle_outline_outlined),
-                      ),
-                    ),
+                    
+                    
                     Divider(height: 0),
                     SettingItemWidget(
                       title: language!.share,

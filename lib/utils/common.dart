@@ -208,8 +208,6 @@ String getPaymentStatus({String? status, String? method}) {
   }
 }
 
- 
-
 ///Payment Color
 Color setTransactionSuccess({required String status}) {
   if (status == TRANSACTION_SUCCESS) {
@@ -290,34 +288,25 @@ void handleViewClick(BuildContext context,
     var book = kDebugMode
         ? EpubDocument.openAsset('assets/burroughs-mucker.epub')
         : EpubDocument.openData(File(filePath.validate()).readAsBytesSync());
-    if (book != null) {
-      print('EPUB document opened successfully.');
-      Navigator.push(
-  context,
-  MaterialPageRoute(
-    builder: (context) => ReaderScreen(
-      onToggleTheme: (isDark) {
-                      _toggleTheme(context, isDark);
-                    },
-      book: book,
-    ),
-  ),
-);
-
-    } else {
-      print('Failed to open EPUB document.');
-    }
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ReaderScreen(
+          book: book,
+        ),
+      ),
+    );
   } else {
     toast('Invalid File');
   }
-
-
 }
-  void _toggleTheme(BuildContext context, bool isDark) {
-    // Atualize o tema usando o ThemeNotifier
-    final themeNotifier = Provider.of<ThemeNotifier>(context, listen: false);
-    themeNotifier.toggleTheme(isDark);
-  }
+
+void _toggleTheme(BuildContext context, bool isDark) {
+  // Atualize o tema usando o ThemeNotifier
+  final themeNotifier = Provider.of<ThemeNotifier>(context, listen: false);
+  themeNotifier.toggleTheme(isDark);
+}
+
 Future<bool> checkAndroidVersionAndStoragePermission() async {
   if (Platform.isAndroid) {
     final DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();

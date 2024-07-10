@@ -60,15 +60,7 @@ class SettingScreenBottomComponentState extends State<SettingScreenBottomCompone
           toast(language!.share);
         }),
   );*/
-    wrapWidgetListItem.add(
-      SettingScreenModel(
-          image: feed_back,
-          key: FEEDBACK,
-          title: language!.feedback,
-          onclick: () {
-            toast(language!.feedback);
-          }),
-    );
+
     wrapWidgetListItem.add(
       SettingScreenModel(
           image: about_us_icon,
