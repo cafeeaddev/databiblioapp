@@ -155,7 +155,8 @@ class LanguageHi extends BaseLanguage {
   String get searchResultFor => "के लिए खोज परिणाम";
 
   @override
-  String get searchForBooksBy => "ऊपर अपने शब्दों को दर्ज करके पुस्तकों की खोज करें";
+  String get searchForBooksBy =>
+      "ऊपर अपने शब्दों को दर्ज करके पुस्तकों की खोज करें";
 
   @override
   String get changeYourPassword => "अपना पासवर्ड बदलें";
@@ -191,16 +192,19 @@ class LanguageHi extends BaseLanguage {
   String get disablePushNotification => "धक्का अधिसूचना अक्षम करें";
 
   @override
-  String get tapToEnableNotification => "अधिसूचना को सक्षम करने के लिए टैप करें";
+  String get tapToEnableNotification =>
+      "अधिसूचना को सक्षम करने के लिए टैप करें";
 
   @override
-  String get tapToDisableNotification => "अधिसूचना को अक्षम करने के लिए टैप करें";
+  String get tapToDisableNotification =>
+      "अधिसूचना को अक्षम करने के लिए टैप करें";
 
   @override
   String get logout => "लॉग आउट";
 
   @override
-  String get areYouSureWantToLogout => "क्या आप निश्चित रूप से लॉगआउट करना चाहते हैं?";
+  String get areYouSureWantToLogout =>
+      "क्या आप निश्चित रूप से लॉगआउट करना चाहते हैं?";
 
   @override
   String get yes => "हाँ";
@@ -221,7 +225,8 @@ class LanguageHi extends BaseLanguage {
   String get designation => "पद";
 
   @override
-  String get areYouSureWant => "क्या आप निश्चित रूप से इच्छा सूची से पुस्तक निकालना चाहते हैं?";
+  String get areYouSureWant =>
+      "क्या आप निश्चित रूप से इच्छा सूची से पुस्तक निकालना चाहते हैं?";
 
   @override
   String get category => "श्रेणी";
@@ -251,7 +256,8 @@ class LanguageHi extends BaseLanguage {
   String get readBook => "पुस्तक पढ़ना";
 
   @override
-  String get areYouSureWantToRemoveCart => "क्या आप निश्चित रूप से गाड़ी से किताब निकालना चाहते हैं?";
+  String get areYouSureWantToRemoveCart =>
+      "क्या आप निश्चित रूप से गाड़ी से किताब निकालना चाहते हैं?";
 
   @override
   String get fontSize => "फ़ॉन्ट आकार";
@@ -305,7 +311,8 @@ class LanguageHi extends BaseLanguage {
   String get yourReview => "आपकी समीक्षा";
 
   @override
-  String get areYouSureWantToDelete => "क्या आप निश्चित रूप से हटाना चाहते हैं?";
+  String get areYouSureWantToDelete =>
+      "क्या आप निश्चित रूप से हटाना चाहते हैं?";
 
   @override
   String get language => "भाषा";
@@ -324,6 +331,9 @@ class LanguageHi extends BaseLanguage {
 
   @override
   String get myLibrary => "मेरा पुस्तकालय";
+
+  @override
+  String get myChallenges => "मेरे चैलेंज";
 
   @override
   String get noSampleBooksDownload => "कोई नमूना पुस्तकें डाउनलोड नहीं";
@@ -365,7 +375,8 @@ class LanguageHi extends BaseLanguage {
   String get youCanDownloadBooks => "आप आसानी से किताबें डाउनलोड कर सकते हैं।";
 
   @override
-  String get youCanReadBooks => "आप इंटरनेट कनेक्शन के बिना किताबें पढ़ सकते हैं।";
+  String get youCanReadBooks =>
+      "आप इंटरनेट कनेक्शन के बिना किताबें पढ़ सकते हैं।";
 
   @override
   String get readBookAnywhere => "कहीं भी पुस्तक पढ़ें";
@@ -428,7 +439,8 @@ class LanguageHi extends BaseLanguage {
   String get buyNow => "अभी खरीदें";
 
   @override
-  String get areYouSureWantToRemoveReview => "क्या आप निश्चित रूप से समीक्षा निकालना चाहते हैं?";
+  String get areYouSureWantToRemoveReview =>
+      "क्या आप निश्चित रूप से समीक्षा निकालना चाहते हैं?";
 
   @override
   String get processing => "प्रसंस्करण";
@@ -452,7 +464,8 @@ class LanguageHi extends BaseLanguage {
   String get createANewPassword => "एक नया पासवर्ड बनाएँ";
 
   @override
-  String get youNewPasswordMust => "आप नया पासवर्ड पिछले उपयोग किए गए पासवर्ड से अलग होना चाहिए।";
+  String get youNewPasswordMust =>
+      "आप नया पासवर्ड पिछले उपयोग किए गए पासवर्ड से अलग होना चाहिए।";
 
   @override
   String get oldPassword => "पुराना पासवर्ड";
@@ -461,10 +474,12 @@ class LanguageHi extends BaseLanguage {
   String get pleaseEnterInfoTo => "कृपया खाता बनाने के लिए जानकारी दर्ज करें";
 
   @override
-  String get weHaveSentA => "हमने आपके ईमेल के लिए एक पासवर्ड पुनर्प्राप्त निर्देश भेजे हैं।";
+  String get weHaveSentA =>
+      "हमने आपके ईमेल के लिए एक पासवर्ड पुनर्प्राप्त निर्देश भेजे हैं।";
 
   @override
-  String get justEnterTheEmail => "बस उस ईमेल पते को दर्ज करें जिसे आपने हमारे साथ पंजीकृत करने के लिए उपयोग किया है और हम आपको रीसेट लिंक भेजेंगे!";
+  String get justEnterTheEmail =>
+      "बस उस ईमेल पते को दर्ज करें जिसे आपने हमारे साथ पंजीकृत करने के लिए उपयोग किया है और हम आपको रीसेट लिंक भेजेंगे!";
 
   @override
   String get message => "संदेश";

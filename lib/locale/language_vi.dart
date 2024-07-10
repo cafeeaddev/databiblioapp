@@ -128,7 +128,8 @@ class LanguageVi extends BaseLanguage {
   String get enterYourEmail => "Nhập email của bạn";
 
   @override
-  String get enterYourMobileNumber => "Nhập sô điện thoại di động của bạn";
+  String get enterYourMobileNumber =>
+      "Nhập sô điện thoại di động của bạn";
 
   @override
   String get updateProfile => "Cập nhật hồ sơ";
@@ -155,7 +156,8 @@ class LanguageVi extends BaseLanguage {
   String get searchResultFor => "Tìm kết quả cho";
 
   @override
-  String get searchForBooksBy => "Tìm kiếm sách bằng cách nhập từ của bạn ở trên";
+  String get searchForBooksBy =>
+      "Tìm kiếm sách bằng cách nhập từ của bạn ở trên";
 
   @override
   String get changeYourPassword => "Thay đổi mật khẩu của bạn";
@@ -221,7 +223,8 @@ class LanguageVi extends BaseLanguage {
   String get designation => "Chỉ định";
 
   @override
-  String get areYouSureWant => "Bạn có chắc chắn muốn xóa cuốn sách khỏi danh sách mong muốn?";
+  String get areYouSureWant =>
+      "Bạn có chắc chắn muốn xóa cuốn sách khỏi danh sách mong muốn?";
 
   @override
   String get category => "Loại";
@@ -251,7 +254,8 @@ class LanguageVi extends BaseLanguage {
   String get readBook => "Đọc sách";
 
   @override
-  String get areYouSureWantToRemoveCart => "Bạn có chắc chắn muốn loại bỏ cuốn sách khỏi giỏ hàng?";
+  String get areYouSureWantToRemoveCart =>
+      "Bạn có chắc chắn muốn loại bỏ cuốn sách khỏi giỏ hàng?";
 
   @override
   String get fontSize => "Cỡ chữ";
@@ -326,6 +330,9 @@ class LanguageVi extends BaseLanguage {
   String get myLibrary => "Thư viện của tôi";
 
   @override
+  String get myChallenges => "Những Thách Thức Của Tôi";
+
+  @override
   String get noSampleBooksDownload => "Tải xuống sách mẫu";
 
   @override
@@ -356,7 +363,8 @@ class LanguageVi extends BaseLanguage {
   String get joinNow => "Tham gia ngay";
 
   @override
-  String get alreadyHaveAnAccount => "Bạn co săn san để tạo một tai khoản?";
+  String get alreadyHaveAnAccount =>
+      "Bạn co săn san để tạo một tai khoản?";
 
   @override
   String get youCanReadBooksEasily => "Bạn có thể đọc sách dễ dàng.";
@@ -365,7 +373,8 @@ class LanguageVi extends BaseLanguage {
   String get youCanDownloadBooks => "Bạn có thể tải xuống sách dễ dàng.";
 
   @override
-  String get youCanReadBooks => "Bạn có thể đọc sách mà không cần kết nối Internet.";
+  String get youCanReadBooks =>
+      "Bạn có thể đọc sách mà không cần kết nối Internet.";
 
   @override
   String get readBookAnywhere => "Đọc sách ở bất cứ đâu";
@@ -428,7 +437,8 @@ class LanguageVi extends BaseLanguage {
   String get buyNow => "Mua ngay";
 
   @override
-  String get areYouSureWantToRemoveReview => "Bạn có chắc chắn muốn xóa đánh giá?";
+  String get areYouSureWantToRemoveReview =>
+      "Bạn có chắc chắn muốn xóa đánh giá?";
 
   @override
   String get processing => "Xử lý";
@@ -452,7 +462,8 @@ class LanguageVi extends BaseLanguage {
   String get createANewPassword => "Tạo mật khẩu mới";
 
   @override
-  String get youNewPasswordMust => "Mật khẩu mới của bạn phải khác với mật khẩu đã sử dụng trước đó.";
+  String get youNewPasswordMust =>
+      "Mật khẩu mới của bạn phải khác với mật khẩu đã sử dụng trước đó.";
 
   @override
   String get oldPassword => "Mật khẩu cũ";
@@ -461,10 +472,12 @@ class LanguageVi extends BaseLanguage {
   String get pleaseEnterInfoTo => "Vui lòng nhập thông tin để tạo tài khoản";
 
   @override
-  String get weHaveSentA => "Chúng tôi đã gửi một hướng dẫn phục hồi mật khẩu vào email của bạn.";
+  String get weHaveSentA =>
+      "Chúng tôi đã gửi một hướng dẫn phục hồi mật khẩu vào email của bạn.";
 
   @override
-  String get justEnterTheEmail => "Chỉ cần nhập địa chỉ email bạn đã sử dụng để đăng ký với chúng tôi và chúng tôi sẽ gửi cho bạn liên kết đặt lại!";
+  String get justEnterTheEmail =>
+      "Chỉ cần nhập địa chỉ email bạn đã sử dụng để đăng ký với chúng tôi và chúng tôi sẽ gửi cho bạn liên kết đặt lại!";
 
   @override
   String get message => "Thông điệp";

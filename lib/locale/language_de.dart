@@ -155,7 +155,8 @@ class LanguageDe extends BaseLanguage {
   String get searchResultFor => "Suchergebnis für";
 
   @override
-  String get searchForBooksBy => "Suchen Sie nach Büchern, indem Sie Ihre Wörter oben eingeben";
+  String get searchForBooksBy =>
+      "Suchen Sie nach Büchern, indem Sie Ihre Wörter oben eingeben";
 
   @override
   String get changeYourPassword => "Ändern Sie Ihr Passwort";
@@ -179,10 +180,12 @@ class LanguageDe extends BaseLanguage {
   String get appTheme => "App -Thema";
 
   @override
-  String get tapToEnableLightMode => "Tippen Sie auf, um den Lichtmodus zu aktivieren";
+  String get tapToEnableLightMode =>
+      "Tippen Sie auf, um den Lichtmodus zu aktivieren";
 
   @override
-  String get tapToEnableDarkMode => "Tippen Sie auf, um den Dunklen Modus zu aktivieren";
+  String get tapToEnableDarkMode =>
+      "Tippen Sie auf, um den Dunklen Modus zu aktivieren";
 
   @override
   String get animationMadeEvenBetter => "Animation machte noch besser";
@@ -191,16 +194,19 @@ class LanguageDe extends BaseLanguage {
   String get disablePushNotification => "Push -Benachrichtigung deaktivieren";
 
   @override
-  String get tapToEnableNotification => "Tippen Sie auf, um die Benachrichtigung zu ermöglichen";
+  String get tapToEnableNotification =>
+      "Tippen Sie auf, um die Benachrichtigung zu ermöglichen";
 
   @override
-  String get tapToDisableNotification => "Tippen Sie auf, um die Benachrichtigung zu deaktivieren";
+  String get tapToDisableNotification =>
+      "Tippen Sie auf, um die Benachrichtigung zu deaktivieren";
 
   @override
   String get logout => "Ausloggen";
 
   @override
-  String get areYouSureWantToLogout => "Sind Sie sicher, sich abmelden zu können?";
+  String get areYouSureWantToLogout =>
+      "Sind Sie sicher, sich abmelden zu können?";
 
   @override
   String get yes => "Ja";
@@ -221,7 +227,8 @@ class LanguageDe extends BaseLanguage {
   String get designation => "Bezeichnung";
 
   @override
-  String get areYouSureWant => "Möchten Sie sicher das Buch aus der Wunschliste entfernen?";
+  String get areYouSureWant =>
+      "Möchten Sie sicher das Buch aus der Wunschliste entfernen?";
 
   @override
   String get category => "Kategorie";
@@ -251,7 +258,8 @@ class LanguageDe extends BaseLanguage {
   String get readBook => "Buch lesen";
 
   @override
-  String get areYouSureWantToRemoveCart => "Möchten Sie sicher das Buch aus dem Warenkorb entfernen?";
+  String get areYouSureWantToRemoveCart =>
+      "Möchten Sie sicher das Buch aus dem Warenkorb entfernen?";
 
   @override
   String get fontSize => "Schriftgröße";
@@ -326,6 +334,9 @@ class LanguageDe extends BaseLanguage {
   String get myLibrary => "Meine Bibliothek";
 
   @override
+  String get myChallenges => "Meine Herausforderungen";
+
+  @override
   String get noSampleBooksDownload => "Keine Beispielbücher herunterladen";
 
   @override
@@ -362,10 +373,12 @@ class LanguageDe extends BaseLanguage {
   String get youCanReadBooksEasily => "Sie können Bücher leicht lesen.";
 
   @override
-  String get youCanDownloadBooks => "Sie können Bücher problemlos herunterladen.";
+  String get youCanDownloadBooks =>
+      "Sie können Bücher problemlos herunterladen.";
 
   @override
-  String get youCanReadBooks => "Sie können Bücher ohne Internetverbindung lesen.";
+  String get youCanReadBooks =>
+      "Sie können Bücher ohne Internetverbindung lesen.";
 
   @override
   String get readBookAnywhere => "Lesen Sie ein Buch überall";
@@ -428,7 +441,8 @@ class LanguageDe extends BaseLanguage {
   String get buyNow => "Kaufe jetzt";
 
   @override
-  String get areYouSureWantToRemoveReview => "Sind Sie sicher, die Bewertung zu entfernen?";
+  String get areYouSureWantToRemoveReview =>
+      "Sind Sie sicher, die Bewertung zu entfernen?";
 
   @override
   String get processing => "wird bearbeitet";
@@ -452,19 +466,23 @@ class LanguageDe extends BaseLanguage {
   String get createANewPassword => "Erstelle ein neues Passwort";
 
   @override
-  String get youNewPasswordMust => "Ihr neues Passwort muss sich vom vorherigen gebrauchten Passwort unterscheiden.";
+  String get youNewPasswordMust =>
+      "Ihr neues Passwort muss sich vom vorherigen gebrauchten Passwort unterscheiden.";
 
   @override
   String get oldPassword => "Altes Passwort";
 
   @override
-  String get pleaseEnterInfoTo => "Bitte geben Sie Informationen ein, um Konto zu erstellen";
+  String get pleaseEnterInfoTo =>
+      "Bitte geben Sie Informationen ein, um Konto zu erstellen";
 
   @override
-  String get weHaveSentA => "Wir haben ein Passwort wiederhergestellt an Ihre E -Mail -Anweisungen.";
+  String get weHaveSentA =>
+      "Wir haben ein Passwort wiederhergestellt an Ihre E -Mail -Anweisungen.";
 
   @override
-  String get justEnterTheEmail => "Geben Sie einfach die E -Mail -Adresse ein, mit der Sie sich bei uns registriert haben, und wir senden Ihnen den Reset -Link!";
+  String get justEnterTheEmail =>
+      "Geben Sie einfach die E -Mail -Adresse ein, mit der Sie sich bei uns registriert haben, und wir senden Ihnen den Reset -Link!";
 
   @override
   String get message => "Nachricht";

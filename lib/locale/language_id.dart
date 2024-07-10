@@ -155,7 +155,8 @@ class LanguageId extends BaseLanguage {
   String get searchResultFor => 'Hasil pencarian untuk';
 
   @override
-  String get searchForBooksBy => 'Cari buku dengan memasukkan kata -kata Anda di atas';
+  String get searchForBooksBy =>
+      'Cari buku dengan memasukkan kata -kata Anda di atas';
 
   @override
   String get changeYourPassword => 'Ubah kata sandi Anda';
@@ -191,10 +192,12 @@ class LanguageId extends BaseLanguage {
   String get disablePushNotification => 'Nonaktifkan Pemberitahuan Push';
 
   @override
-  String get tapToEnableNotification => 'Ketuk untuk mengaktifkan pemberitahuan';
+  String get tapToEnableNotification =>
+      'Ketuk untuk mengaktifkan pemberitahuan';
 
   @override
-  String get tapToDisableNotification => 'Ketuk untuk menonaktifkan pemberitahuan';
+  String get tapToDisableNotification =>
+      'Ketuk untuk menonaktifkan pemberitahuan';
 
   @override
   String get logout => 'Keluar';
@@ -221,7 +224,8 @@ class LanguageId extends BaseLanguage {
   String get designation => 'Penamaan';
 
   @override
-  String get areYouSureWant => 'apakah Anda yakin ingin menghapus buku dari daftar keinginan?';
+  String get areYouSureWant =>
+      'apakah Anda yakin ingin menghapus buku dari daftar keinginan?';
 
   @override
   String get category => 'Kategori';
@@ -251,7 +255,8 @@ class LanguageId extends BaseLanguage {
   String get readBook => 'Membaca buku';
 
   @override
-  String get areYouSureWantToRemoveCart => 'Apakah Anda yakin ingin menghapus buku dari kereta?';
+  String get areYouSureWantToRemoveCart =>
+      'Apakah Anda yakin ingin menghapus buku dari kereta?';
 
   @override
   String get fontSize => 'Ukuran huruf';
@@ -326,10 +331,14 @@ class LanguageId extends BaseLanguage {
   String get myLibrary => "Perpustakaan saya";
 
   @override
+  String get myChallenges => "Tantanganku";
+
+  @override
   String get noSampleBooksDownload => "Tidak ada buku sampel unduhan";
 
   @override
-  String get noPurchasedBookAvailable => "Tidak ada buku yang dibeli yang tersedia";
+  String get noPurchasedBookAvailable =>
+      "Tidak ada buku yang dibeli yang tersedia";
 
   @override
   String get introduction => "pengantar";
@@ -365,7 +374,8 @@ class LanguageId extends BaseLanguage {
   String get youCanDownloadBooks => "Anda dapat mengunduh buku dengan mudah.";
 
   @override
-  String get youCanReadBooks => "Anda dapat membaca buku tanpa koneksi internet.";
+  String get youCanReadBooks =>
+      "Anda dapat membaca buku tanpa koneksi internet.";
 
   @override
   String get readBookAnywhere => "Baca buku di mana saja";
@@ -428,7 +438,8 @@ class LanguageId extends BaseLanguage {
   String get buyNow => "Beli sekarang";
 
   @override
-  String get areYouSureWantToRemoveReview => "Apakah Anda yakin ingin menghapus ulasan?";
+  String get areYouSureWantToRemoveReview =>
+      "Apakah Anda yakin ingin menghapus ulasan?";
 
   @override
   String get processing => "Pengolahan";
@@ -452,7 +463,8 @@ class LanguageId extends BaseLanguage {
   String get createANewPassword => "Buat Kata Sandi Baru";
 
   @override
-  String get youNewPasswordMust => "Kata sandi baru Anda harus berbeda dari kata sandi bekas sebelumnya.";
+  String get youNewPasswordMust =>
+      "Kata sandi baru Anda harus berbeda dari kata sandi bekas sebelumnya.";
 
   @override
   String get oldPassword => "password lama";
@@ -461,10 +473,12 @@ class LanguageId extends BaseLanguage {
   String get pleaseEnterInfoTo => "Harap masukkan info untuk membuat akun";
 
   @override
-  String get weHaveSentA => "Kami telah mengirim instruksi pemulihan kata sandi ke email Anda.";
+  String get weHaveSentA =>
+      "Kami telah mengirim instruksi pemulihan kata sandi ke email Anda.";
 
   @override
-  String get justEnterTheEmail => "Cukup masukkan alamat email yang Anda gunakan untuk mendaftar dengan kami dan kami akan mengirimkan tautan reset Anda!";
+  String get justEnterTheEmail =>
+      "Cukup masukkan alamat email yang Anda gunakan untuk mendaftar dengan kami dan kami akan mengirimkan tautan reset Anda!";
 
   @override
   String get message => "Pesan";

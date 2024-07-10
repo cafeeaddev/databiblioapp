@@ -156,7 +156,8 @@ class LanguageEn extends BaseLanguage {
   String get searchResultFor => "Search Result for";
 
   @override
-  String get searchForBooksBy => "Search for Books by entering your words above";
+  String get searchForBooksBy =>
+      "Search for Books by entering your words above";
 
   @override
   String get changeYourPassword => "Change Your Password";
@@ -222,7 +223,8 @@ class LanguageEn extends BaseLanguage {
   String get designation => "Designation";
 
   @override
-  String get areYouSureWant => "are you sure want to remove book from wish list?";
+  String get areYouSureWant =>
+      "are you sure want to remove book from wish list?";
 
   @override
   String get category => "Category";
@@ -252,7 +254,8 @@ class LanguageEn extends BaseLanguage {
   String get readBook => "Read Book";
 
   @override
-  String get areYouSureWantToRemoveCart => "Are you sure want to remove book from cart?";
+  String get areYouSureWantToRemoveCart =>
+      "Are you sure want to remove book from cart?";
 
   @override
   String get fontSize => "Font size";
@@ -327,6 +330,9 @@ class LanguageEn extends BaseLanguage {
   String get myLibrary => "My Library";
 
   @override
+  String get myChallenges => "My Challenges";
+
+  @override
   String get noSampleBooksDownload => "No Sample Books Download";
 
   @override
@@ -366,7 +372,8 @@ class LanguageEn extends BaseLanguage {
   String get youCanDownloadBooks => "You can download books easily.";
 
   @override
-  String get youCanReadBooks => "You can read books without the Internet connection.";
+  String get youCanReadBooks =>
+      "You can read books without the Internet connection.";
 
   @override
   String get readBookAnywhere => "Read Book Anywhere";
@@ -429,7 +436,8 @@ class LanguageEn extends BaseLanguage {
   String get buyNow => "Buy Now";
 
   @override
-  String get areYouSureWantToRemoveReview => "Are You sure want to remove review?";
+  String get areYouSureWantToRemoveReview =>
+      "Are You sure want to remove review?";
 
   @override
   String get processing => "Please Wait...";
@@ -453,7 +461,8 @@ class LanguageEn extends BaseLanguage {
   String get createANewPassword => "Create a new password";
 
   @override
-  String get youNewPasswordMust => "You new password must be different from previous used password.";
+  String get youNewPasswordMust =>
+      "You new password must be different from previous used password.";
 
   @override
   String get oldPassword => "Old Password";
@@ -462,10 +471,12 @@ class LanguageEn extends BaseLanguage {
   String get pleaseEnterInfoTo => "Please enter info to create account";
 
   @override
-  String get weHaveSentA => "We have sent a password recover instructions to your email.";
+  String get weHaveSentA =>
+      "We have sent a password recover instructions to your email.";
 
   @override
-  String get justEnterTheEmail => "Just Enter the email address you have used to register with us and we will send you the reset link!";
+  String get justEnterTheEmail =>
+      "Just Enter the email address you have used to register with us and we will send you the reset link!";
 
   @override
   String get message => "Message";

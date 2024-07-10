@@ -3,6 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:granth_flutter/configs.dart';
 import 'package:granth_flutter/main.dart';
 import 'package:granth_flutter/screen/auth/sign_in_screen.dart';
+import 'package:granth_flutter/screen/dashboard/fragment/challenges_fragment.dart';
 import 'package:granth_flutter/screen/dashboard/fragment/dashboard_fragment.dart';
 import 'package:granth_flutter/screen/dashboard/fragment/library_fragment.dart';
 import 'package:granth_flutter/screen/dashboard/fragment/setting_fragment.dart';
@@ -34,15 +35,20 @@ class _MobileDashboardScreenState extends State<MobileDashboardScreen> {
         body: [
           DashboardFragment(),
           LibraryFragment(),
-          appStore.isLoggedIn ? Container() : SignInScreen(),
+          ChallengesFragment(),
+          // appStore.isLoggedIn ? Container() : SignInScreen(),
           SettingFragment(),
         ][appStore.bottomNavigationBarIndex],
         bottomNavigationBar: NavigationBarTheme(
           data: NavigationBarThemeData(
-            indicatorColor: !appStore.isDarkMode ? defaultPrimaryColor.withOpacity(0.8) : null,
-            backgroundColor: !appStore.isDarkMode ? defaultPrimaryColor.withOpacity(0.05) : null,
-            labelTextStyle:
-                MaterialStateProperty.all(const TextStyle(color: Colors.grey, fontSize: 12)),
+            indicatorColor: !appStore.isDarkMode
+                ? defaultPrimaryColor.withOpacity(0.8)
+                : null,
+            backgroundColor: !appStore.isDarkMode
+                ? defaultPrimaryColor.withOpacity(0.05)
+                : null,
+            labelTextStyle: MaterialStateProperty.all(
+                const TextStyle(color: Colors.grey, fontSize: 12)),
           ),
           child: NavigationBar(
             indicatorColor: Colors.transparent,
@@ -57,7 +63,8 @@ class _MobileDashboardScreenState extends State<MobileDashboardScreen> {
                 label: 'Home',
               ),
               NavigationDestination(
-                icon: Icon(Icons.bookmark_outline, color: appTextSecondaryColor),
+                icon:
+                    Icon(Icons.bookmark_outline, color: appTextSecondaryColor),
                 selectedIcon: Icon(Icons.bookmark, color: Color(0xff1872F6)),
                 label: 'Emprestimos',
               ),
@@ -69,7 +76,7 @@ class _MobileDashboardScreenState extends State<MobileDashboardScreen> {
                   fit: BoxFit.cover,
                 ),
                 // selectedIcon: cart_icon.iconImage(color: Color(0xff1872F6)),
-                label: 'Favoritos',
+                label: 'Desafios',
               ),
               NavigationDestination(
                 icon: setting_icon.iconImage(color: appTextSecondaryColor),

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 abstract class BaseLanguage {
-  static BaseLanguage of(BuildContext context) => Localizations.of<BaseLanguage>(context, BaseLanguage)!;
+  static BaseLanguage of(BuildContext context) =>
+      Localizations.of<BaseLanguage>(context, BaseLanguage)!;
 
   String get createYourAccount;
 
@@ -217,6 +218,8 @@ abstract class BaseLanguage {
   String get download;
 
   String get myLibrary;
+
+  String get myChallenges;
 
   String get noSampleBooksDownload;
 
