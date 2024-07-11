@@ -57,12 +57,12 @@ class DashboardFragmentState extends State<DashboardFragment> {
           height: 40,
           child: Container(
             decoration: BoxDecoration(
-              color: Colors.grey[300], // cor de fundo para o efeito
+              color: Colors.grey[300],
               borderRadius: BorderRadius.circular(10.0),
               boxShadow: [
                 BoxShadow(
                   color: Colors.grey[500]!,
-                  offset: Offset(4.0, 4.0),
+                  offset: Offset(4.0, .5),
                   blurRadius: 15.0,
                   spreadRadius: 1.0,
                 ),
