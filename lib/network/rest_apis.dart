@@ -313,6 +313,16 @@ Future<BaseResponse> addRemoveWishList(request) async {
       request: request)));
 }
 
+Future<GenericPostResponse> addRemoveWishListMoodle(int userId, int mediaId, int isWishlist) async {
+  return GenericPostResponse.fromJson(await handleResponse(await buildHttpResponse(
+      'https://databiblion.cafeeadhost.com.br/webservice/rest/server.php?moodlewsrestformat=json'
+          '&wsfunction=local_wsgetbooks_set_wishlisted&wstoken=2ab3f1e2a757c5bc5e1d3a32c7680395'
+          '&userid=$userId'
+          '&mediaid=$mediaId'
+          '&wishlisted=$isWishlist',
+      method: HttpMethod.POST)));
+}
+
 ///end region
 Future<BaseResponse> addReview(request) async {
   return BaseResponse.fromJson(await handleResponse(await buildHttpResponse(

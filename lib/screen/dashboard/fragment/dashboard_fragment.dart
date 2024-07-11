@@ -70,7 +70,7 @@ class DashboardFragmentState extends State<DashboardFragment> {
         ),
         titleTextStyle: boldTextStyle(size: 24),
         elevation: 0,
-        actions: [
+        actions: [/*
           Padding(
             padding: const EdgeInsets.only(right: 8),
             child: IconButton(
@@ -83,7 +83,7 @@ class DashboardFragmentState extends State<DashboardFragment> {
               },
             ),
           ),
-        ],
+        */],
       ),
       body: RefreshIndicator(
         color: secondaryPrimaryColor,

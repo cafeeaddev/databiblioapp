@@ -6,8 +6,7 @@ import 'package:nb_utils/nb_utils.dart';
 ///add remove wishlist
 Future<void> addRemoveWishListApi(int id, int isWishList) async {
   toast(language!.processing);
-  Map request = {"book_id": id, "is_wishlist": isWishList};
-  await addRemoveWishList(request).then((res) {
+  await addRemoveWishListMoodle(appStore.userId, id, isWishList).then((res) {
     LiveStream().emit(WISH_LIST_ITEM_CHANGED);
 
     toast(res.message!);

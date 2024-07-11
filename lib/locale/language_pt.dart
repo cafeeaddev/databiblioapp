@@ -242,7 +242,7 @@ class LanguagePt extends BaseLanguage {
   String get viewSample => "Ver amostra";
 
   @override
-  String get downloadSample => "Download de amostra";
+  String get downloadSample => "Amostra";
 
   @override
   String get pleaseWait => "Por favor, espere..";

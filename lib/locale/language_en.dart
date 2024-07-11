@@ -242,7 +242,7 @@ class LanguageEn extends BaseLanguage {
   String get viewSample => "View Sample";
 
   @override
-  String get downloadSample => "Download Sample";
+  String get downloadSample => "Sample";
 
   @override
   String get pleaseWait => "Please wait..";

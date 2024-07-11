@@ -14,6 +14,8 @@ import 'package:granth_flutter/utils/constants.dart';
 import 'package:granth_flutter/utils/file_common.dart';
 import 'package:nb_utils/nb_utils.dart';
 
+import '../component/see_all_component.dart';
+
 class MobileLibraryFragment extends StatefulWidget {
   @override
   _MobileLibraryFragmentState createState() => _MobileLibraryFragmentState();
@@ -95,7 +97,7 @@ class _MobileLibraryFragmentState extends State<MobileLibraryFragment> {
       downloadedList.clear();
     }
 
-    if (appStore.isLoggedIn) {
+    if (false) {
       purchasedBookList().then((result) async {
         BookListModel response = BookListModel.fromJson(result);
 
@@ -173,153 +175,99 @@ class _MobileLibraryFragmentState extends State<MobileLibraryFragment> {
     super.dispose();
   }
 
+  /*
   @override
-  Widget build(BuildContext context) {
-    return Observer(
-      builder: (context) => DefaultTabController(
-        length: appStore.isLoggedIn && appStore.isNetworkConnected ? 3 : 2,
-        child: Scaffold(
+  Widget build(BuildContext context){
+    return Column(
+      children: [
+        Scaffold(
           body: NestedScrollView(
-            headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+            headerSliverBuilder:
+                (BuildContext context, bool innerBoxIsScrolled) {
               return <Widget>[
                 SliverAppBar(
-                  elevation: 0,
                   automaticallyImplyLeading: false,
-                  expandedHeight: 120,
+                  expandedHeight: 110,
                   pinned: true,
                   titleSpacing: 16,
                   actions: <Widget>[],
-                  bottom: TabBar(
-                    automaticIndicatorColorAdjustment: false,
-                    indicatorColor: defaultPrimaryColor,
-                    indicatorSize: TabBarIndicatorSize.tab,
-                    unselectedLabelColor: appStore.isDarkMode ? white : blackColor,
-                    labelColor: defaultPrimaryColor,
-                    isScrollable: false,
-                    onTap: (index) {
-                      appStore.setTabBarIndex(index);
-                    },
-                    tabs: appStore.isLoggedIn && appStore.isNetworkConnected
-                        ? [
-                            Tab(text: language!.sample),
-                            Tab(text: language!.purchase),
-                            Tab(text: language!.download),
-                          ]
-                        : [
-                            Tab(text: language!.sample),
-                            Tab(text: language!.download),
-                          ],
-                  ),
                   flexibleSpace: FlexibleSpaceBar(
-                    title: Text(language!.myLibrary, style: boldTextStyle()),
-                    titlePadding: EdgeInsets.only(bottom: 60, left: 16),
+                    title: Text(
+                      language!.myLibrary,
+                      style: boldTextStyle(),
+                    ),
+                    titlePadding: EdgeInsets.only(bottom: 20, left: 16),
                   ),
-                )
+                ),
               ];
             },
-            body: Stack(
-              children: [
-                appStore.isLoggedIn && appStore.isNetworkConnected
-                    ? TabBarView(
-                        children: [
-                          sampleList.isNotEmpty
-                              ? LibraryComponent(
-                                  list: sampleList,
-                                  i: 0,
-                                  isSampleExits: true,
-                                  onRemoveBookUpdate: (DownloadedBook bookDetail) {
-                                    removeBook(bookDetail, context, true);
-
-                                    setState(() {});
-                                  },
-                                  onDownloadUpdate: () {
-                                    fetchData();
-                                    setState(() {});
-                                  },
-                                )
-                              : Observer(builder: (context) {
-                                  return NoDataWidget(
-                                    title: language!.noSampleBooksDownload,
-                                  ).visible(!appStore.isLoading && isDataLoaded);
-                                }),
-                          purchasedList.isNotEmpty
-                              ? LibraryComponent(
-                                  list: purchasedList,
-                                  i: 1,
-                                  isSampleExits: false,
-                                  onRemoveBookUpdate: (DownloadedBook bookDetail) {
-                                    removeBook(bookDetail, context, false);
-                                    setState(() {});
-                                  },
-                                  onDownloadUpdate: () async {
-                                    await fetchData();
-                                    setState(() {});
-                                  },
-                                )
-                              : NoDataWidget(
-                                  title: language!.noPurchasedBookAvailable,
-                                ).visible(isDataLoaded && !appStore.isLoading),
-                          downloadedList.isNotEmpty
-                              ? LibraryComponent(
-                                  list: downloadedList,
-                                  i: 2,
-                                  isSampleExits: false,
-                                  onRemoveBookUpdate: (DownloadedBook bookDetail) {
-                                    removeBook(bookDetail, context, false);
-                                    setState(() {});
-                                  },
-                                  onDownloadUpdate: () {
-                                    fetchData();
-                                    setState(() {});
-                                  },
-                                )
-                              : NoDataWidget(
-                                  title: language!.noPurchasedBookAvailable,
-                                ).visible(isDataLoaded && !appStore.isLoading),
-                        ],
-                      )
-                    : TabBarView(
-                        children: [
-                          sampleList.isNotEmpty
-                              ? LibraryComponent(
-                                  list: sampleList,
-                                  i: 0,
-                                  isSampleExits: true,
-                                  onRemoveBookUpdate: (DownloadedBook bookDetail) {
-                                    removeBook(bookDetail, context, true);
-
-                                    setState(() {});
-                                  },
-                                  onDownloadUpdate: () {
-                                    fetchData();
-                                    setState(() {});
-                                  },
-                                )
-                              : NoDataWidget(
-                                  title: language!.noSampleBooksDownload,
-                                ).visible(isDataLoaded && !appStore.isLoading),
-                          downloadedList.isNotEmpty
-                              ? LibraryComponent(
-                                  list: downloadedList,
-                                  i: 2,
-                                  isSampleExits: false,
-                                  onRemoveBookUpdate: (DownloadedBook bookDetail) {
-                                    removeBook(bookDetail, context, false);
-                                    setState(() {});
-                                  },
-                                  onDownloadUpdate: () {
-                                    fetchData();
-                                    setState(() {});
-                                  },
-                                )
-                              : NoDataWidget(title: language!.noPurchasedBookAvailable).visible(isDataLoaded && !appStore.isLoading)
-                        ],
-                      ),
-              ],
-            ),
+            body: downloadedList.isNotEmpty
+                ? LibraryComponent(
+              list: downloadedList,
+              i: 2,
+              isSampleExits: false,
+              onRemoveBookUpdate: (DownloadedBook bookDetail) {
+                removeBook(bookDetail, context, false);
+                setState(() {});
+              },
+              onDownloadUpdate: () {
+                fetchData();
+                setState(() {});
+              },
+            )
+                : NoDataWidget(title: language!.noPurchasedBookAvailable).visible(isDataLoaded && !appStore.isLoading),
           ),
         ),
-      ),
+      ],
     );
   }
+  
+   */
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children:[
+        24.height,
+        SeeAllComponent(
+          isShowSeeAll: false,
+          title: language!.myLibrary,
+          onClick: () {
+          },
+        ).paddingLeft(16.0),
+
+        /*
+        SliverAppBar(
+          automaticallyImplyLeading: false,
+          expandedHeight: 110,
+          pinned: true,
+          titleSpacing: 16,
+          actions: <Widget>[],
+          flexibleSpace: FlexibleSpaceBar(
+            title: Text(language!.myLibrary, style: boldTextStyle(size: 22)),
+            titlePadding: EdgeInsets.only(bottom: 60, left: 16),
+          ),
+        ),
+        */
+        16.height,
+        downloadedList.isNotEmpty
+              ? LibraryComponent(
+            list: downloadedList,
+            i: 2,
+            isSampleExits: false,
+            onRemoveBookUpdate: (DownloadedBook bookDetail) {
+              removeBook(bookDetail, context, false);
+              setState(() {});
+            },
+            onDownloadUpdate: () {
+              fetchData();
+              setState(() {});
+            },
+          )
+              : NoDataWidget(title: language!.noPurchasedBookAvailable).visible(isDataLoaded && !appStore.isLoading)
+      ]
+    );
+  }
+  
 }

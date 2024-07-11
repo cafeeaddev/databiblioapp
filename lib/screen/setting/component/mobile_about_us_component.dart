@@ -29,15 +29,6 @@ class MobileAboutUsComponent extends StatelessWidget {
           style: primaryTextStyle(),
           textAlign: TextAlign.justify,
         ),
-        32.height,
-        AppButton(
-          text: language!.buyNow,
-          color: defaultPrimaryColor,
-          textStyle: primaryTextStyle(color: Colors.white),
-          onTap: () {
-            commonLaunchUrl(CodeCanyonLink);
-          },
-        ),
       ],
     );
   }
