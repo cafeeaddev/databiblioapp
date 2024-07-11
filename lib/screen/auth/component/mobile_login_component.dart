@@ -116,7 +116,7 @@ class _MobileLoginComponentState extends State<MobileLoginComponent> {
                             hintText: language!.userName),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return 'Este campo é obrigatório';
+                            return language!.thisFieldIsRequired;
                           }
                           return null;
                         },
@@ -134,9 +134,9 @@ class _MobileLoginComponentState extends State<MobileLoginComponent> {
                         },
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return 'Este campo é obrigatório';
+                            return language!.thisFieldIsRequired;
                           } else if (value.length < 6) {
-                            return 'A senha deve ter no mínimo 6 caracteres';
+                            return language!.passwordMustBeSame;
                           }
                           return null;
                         },
