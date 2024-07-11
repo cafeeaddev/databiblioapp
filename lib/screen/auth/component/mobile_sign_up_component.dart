@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:granth_flutter/component/app_loader_widget.dart';
+import 'package:granth_flutter/configs.dart';
 import 'package:granth_flutter/main.dart';
 import 'package:granth_flutter/network/rest_apis.dart';
 import 'package:granth_flutter/screen/auth/component/signin_bottom_widget.dart';
-import 'package:granth_flutter/configs.dart';
 import 'package:granth_flutter/screen/auth/component/signin_top_component.dart';
 import 'package:granth_flutter/utils/common.dart';
 import 'package:granth_flutter/utils/model_keys.dart';
@@ -77,7 +77,8 @@ class _MobileSignUpComponentState extends State<MobileSignUpComponent> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBarWidget('', elevation: 0, showBack: true, color: context.scaffoldBackgroundColor),
+      appBar:
+          appBarWidget('', elevation: 0, showBack: true, color: context.scaffoldBackgroundColor),
       body: Stack(
         children: [
           SingleChildScrollView(
@@ -145,8 +146,11 @@ class _MobileSignUpComponentState extends State<MobileSignUpComponent> {
                         },
                         validator: (value) {
                           if (value!.trim().isEmpty) return language!.confirmPasswordRequired;
-                          if (value.trim().length < passwordLengthGlobal) return language!.passwordDoesnTMatch;
-                          return passwordController.text == value.trim() ? null : language!.passwordDoesnTMatch;
+                          if (value.trim().length < passwordLengthGlobal)
+                            return language!.passwordDoesnTMatch;
+                          return passwordController.text == value.trim()
+                              ? null
+                              : language!.passwordDoesnTMatch;
                         },
                       ),
                       16.height,

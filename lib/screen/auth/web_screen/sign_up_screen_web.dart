@@ -85,20 +85,25 @@ class _WebSignupScreenState extends State<WebSignupScreen> {
           width: context.width(),
           child: Scaffold(
             backgroundColor: defaultPrimaryColor.withOpacity(0.7),
-            appBar: AppBar(elevation: 0, backgroundColor: defaultPrimaryColor.withOpacity(0.1), iconTheme: IconThemeData(color: Colors.white)),
+            appBar: AppBar(
+                elevation: 0,
+                backgroundColor: defaultPrimaryColor.withOpacity(0.1),
+                iconTheme: IconThemeData(color: Colors.white)),
             body: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset(app_logo, height: 65, width: 65).cornerRadiusWithClipRRect(defaultRadius),
+                    Image.asset(app_logo, height: 65, width: 65)
+                        .cornerRadiusWithClipRRect(defaultRadius),
                     8.width,
                     Text('Granth', style: boldTextStyle(size: 26, color: Colors.white)),
                   ],
                 ),
                 30.height,
-                Lottie.asset(walk_through_2, height: context.height() * 0.4, width: context.width() * 0.4),
+                Lottie.asset(walk_through_2,
+                    height: context.height() * 0.4, width: context.width() * 0.4),
                 10.height,
                 Text('Version $appVersion', style: secondaryTextStyle(color: Colors.white)),
               ],
@@ -158,7 +163,8 @@ class _WebSignupScreenState extends State<WebSignupScreen> {
                               focus: mobileNumberFocusNode,
                               nextFocus: passwordFocusNode,
                               controller: mobileNumberController,
-                              decoration: inputDecoration(context, hintText: language!.contactNumber),
+                              decoration:
+                                  inputDecoration(context, hintText: language!.contactNumber),
                             ),
                             16.height,
                             AppTextField(
@@ -173,14 +179,18 @@ class _WebSignupScreenState extends State<WebSignupScreen> {
                               textFieldType: TextFieldType.PASSWORD,
                               focus: confirmPasswordFocusNode,
                               controller: confirmPasswordController,
-                              decoration: inputDecoration(context, hintText: language!.confirmPassword),
+                              decoration:
+                                  inputDecoration(context, hintText: language!.confirmPassword),
                               onFieldSubmitted: (value) {
                                 createUserApi(context);
                               },
                               validator: (value) {
                                 if (value!.trim().isEmpty) return language!.confirmPasswordRequired;
-                                if (value.trim().length < passwordLengthGlobal) return language!.passwordDoesnTMatch;
-                                return passwordController.text == value.trim() ? null : language!.passwordDoesnTMatch;
+                                if (value.trim().length < passwordLengthGlobal)
+                                  return language!.passwordDoesnTMatch;
+                                return passwordController.text == value.trim()
+                                    ? null
+                                    : language!.passwordDoesnTMatch;
                               },
                             ),
                             16.height,

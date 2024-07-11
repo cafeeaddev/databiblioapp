@@ -1,5 +1,5 @@
 # Uncomment this line to define a global platform for your project
- platform :ios, '13.0'
+platform :ios, '13.0'
 
 # CocoaPods analytics sends network stats synchronously affecting flutter build latency.
 ENV['COCOAPODS_DISABLE_STATS'] = 'true'
@@ -36,7 +36,7 @@ end
 
 target 'OneSignalNotificationServiceExtension' do
   use_frameworks!
-  pod 'OneSignalXCFramework', '>= 3.4.3', '< 4.0'
+  pod 'OneSignalXCFramework', '>= 5.2.0'
 end
 
 post_install do |installer|
@@ -79,10 +79,8 @@ post_install do |installer|
 
         ## dart: PermissionGroup.sensors
          'PERMISSION_SENSORS=1'
-
       ]
       config.build_settings['ENABLE_BITCODE'] = 'NO'
-	end
     end
+  end
 end
-

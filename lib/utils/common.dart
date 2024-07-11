@@ -1,6 +1,9 @@
 import 'dart:io';
 
 import 'package:device_info_plus/device_info_plus.dart';
+import 'package:epub_view/epub_view.dart';
+import 'package:epub_view_example/reader.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:granth_flutter/configs.dart';
 import 'package:granth_flutter/main.dart';
@@ -15,12 +18,9 @@ import 'package:html/parser.dart';
 import 'package:intl/intl.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
+import 'package:provider/provider.dart';
 import 'package:universal_html/html.dart' as html;
 import 'package:url_launcher/url_launcher.dart';
-import 'package:epub_view_example/reader.dart';
-import 'package:epub_view/epub_view.dart';
-import 'package:flutter/foundation.dart';
-import 'package:provider/provider.dart';
 
 import '../models/downloaded_book.dart';
 import '../models/font_size_model.dart';
@@ -120,16 +120,12 @@ List<String> rtlSupport = ['ar'];
 
 List<PaymentMethodListModel> paymentModeListData() {
   List<PaymentMethodListModel> paymentModeList = [];
-  paymentModeList
-      .add(PaymentMethodListModel(title: "razorPay", image: razorpay_img));
+  paymentModeList.add(PaymentMethodListModel(title: "razorPay", image: razorpay_img));
 
 //  paymentModeList.add(PaymentMethodListModel(title: "paytm", image: paytm_img));
-  paymentModeList
-      .add(PaymentMethodListModel(title: "paypal", image: pay_pal_img));
-  paymentModeList
-      .add(PaymentMethodListModel(title: "stripe", image: stripe_img));
-  paymentModeList.add(
-      PaymentMethodListModel(title: "flutterWave", image: flutter_wave_img));
+  paymentModeList.add(PaymentMethodListModel(title: "paypal", image: pay_pal_img));
+  paymentModeList.add(PaymentMethodListModel(title: "stripe", image: stripe_img));
+  paymentModeList.add(PaymentMethodListModel(title: "flutterWave", image: flutter_wave_img));
 
   return paymentModeList;
 }
@@ -184,8 +180,7 @@ setOneSignal() async {
   OneSignal.User.pushSubscription.optIn();
 
   OneSignal.Notifications.addForegroundWillDisplayListener((event) {
-    OneSignal.Notifications.displayNotification(
-        event.notification.notificationId);
+    OneSignal.Notifications.displayNotification(event.notification.notificationId);
     return event.notification.display();
   });
   OneSignal.User.pushSubscription.addObserver((stateChanges) async {
@@ -270,17 +265,11 @@ List<FontSizeModel> fontList() {
 }
 
 void handleViewClick(BuildContext context,
-    {bool isPDF = false,
-    String? filePath,
-    String? bookName,
-    int? bookId}) async {
+    {bool isPDF = false, String? filePath, String? bookName, int? bookId}) async {
   isPDF = filePath.validate().isPdf;
 
   if (isPDF) {
-    PDFViewerScreen(
-            filePath: filePath.validate(),
-            bookName: bookName.validate(),
-            bookId: bookId)
+    PDFViewerScreen(filePath: filePath.validate(), bookName: bookName.validate(), bookId: bookId)
         .launch(context)
         .then((value) {});
   } else if (filePath.validate().contains(".epub")) {
@@ -293,6 +282,7 @@ void handleViewClick(BuildContext context,
       MaterialPageRoute(
         builder: (context) => ReaderScreen(
           book: book,
+          onToggleTheme: (_) {}, //TODO: REVER
         ),
       ),
     );
@@ -333,8 +323,7 @@ void downloadBook(
   String finalFilePath = '';
 
   if (isWeb) {
-    html.AnchorElement anchorElement =
-        html.AnchorElement(href: bookDetailResponse!.fileSamplePath);
+    html.AnchorElement anchorElement = html.AnchorElement(href: bookDetailResponse!.fileSamplePath);
     anchorElement.download = 'Test File';
     anchorElement.click();
   } else {
@@ -346,13 +335,11 @@ void downloadBook(
             : bookDetailResponse.filePath.validate(),
         isSample: isSample == true ? true : false,
       );
-      finalFilePath = await getBookFilePathFromName(fileName,
-          isSampleFile: isSample == true ? true : false);
+      finalFilePath =
+          await getBookFilePathFromName(fileName, isSampleFile: isSample == true ? true : false);
 
       ///sample pdf or epub book read
-      if (isSample == true
-          ? appStore.sampleFileExist
-          : appStore.purchasedFileExist) {
+      if (isSample == true ? appStore.sampleFileExist : appStore.purchasedFileExist) {
         handleViewClick(
           context,
           bookId: bookDetailResponse.bookId.validate(),
@@ -361,7 +348,7 @@ void downloadBook(
         );
       } else {
         ///download file from url
-        var token = "2ab3f1e2a757c5bc5e1d3a32c7680395";//should be appStore.token;
+        var token = "2ab3f1e2a757c5bc5e1d3a32c7680395"; //should be appStore.token;
         await downloadFile(
           context,
           filePath: bookDetailResponse.fileSamplePath.toString() + "?token=$token",
@@ -431,18 +418,12 @@ Future<void> commonLaunchUrl(String url,
 
 class HttpOverridesSkipCertificate extends HttpOverrides {
   @override
-  HttpClient createHttpClient(SecurityContext? context) =>
-      super.createHttpClient(context)
-        ..badCertificateCallback =
-            (X509Certificate cert, String host, int port) => true;
+  HttpClient createHttpClient(SecurityContext? context) => super.createHttpClient(context)
+    ..badCertificateCallback = (X509Certificate cert, String host, int port) => true;
 }
 
 Widget WebBreadCrumbWidget(BuildContext context,
-    {String? title,
-    String? subTitle1,
-    String? subTitle2,
-    double? height,
-    double? bottomSpace}) {
+    {String? title, String? subTitle1, String? subTitle2, double? height, double? bottomSpace}) {
   return Container(
     width: context.width(),
     height: height ?? 150,
@@ -456,8 +437,7 @@ Widget WebBreadCrumbWidget(BuildContext context,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text('${subTitle1} - ', style: primaryTextStyle()),
-            Text(subTitle2.validate(),
-                style: primaryTextStyle(color: defaultPrimaryColor)),
+            Text(subTitle2.validate(), style: primaryTextStyle(color: defaultPrimaryColor)),
           ],
         ),
       ],
@@ -465,15 +445,14 @@ Widget WebBreadCrumbWidget(BuildContext context,
   ).paddingBottom(bottomSpace ?? 50);
 }
 
-Widget customDialogue(BuildContext context,
-    {String? title, required Widget child}) {
+Widget customDialogue(BuildContext context, {String? title, required Widget child}) {
   return SimpleDialog(
     backgroundColor: appStore.isDarkMode ? scaffoldDarkColor : Colors.white,
     contentPadding: EdgeInsets.all(30),
     children: [
       ConstrainedBox(
-        constraints: BoxConstraints(
-            maxHeight: context.height() * 0.6, maxWidth: context.width() * 0.3),
+        constraints:
+            BoxConstraints(maxHeight: context.height() * 0.6, maxWidth: context.width() * 0.3),
         child: ScrollConfiguration(
           behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
           child: SingleChildScrollView(

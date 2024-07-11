@@ -48,29 +48,51 @@ class DashboardFragmentState extends State<DashboardFragment> {
         toolbarHeight: 70,
         backgroundColor: Colors.white,
         centerTitle: true,
+        leadingWidth: 100,
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 8),
+          child: Image.asset('images/app_images/app_logo_tra.png'),
+        ),
         title: SizedBox(
-          width: 210,
           height: 40,
-          child: TextField(
-            onTap: () {
-              SearchScreen().launch(context, pageRouteAnimation: PageRouteAnimation.Slide);
-            },
-            readOnly: true,
-            decoration: InputDecoration(
-              contentPadding: EdgeInsets.symmetric(vertical: 10.0),
-              hintText: 'Search',
-              alignLabelWithHint: true,
-              hintStyle: TextStyle(fontFamily: 'Nunito'),
-              prefixIcon: Icon(Icons.search),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10.0),
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.grey[300], // cor de fundo para o efeito
+              borderRadius: BorderRadius.circular(10.0),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey[500]!,
+                  offset: Offset(4.0, 4.0),
+                  blurRadius: 15.0,
+                  spreadRadius: 1.0,
+                ),
+                BoxShadow(
+                  color: Colors.white,
+                  offset: Offset(-4.0, -4.0),
+                  blurRadius: 15.0,
+                  spreadRadius: 1.0,
+                ),
+              ],
+            ),
+            child: TextField(
+              onTap: () {
+                SearchScreen().launch(context, pageRouteAnimation: PageRouteAnimation.Slide);
+              },
+              readOnly: true,
+              decoration: InputDecoration(
+                contentPadding: EdgeInsets.symmetric(vertical: 10.0),
+                alignLabelWithHint: true,
+                hintStyle: TextStyle(fontFamily: 'Nunito'),
+                prefixIcon: Icon(Icons.search),
+                border: InputBorder.none, // remove as bordas
               ),
             ),
           ),
         ),
         titleTextStyle: boldTextStyle(size: 24),
         elevation: 0,
-        actions: [/*
+        actions: [
+          /*
           Padding(
             padding: const EdgeInsets.only(right: 8),
             child: IconButton(
@@ -83,7 +105,8 @@ class DashboardFragmentState extends State<DashboardFragment> {
               },
             ),
           ),
-        */],
+        */
+        ],
       ),
       body: RefreshIndicator(
         color: secondaryPrimaryColor,
