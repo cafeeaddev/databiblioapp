@@ -282,7 +282,6 @@ void handleViewClick(BuildContext context,
       MaterialPageRoute(
         builder: (context) => ReaderScreen(
           book: book,
-          onToggleTheme: (_) {}, //TODO: REVER
         ),
       ),
     );
