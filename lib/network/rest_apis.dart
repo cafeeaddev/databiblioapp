@@ -140,12 +140,12 @@ Future<DashboardResponse> getDashboardDetails({String? type, int? page}) async {
   return response;
 }
 
-Future<DashboardResponse> getDashboardDetailsMoodle(
-    {String? type, int? page}) async {
+Future<DashboardResponse> getDashboardDetailsMoodle(int userId) async {
   var response = await handleResponse(await buildHttpResponse(
       'https://databiblion.cafeeadhost.com.br/webservice/rest/server.php?moodlewsrestformat=json'
       '&wstoken=2ab3f1e2a757c5bc5e1d3a32c7680395'
-      '&wsfunction=local_wsgetbooks_get_dashboard',
+      '&wsfunction=local_wsgetbooks_get_dashboard'
+      '&userid=$userId',
       method: HttpMethod.GET));
 
   return DashboardResponse.fromJson(response);

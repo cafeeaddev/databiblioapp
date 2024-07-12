@@ -117,7 +117,7 @@ class DashboardFragmentState extends State<DashboardFragment> {
           return await 2.seconds.delay;
         },
         child: SnapHelperWidget<DashboardResponse>(
-          future: getDashboardDetailsMoodle(),
+          future: getDashboardDetailsMoodle(appStore.userId),
           onSuccess: (data) {
             return Responsive(
               mobile: MobileDashboardFragment(data: data),
