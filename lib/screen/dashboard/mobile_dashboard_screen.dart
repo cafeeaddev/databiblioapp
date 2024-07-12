@@ -75,7 +75,7 @@ class _MobileDashboardScreenState extends State<MobileDashboardScreen> {
                   width: 24,
                   fit: BoxFit.cover,
                 ),
-                // selectedIcon: cart_icon.iconImage(color: Color(0xff1872F6)),
+                selectedIcon: cart_icon.iconImage(color: Color(0xff1872F6)),
                 label: 'Desafios',
               ),
               NavigationDestination(
