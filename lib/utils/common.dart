@@ -219,6 +219,8 @@ void handleViewClick(BuildContext context,
       MaterialPageRoute(
         builder: (context) => ReaderScreen(
           book: book,
+          bookId: bookId ?? 0,
+          userId: appStore.userId,
         ),
       ),
     );
