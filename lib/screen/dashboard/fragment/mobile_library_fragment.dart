@@ -188,37 +188,33 @@ class _MobileLibraryFragmentState extends State<MobileLibraryFragment> {
               SliverAppBar(
                 elevation: 0,
                 automaticallyImplyLeading: false,
-                expandedHeight: 120,
+                expandedHeight: 90,
                 pinned: true,
                 titleSpacing: 16,
-                actions: <Widget>[],
                 flexibleSpace: FlexibleSpaceBar(
                   title: Text(language!.myLibrary, style: boldTextStyle()),
-                  titlePadding: EdgeInsets.only(bottom: 60, left: 16),
+                  titlePadding: EdgeInsets.only(bottom: 30, left: 16),
                 ),
               )
             ];
           },
-          body: Stack(
-            children: [
-              downloadedList.isNotEmpty
-                  ? LibraryComponent(
-                      list: downloadedList,
-                      i: 2,
-                      isSampleExits: false,
-                      onRemoveBookUpdate: (DownloadedBook bookDetail) {
-                        removeBook(bookDetail, context, false);
-                        setState(() {});
-                      },
-                      onDownloadUpdate: () {
-                        fetchData();
-                        setState(() {});
-                      },
-                    )
-                  : NoDataWidget(title: language!.noPurchasedBookAvailable)
-                      .visible(isDataLoaded && !appStore.isLoading)
-            ],
-          ),
+          body: downloadedList.isNotEmpty
+              ? LibraryComponent(
+                  list: downloadedList,
+                  i: 2,
+                  isSampleExits: false,
+                  onRemoveBookUpdate: (DownloadedBook bookDetail) {
+                    removeBook(bookDetail, context, false);
+                    setState(() {});
+                  },
+                  onDownloadUpdate: () {
+                    fetchData();
+                    setState(() {});
+                  },
+                )
+              : NoDataWidget(title: language!.noPurchasedBookAvailable).visible(
+                  isDataLoaded && !appStore.isLoading,
+                ),
         ),
       ),
     );

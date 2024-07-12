@@ -20,7 +20,12 @@ class LibraryComponent extends StatefulWidget {
   final Function? onDownloadUpdate;
   final Function? onRemoveBookUpdate;
 
-  LibraryComponent({this.list, this.i, this.isSampleExits = false, this.onDownloadUpdate, this.onRemoveBookUpdate});
+  LibraryComponent(
+      {this.list,
+      this.i,
+      this.isSampleExits = false,
+      this.onDownloadUpdate,
+      this.onRemoveBookUpdate});
 
   @override
   LibraryComponentState createState() => LibraryComponentState();
@@ -48,7 +53,7 @@ class LibraryComponentState extends State<LibraryComponent> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(16),
+      padding: EdgeInsets.symmetric(horizontal: 16),
       child: SingleChildScrollView(
         child: Stack(
           children: [
@@ -96,15 +101,21 @@ class LibraryComponentState extends State<LibraryComponent> {
                                       right: 0,
                                       child: Container(
                                         margin: EdgeInsets.all(8.0),
-                                        decoration: BoxDecoration(shape: BoxShape.circle, color: whiteColor),
+                                        decoration: BoxDecoration(
+                                            shape: BoxShape.circle, color: whiteColor),
                                         padding: EdgeInsets.all(4.0),
-                                        child: Icon(Icons.file_download_outlined, size: 24, color: Colors.black),
+                                        child: Icon(Icons.file_download_outlined,
+                                            size: 24, color: Colors.black),
                                       ).onTap(() async {
                                         if (await Permissions.storageGranted()) {
-                                          fileName = await getBookFileName(bookDetail.bookId, bookDetail.webBookPath.toString(), isSample: widget.isSampleExits);
-                                          finalFilePath = await getBookFilePathFromName(fileName, isSampleFile: widget.isSampleExits);
+                                          fileName = await getBookFileName(
+                                              bookDetail.bookId, bookDetail.webBookPath.toString(),
+                                              isSample: widget.isSampleExits);
+                                          finalFilePath = await getBookFilePathFromName(fileName,
+                                              isSampleFile: widget.isSampleExits);
                                           if (File(finalFilePath).existsSync()) {
-                                            toast('$fileName already downloaded check it in your Local Files');
+                                            toast(
+                                                '$fileName already downloaded check it in your Local Files');
 
                                             return;
                                           }
@@ -140,7 +151,9 @@ class LibraryComponentState extends State<LibraryComponent> {
                                                 authorName: bookDetail.authorName.validate(),
                                                 bookPath: bookDetail.filePath.validate(),
                                                 filePath: finalFilePath,
-                                                fileType: widget.isSampleExits.validate() ? SAMPLE_BOOK : PURCHASED_BOOK,
+                                                fileType: widget.isSampleExits.validate()
+                                                    ? SAMPLE_BOOK
+                                                    : PURCHASED_BOOK,
                                               );
 
                                             ///open epub viewer or pdf viewer
@@ -173,7 +186,8 @@ class LibraryComponentState extends State<LibraryComponent> {
                                     },
                                     child: Container(
                                       margin: EdgeInsets.all(4.0),
-                                      decoration: BoxDecoration(shape: BoxShape.circle, color: whiteColor),
+                                      decoration:
+                                          BoxDecoration(shape: BoxShape.circle, color: whiteColor),
                                       padding: EdgeInsets.all(4.0),
                                       child: Icon(Icons.delete, size: 24, color: Colors.red),
                                     ),
