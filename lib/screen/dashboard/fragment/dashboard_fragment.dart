@@ -46,6 +46,7 @@ class DashboardFragmentState extends State<DashboardFragment> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         toolbarHeight: 70,
+        surfaceTintColor: Colors.white,
         backgroundColor: Colors.white,
         centerTitle: true,
         leadingWidth: 100,
