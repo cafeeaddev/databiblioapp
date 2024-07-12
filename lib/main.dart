@@ -37,7 +37,6 @@ int mAdShowCount = 0;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
   await initialize(aLocaleLanguageList: languageList());
 
   PackageInfo packageInfo = await PackageInfo.fromPlatform();
@@ -141,8 +140,7 @@ class MyAppState extends State<MyApp> {
           builder: (_) => GetMaterialApp(
             debugShowCheckedModeBanner: false,
             navigatorKey: navigatorKey,
-            home: Theme(data: ThemeData.light(),
-              child: SplashScreen()),
+            home: Theme(data: ThemeData.light(), child: SplashScreen()),
             theme: AppThemeData.lightTheme,
             darkTheme: AppThemeData.darkTheme,
             themeMode: ThemeMode.light,

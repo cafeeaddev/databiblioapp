@@ -27,12 +27,20 @@ class _MobileLanguageComponentState extends State<MobileLanguageComponent> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBarWidget("", elevation: 0, showBack: true, color: context.scaffoldBackgroundColor),
+      appBar: appBarWidget(
+        "",
+        elevation: 0,
+        showBack: true,
+        color: context.scaffoldBackgroundColor,
+      ),
       body: LanguageListWidget(
         widgetType: WidgetType.LIST,
         trailing: Container(
           padding: EdgeInsets.all(2),
-          decoration: boxDecorationDefault(color: defaultPrimaryColor, shape: BoxShape.circle, boxShadow: [BoxShadow(color: Colors.transparent)]),
+          decoration: boxDecorationDefault(
+              color: defaultPrimaryColor,
+              shape: BoxShape.circle,
+              boxShadow: [BoxShadow(color: Colors.transparent)]),
           child: Icon(Icons.check, size: 15, color: white),
         ),
         onLanguageChange: (v) {
