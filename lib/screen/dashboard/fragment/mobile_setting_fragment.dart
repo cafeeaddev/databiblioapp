@@ -4,13 +4,9 @@ import 'package:granth_flutter/main.dart';
 import 'package:granth_flutter/network/rest_apis.dart';
 import 'package:granth_flutter/screen/auth/change_password_screen.dart';
 import 'package:granth_flutter/screen/auth/sign_in_screen.dart';
-import 'package:granth_flutter/screen/setting/choose_detail_page_variant_screen.dart';
 import 'package:granth_flutter/screen/setting/component/setting_screen_bottom_component.dart';
 import 'package:granth_flutter/screen/setting/component/setting_top_component.dart';
 import 'package:granth_flutter/screen/setting/language_screen.dart';
-import 'package:granth_flutter/screen/setting/transaction_history_screen.dart';
-import 'package:granth_flutter/utils/colors.dart';
-import 'package:granth_flutter/utils/constants.dart';
 import 'package:granth_flutter/utils/images.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:share_plus/share_plus.dart';
@@ -77,7 +73,6 @@ class _MobileSettingFragmentState extends State<MobileSettingFragment> {
                     ).visible(!appStore.isLoggedIn),
                     16.height.visible(appStore.isLoggedIn),
                     Divider(height: 0),
-                    
                     SettingItemWidget(
                       title: language!.changePassword,
                       subTitle: language!.changeYourPassword,
@@ -118,8 +113,6 @@ class _MobileSettingFragmentState extends State<MobileSettingFragment> {
                         },
                       ),
                     ),
-                    
-                    
                     Divider(height: 0),
                     SettingItemWidget(
                       title: language!.share,
