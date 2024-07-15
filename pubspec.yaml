@@ -66,6 +66,11 @@ dependencies:
   # epub_view: ^3.2.0
   # vocsy_epub_viewer: ^2.0.0
 
+  # MP3 File
+  just_audio: ^0.9.18
+  audio_service: ^0.18.4
+  audio_video_progress_bar: ^2.0.3
+
   # DATABASE
   sqflite: ^2.3.0
 
