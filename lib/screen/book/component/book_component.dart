@@ -161,12 +161,12 @@ class BookComponentState extends State<BookComponent> {
           Positioned(
             right: 15,
             top: 10,
-            child: Visibility(
-              visible: widget.bookData?.mediaType == 'ebook',
-              child: CircleAvatar(
-                radius: 25,
-                backgroundColor: Color(0xff1872F6),
-                child: Icon(Icons.menu_book, color: Colors.white),
+            child: CircleAvatar(
+              radius: 25,
+              backgroundColor: Color(0xff1872F6),
+              child: Icon(
+                widget.bookData?.format == 'ebook' ? Icons.menu_book : Icons.audio_file_outlined,
+                color: Colors.white,
               ),
             ),
           ),
