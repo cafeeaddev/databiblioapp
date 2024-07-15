@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:get/route_manager.dart';
 import 'package:granth_flutter/configs.dart';
 import 'package:granth_flutter/main.dart';
 import 'package:granth_flutter/models/bookdetail_model.dart';
@@ -11,6 +12,8 @@ import 'package:granth_flutter/utils/constants.dart';
 import 'package:granth_flutter/utils/file_common.dart';
 import 'package:granth_flutter/utils/model_keys.dart';
 import 'package:nb_utils/nb_utils.dart';
+
+import '../../audiobook/audiobook_player_screen.dart';
 
 class BookButtonComponent extends StatefulWidget {
   static String tag = '/ButtonCommonComponent';
@@ -59,7 +62,11 @@ class BookButtonComponentState extends State<BookButtonComponent> {
 
   Future<void> addBookToCart() async {
     appStore.setLoading(true);
-    var request = {CommonKeys.bookId: mBookDetail!.bookId, CartModelKey.addQty: 1, BookRatingDataKey.userid: appStore.userId.validate()};
+    var request = {
+      CommonKeys.bookId: mBookDetail!.bookId,
+      CartModelKey.addQty: 1,
+      BookRatingDataKey.userid: appStore.userId.validate()
+    };
     await addToCart(request).then((result) {
       toast(result.message);
       appStore.setCartCount(appStore.cartCount = appStore.cartCount + 1);
@@ -84,16 +91,16 @@ class BookButtonComponentState extends State<BookButtonComponent> {
       color: transparentColor,
       child: isMobile
           ? Center(
-            child: Column(
-            
+              child: Column(
                 children: [
-                  if (widget.bookDetailResponse!.isPurchase != 1 && widget.bookDetailResponse!.price != 0)
+                  if (widget.bookDetailResponse!.isPurchase != 1 &&
+                      widget.bookDetailResponse!.price != 0)
                     Observer(
                       builder: (context) {
                         return AppButton(
                           enableScaleAnimation: false,
                           color: defaultPrimaryColor,
-                      width: context.width()/2,
+                          width: context.width() / 2,
                           child: Marquee(
                             child: Text(
                               cartItemListBookId.any((e) => e == widget.bookDetailResponse!.bookId)
@@ -108,7 +115,7 @@ class BookButtonComponentState extends State<BookButtonComponent> {
                                 return element == widget.bookDetailResponse!.bookId;
                               },
                             );
-            
+
                             if (appStore.isLoggedIn) {
                               if (isCart) {
                                 CartFragment(isShowBack: true).launch(context);
@@ -116,140 +123,175 @@ class BookButtonComponentState extends State<BookButtonComponent> {
                                 await addBookToCart();
                               }
                             } else {
-                              SignInScreen().launch(context, pageRouteAnimation: PageRouteAnimation.Slide);
+                              SignInScreen()
+                                  .launch(context, pageRouteAnimation: PageRouteAnimation.Slide);
                             }
                           },
                         );
                       },
                     ),
-                  if (widget.bookDetailResponse!.isPurchase == 1 || widget.bookDetailResponse!.price == 0)
+                  if (widget.bookDetailResponse!.isPurchase == 1 ||
+                      widget.bookDetailResponse!.price == 0)
                     AppButton(
                       enableScaleAnimation: false,
-                      child: Marquee(
-                        child: Text(language!.readBook, style: boldTextStyle(size: 14, color: whiteColor)),
-                      ),
-                      color: defaultPrimaryColor,
-                      width: context.width()/2,
-                      onTap: () async {
-                        if (appStore.isDownloading) {
-                          toast(language!.pleaseWait);
-                        } else {
-                          downloadBook(context, bookDetailResponse: widget.bookDetailResponse, isSample: false);
-                        }
-                      },
-                    ),
-                  if (widget.bookDetailResponse!.isPurchase == 1 || widget.bookDetailResponse!.price == 0)
-                    SizedBox(height: 16), // Espaçamento entre os botões
-                    if (widget.bookDetailResponse!.isPurchase == 1 || widget.bookDetailResponse!.price == 0)
-                    AppButton(
-                      enableScaleAnimation: false,
-                      width: context.width()/2,
-                      color: context.cardColor,
-                      shapeBorder: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(8)),
-                        side: BorderSide(color: defaultPrimaryColor),
-                      ),
-                      child: Marquee(
-                        child: Observer(
-                          builder: (context) {
-                            return Text(
-                              appStore.sampleFileExist && !appStore.isDownloading
-                                  ? language!.viewSample
-                                  : language!.downloadSample,
-                              style: boldTextStyle(size: 14),
-                            );
-                          },
-                        ),
-                      ),
-                      onTap: () async {
-                        if (appStore.isDownloading) {
-                          toast(language!.pleaseWait);
-                        } else {
-                          downloadBook(context, bookDetailResponse: widget.bookDetailResponse, isSample: true);
-                        }
-                      },
-                    ),
-                  
-                ],
-              ),
-          )
-          : Row(
-        children: [
-          widget.bookDetailResponse!.isPurchase != 1 && widget.bookDetailResponse!.price != 0
-              ? Observer(
-                  builder: (context) {
-                    return AppButton(
-                      enableScaleAnimation: false,
-                      color: defaultPrimaryColor,
-                      width: context.width(),
                       child: Marquee(
                         child: Text(
-                          cartItemListBookId.any((e) => e == widget.bookDetailResponse!.bookId) ? language!.goToCart : language!.addToCart,
-                          style: boldTextStyle(size: 14, color: whiteColor),
-                        ),
+                            widget.bookDetailResponse!.format == 'ebook'
+                                ? language!.readBook
+                                : 'Ouvir AudioLivro',
+                            style: boldTextStyle(
+                              size: 14,
+                              color: whiteColor,
+                            )),
                       ),
+                      color: defaultPrimaryColor,
+                      width: context.width() / 2,
                       onTap: () async {
-                        bool isCart = cartItemListBookId.any(
-                          (element) {
-                            return element == widget.bookDetailResponse!.bookId;
-                          },
-                        );
-
-                        if (appStore.isLoggedIn) {
-                          if (isCart) {
-                            CartFragment(isShowBack: true).launch(context);
+                        if (widget.bookDetailResponse!.format == 'ebook') {
+                          if (appStore.isDownloading) {
+                            toast(language!.pleaseWait);
                           } else {
-                            await addBookToCart();
+                            downloadBook(context,
+                                bookDetailResponse: widget.bookDetailResponse, isSample: false);
                           }
                         } else {
-                          SignInScreen().launch(context, pageRouteAnimation: PageRouteAnimation.Slide);
+                          Get.to(() => AudiobookPlayerScreen(
+                                audiobookName: widget.bookDetailResponse!.title!,
+                                audiobookUrl: widget.bookDetailResponse!.filePath!,
+                              ));
                         }
                       },
-                    ).expand();
-                  },
-                )
-              : Offstage(),
-          widget.bookDetailResponse!.isPurchase == 1 || widget.bookDetailResponse!.price == 0
-              ?
-          AppButton(
-                  enableScaleAnimation: false,
-                  width: context.width(),
-                  color: context.cardColor,
-                  shapeBorder: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(8)), side: BorderSide(color: defaultPrimaryColor)),
-                  child: Marquee(
-                    child: Observer(
-                      builder: (context) {
-                        return Text(appStore.sampleFileExist && !appStore.isDownloading ? language!.viewSample : language!.downloadSample, style: boldTextStyle(size: 14));
-                      },
                     ),
-                  ),
-                  onTap: () async {
-                    if (appStore.isDownloading) {
-                      toast(language!.pleaseWait);
-                    } else {
-                      downloadBook(context, bookDetailResponse: widget.bookDetailResponse, isSample: true);
-                    }
-                  },
-                ).expand()
-              : Offstage(),
-          widget.bookDetailResponse!.isPurchase == 1 || widget.bookDetailResponse!.price == 0 ? 16.width : 0.width,
-          widget.bookDetailResponse!.isPurchase == 1 || widget.bookDetailResponse!.price == 0
-              ? AppButton(
-                  enableScaleAnimation: false,
-                  child: Marquee(child: Text(language!.readBook, style: boldTextStyle(size: 14, color: whiteColor))),
-                  color: defaultPrimaryColor,
-                  width: context.width(),
-                  onTap: () async {
-                    if (appStore.isDownloading) {
-                      toast(language!.pleaseWait);
-                    } else {
-                      downloadBook(context, bookDetailResponse: widget.bookDetailResponse, isSample: false);
-                    }
-                  },
-                ).expand()
-              : Offstage(),
-        ],
-      ),
+                  if (widget.bookDetailResponse!.isPurchase == 1 ||
+                      widget.bookDetailResponse!.price == 0)
+                    SizedBox(height: 16),
+                  if (widget.bookDetailResponse!.format == 'ebook')
+                    if (widget.bookDetailResponse!.isPurchase == 1 ||
+                        widget.bookDetailResponse!.price == 0)
+                      AppButton(
+                        enableScaleAnimation: false,
+                        width: context.width() / 2,
+                        color: context.cardColor,
+                        shapeBorder: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(8)),
+                          side: BorderSide(color: defaultPrimaryColor),
+                        ),
+                        child: Marquee(
+                          child: Observer(
+                            builder: (context) {
+                              return Text(
+                                appStore.sampleFileExist && !appStore.isDownloading
+                                    ? language!.viewSample
+                                    : language!.downloadSample,
+                                style: boldTextStyle(size: 14),
+                              );
+                            },
+                          ),
+                        ),
+                        onTap: () async {
+                          if (appStore.isDownloading) {
+                            toast(language!.pleaseWait);
+                          } else {
+                            downloadBook(context,
+                                bookDetailResponse: widget.bookDetailResponse, isSample: true);
+                          }
+                        },
+                      ),
+                ],
+              ),
+            )
+          : Row(
+              children: [
+                widget.bookDetailResponse!.isPurchase != 1 && widget.bookDetailResponse!.price != 0
+                    ? Observer(
+                        builder: (context) {
+                          return AppButton(
+                            enableScaleAnimation: false,
+                            color: defaultPrimaryColor,
+                            width: context.width(),
+                            child: Marquee(
+                              child: Text(
+                                cartItemListBookId
+                                        .any((e) => e == widget.bookDetailResponse!.bookId)
+                                    ? language!.goToCart
+                                    : language!.addToCart,
+                                style: boldTextStyle(size: 14, color: whiteColor),
+                              ),
+                            ),
+                            onTap: () async {
+                              bool isCart = cartItemListBookId.any(
+                                (element) {
+                                  return element == widget.bookDetailResponse!.bookId;
+                                },
+                              );
+
+                              if (appStore.isLoggedIn) {
+                                if (isCart) {
+                                  CartFragment(isShowBack: true).launch(context);
+                                } else {
+                                  await addBookToCart();
+                                }
+                              } else {
+                                SignInScreen()
+                                    .launch(context, pageRouteAnimation: PageRouteAnimation.Slide);
+                              }
+                            },
+                          ).expand();
+                        },
+                      )
+                    : Offstage(),
+                widget.bookDetailResponse!.isPurchase == 1 || widget.bookDetailResponse!.price == 0
+                    ? AppButton(
+                        enableScaleAnimation: false,
+                        width: context.width(),
+                        color: context.cardColor,
+                        shapeBorder: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(8)),
+                            side: BorderSide(color: defaultPrimaryColor)),
+                        child: Marquee(
+                          child: Observer(
+                            builder: (context) {
+                              return Text(
+                                  appStore.sampleFileExist && !appStore.isDownloading
+                                      ? language!.viewSample
+                                      : language!.downloadSample,
+                                  style: boldTextStyle(size: 14));
+                            },
+                          ),
+                        ),
+                        onTap: () async {
+                          if (appStore.isDownloading) {
+                            toast(language!.pleaseWait);
+                          } else {
+                            downloadBook(context,
+                                bookDetailResponse: widget.bookDetailResponse, isSample: true);
+                          }
+                        },
+                      ).expand()
+                    : Offstage(),
+                widget.bookDetailResponse!.isPurchase == 1 || widget.bookDetailResponse!.price == 0
+                    ? 16.width
+                    : 0.width,
+                widget.bookDetailResponse!.isPurchase == 1 || widget.bookDetailResponse!.price == 0
+                    ? AppButton(
+                        enableScaleAnimation: false,
+                        child: Marquee(
+                            child: Text(language!.readBook,
+                                style: boldTextStyle(size: 14, color: whiteColor))),
+                        color: defaultPrimaryColor,
+                        width: context.width(),
+                        onTap: () async {
+                          if (appStore.isDownloading) {
+                            toast(language!.pleaseWait);
+                          } else {
+                            downloadBook(context,
+                                bookDetailResponse: widget.bookDetailResponse, isSample: false);
+                          }
+                        },
+                      ).expand()
+                    : Offstage(),
+              ],
+            ),
     );
   }
 }
