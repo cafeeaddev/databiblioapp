@@ -12,7 +12,7 @@ dependencies:
 
 
   epub_view_example:
-    path: ../databiblio-reader/example/
+    path: D:\projetos\flutter\databiblio-reader\example
     # git:
     #   url: https://github.com/Cafe-EAD/databiblio-reader.git
     #   ref: main
