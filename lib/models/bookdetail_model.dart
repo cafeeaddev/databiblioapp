@@ -4,6 +4,9 @@ class BookDetailResponse {
   String? authorName;
   String? backCover;
   int? bookId;
+  int? isBorrowed;
+  int? borrowedUntil;
+  int? availableCopies;
   String? categoryName;
   String? dateOfPublication;
   String? description;
@@ -30,6 +33,9 @@ class BookDetailResponse {
 
   BookDetailResponse({
     this.authorName,
+    this.isBorrowed,
+    this.borrowedUntil,
+    this.availableCopies,
     this.backCover,
     this.bookId,
     this.categoryName,
@@ -59,6 +65,9 @@ class BookDetailResponse {
 
   factory BookDetailResponse.fromJson(Map<String, dynamic> json) {
     return BookDetailResponse(
+      isBorrowed: json['emprestimo'],
+      borrowedUntil: json['emprestimo_end_date'],
+      availableCopies: json['quantidade_copias'],
       authorName: json[DashboardKeys.authorName],
       backCover: json[DashboardKeys.backCover] != null ? json[DashboardKeys.backCover] : null,
       bookId: json[CommonKeys.bookId],
