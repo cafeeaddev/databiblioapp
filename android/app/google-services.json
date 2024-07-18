@@ -12,7 +12,20 @@
           "package_name": "com.cafeead.databiblio"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "152869979546-0ba010urqe9133dvbq7mb3f6foor4g2v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cafeead.databiblio",
+            "certificate_hash": "b498c7a9b49bb0dcd720d3b616fd374577449a90"
+          }
+        },
+        {
+          "client_id": "152869979546-j4s1t1dhnkvu4l8hpbo193c2p36ffru7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBPdc4jkuzFNZTsLsLw1teF6W1RjA_wXnI"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "152869979546-j4s1t1dhnkvu4l8hpbo193c2p36ffru7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "152869979546-0gsfjgfb2kafraor350ljbvblerup9b0.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.cafeead.databiblio"
+              }
+            }
+          ]
         }
       }
     }

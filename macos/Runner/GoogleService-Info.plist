@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>152869979546-0gsfjgfb2kafraor350ljbvblerup9b0.apps.googleusercontent.com</string>
+	<string>152869979546-qaut7rpk6c1tiv6soeti9mrgmnpaue8m.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.152869979546-0gsfjgfb2kafraor350ljbvblerup9b0</string>
+	<string>com.googleusercontent.apps.152869979546-qaut7rpk6c1tiv6soeti9mrgmnpaue8m</string>
 	<key>ANDROID_CLIENT_ID</key>
 	<string>152869979546-0ba010urqe9133dvbq7mb3f6foor4g2v.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
@@ -15,7 +15,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.cafeead.databiblio</string>
+	<string>com.iqonic.granthFlutter</string>
 	<key>PROJECT_ID</key>
 	<string>databiblio-df216</string>
 	<key>STORAGE_BUCKET</key>
@@ -31,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:152869979546:ios:77b28c203d5153d6eda623</string>
+	<string>1:152869979546:ios:d6594be638c7d7e3eda623</string>
 </dict>
 </plist>
