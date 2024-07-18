@@ -10,9 +10,9 @@ const BASE_URL = '$DOMAIN_URL/api/';
 const ONE_SIGNAL_APP_ID = '';
 
 ///RAZORPAY DETAIL
-const RAZOR_PAY_URL = 'https://api.razorpay.com/v1/orders';
-const RAZOR_KEY = "";
-const RAZORPAY_KEY_SECRET = '';
+// const RAZOR_PAY_URL = 'https://api.razorpay.com/v1/orders';
+// const RAZOR_KEY = "";
+// const RAZORPAY_KEY_SECRET = '';
 
 ///Paytm
 const PAYTM_ID = "";

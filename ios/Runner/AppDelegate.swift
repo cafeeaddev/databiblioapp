@@ -10,7 +10,7 @@ import flutter_downloader
     _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
-//    GeneratedPluginRegistrant.register(with: self)
+    GeneratedPluginRegistrant.register(with: self)
     FlutterDownloaderPlugin.setPluginRegistrantCallback(registerPlugins)
     
     let controller : FlutterViewController = window?.rootViewController as! FlutterViewController
