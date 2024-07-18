@@ -17,7 +17,7 @@ import 'package:granth_flutter/utils/permissions.dart';
 import 'package:html/parser.dart';
 import 'package:intl/intl.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:onesignal_flutter/onesignal_flutter.dart';
+// import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:universal_html/html.dart' as html;
 import 'package:url_launcher/url_launcher.dart';
@@ -106,25 +106,6 @@ InputDecoration inputDecoration(BuildContext context,
 
 String parseHtmlString(String? htmlString) {
   return parse(parse(htmlString).body!.text).documentElement!.text;
-}
-
-///OneSignal Player id
-
-setOneSignal() async {
-  OneSignal.initialize(ONE_SIGNAL_APP_ID);
-  OneSignal.Notifications.requestPermission(true);
-
-  OneSignal.User.pushSubscription.optIn();
-
-  OneSignal.Notifications.addForegroundWillDisplayListener((event) {
-    OneSignal.Notifications.displayNotification(event.notification.notificationId);
-    return event.notification.display();
-  });
-  OneSignal.User.pushSubscription.addObserver((stateChanges) async {
-    if (stateChanges.current.id.validate().isNotEmpty) {
-      setValue(PLAYER_ID, stateChanges.current.id.validate());
-    }
-  });
 }
 
 ///Payment Status

@@ -3,21 +3,23 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>715681207911-c93c89sjprif6cmh55vhdqt96mi70oh5.apps.googleusercontent.com</string>
+	<string>152869979546-0gsfjgfb2kafraor350ljbvblerup9b0.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.715681207911-c93c89sjprif6cmh55vhdqt96mi70oh5</string>
+	<string>com.googleusercontent.apps.152869979546-0gsfjgfb2kafraor350ljbvblerup9b0</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>152869979546-0ba010urqe9133dvbq7mb3f6foor4g2v.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBdaqlvdzHkYiMlW6pWsR-lom-BFXC4OJ8</string>
+	<string>AIzaSyAF40zAGdQz7FiCZBGDFDa7GueETaT1_sw</string>
 	<key>GCM_SENDER_ID</key>
-	<string>715681207911</string>
+	<string>152869979546</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.iqonic.granthFlutter</string>
+	<string>com.cafeead.databiblio</string>
 	<key>PROJECT_ID</key>
-	<string>granth-flutter</string>
+	<string>databiblio-df216</string>
 	<key>STORAGE_BUCKET</key>
-	<string>granth-flutter.appspot.com</string>
+	<string>databiblio-df216.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:715681207911:ios:3b9d52c5fcd7efd33866c2</string>
-	<key>DATABASE_URL</key>
-	<string>https://granth-flutter.firebaseio.com</string>
+	<string>1:152869979546:ios:77b28c203d5153d6eda623</string>
 </dict>
 </plist>

@@ -6,7 +6,7 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:flutter_stripe/flutter_stripe.dart';
+// import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:granth_flutter/app_theme.dart';
@@ -89,8 +89,8 @@ void main() async {
   }
 
   if (isMobile) {
-    Stripe.publishableKey = STRIPE_PAYMENT_PUBLISH_KEY;
-    setOneSignal();
+    // Stripe.publishableKey = STRIPE_PAYMENT_PUBLISH_KEY;
+    // setOneSignal();
   }
 
   runApp(
