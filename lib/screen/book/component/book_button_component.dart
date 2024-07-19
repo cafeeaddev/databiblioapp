@@ -43,13 +43,13 @@ class BookButtonComponentState extends State<BookButtonComponent> {
 
     if (isMobile) {
       _sampleFileExist = await checkFileIsExist(
-        bookId: mBookDetail!.bookId.toString(),
-        bookPath: mBookDetail!.fileSamplePath.validate(),
+        bookId: (mBookDetail?.bookId ?? '').toString(),
+        bookPath: mBookDetail?.fileSamplePath ?? ''.validate(),
         sampleFile: true,
       );
       _purchasedFileExist = await checkFileIsExist(
-        bookId: mBookDetail!.bookId.toString(),
-        bookPath: mBookDetail!.filePath.validate(),
+        bookId: (mBookDetail?.bookId ?? '').toString(),
+        bookPath: mBookDetail?.filePath ?? ''.validate(),
         sampleFile: false,
       );
       appStore.setSampleFileStatus(_sampleFileExist);
@@ -90,8 +90,8 @@ class BookButtonComponentState extends State<BookButtonComponent> {
       child: Center(
         child: Column(
           children: [
-            if (widget.bookDetailResponse!.isBorrowed == 0) ...[
-              if ((widget.bookDetailResponse!.availableCopies ?? 0) > 0)
+            if (widget.bookDetailResponse?.isBorrowed == 0) ...[
+              if ((widget.bookDetailResponse?.availableCopies ?? 0) > 0)
                 AppButton(
                   enableScaleAnimation: false,
                   color: defaultPrimaryColor,
@@ -129,12 +129,12 @@ class BookButtonComponentState extends State<BookButtonComponent> {
                 width: context.width() / 2,
                 child: Marquee(
                   child: Text(
-                    widget.bookDetailResponse!.format == 'ebook' ? 'Ler livro' : 'Ouvir AudioLivro',
+                    widget.bookDetailResponse?.format == 'ebook' ? 'Ler livro' : 'Ouvir AudioLivro',
                     style: boldTextStyle(size: 14, color: whiteColor),
                   ),
                 ),
                 onTap: () async {
-                  if (widget.bookDetailResponse!.format == 'ebook') {
+                  if (widget.bookDetailResponse?.format == 'ebook') {
                     if (appStore.isDownloading) {
                       toast(language!.pleaseWait);
                     } else {
@@ -143,8 +143,8 @@ class BookButtonComponentState extends State<BookButtonComponent> {
                     }
                   } else {
                     Get.to(() => AudiobookPlayerScreen(
-                          audiobookName: widget.bookDetailResponse!.title!,
-                          audiobookUrl: widget.bookDetailResponse!.filePath!,
+                          audiobookName: widget.bookDetailResponse?.title ?? '',
+                          audiobookUrl: widget.bookDetailResponse?.filePath ?? '',
                         ));
                   }
                 },
@@ -164,6 +164,7 @@ class BookButtonComponentState extends State<BookButtonComponent> {
                   // Implementar lógica de devolução aqui
                 },
               ),
+              SizedBox(height: 16),
               AppButton(
                 enableScaleAnimation: false,
                 color: defaultPrimaryColor,

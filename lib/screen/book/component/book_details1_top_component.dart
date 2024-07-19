@@ -42,7 +42,7 @@ class BookDetails1TopComponentState extends State<BookDetails1TopComponent> {
         CachedImageWidget(
           height: 250,
           width: 180,
-          url: widget.bookData!.frontCover.validate(),
+          url: widget.bookData?.frontCover ?? ''.validate(),
           fit: BoxFit.cover,
         ).cornerRadiusWithClipRRect(defaultRadius).center(),
         // Positioned(

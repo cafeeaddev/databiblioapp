@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:granth_flutter/utils/colors.dart';
 import 'package:granth_flutter/configs.dart';
+import 'package:granth_flutter/utils/colors.dart';
 import 'package:nb_utils/nb_utils.dart';
 
 class AppThemeData {
@@ -33,7 +33,8 @@ class AppThemeData {
       actionsIconTheme: IconThemeData(color: Colors.black, size: 24),
       titleTextStyle: boldTextStyle(size: 20),
     ),
-    scrollbarTheme: ScrollbarThemeData(thumbColor: MaterialStateProperty.all(Colors.black), radius: Radius.circular(defaultRadius)),
+    scrollbarTheme: ScrollbarThemeData(
+        thumbColor: WidgetStateProperty.all(Colors.black), radius: Radius.circular(defaultRadius)),
     dialogTheme: DialogTheme(
       backgroundColor: cardColor,
       contentTextStyle: primaryTextStyle(color: Colors.red),
@@ -41,12 +42,12 @@ class AppThemeData {
       shape: OutlineInputBorder(borderRadius: BorderRadius.circular(16.0)),
     ),
     checkboxTheme: CheckboxThemeData(
-      fillColor: MaterialStateProperty.all(defaultPrimaryColor),
-      overlayColor: MaterialStateProperty.all(Color(0xFF5D5F6E)),
+      fillColor: WidgetStateProperty.all(defaultPrimaryColor),
+      overlayColor: WidgetStateProperty.all(Color(0xFF5D5F6E)),
     ),
     radioTheme: RadioThemeData(
-      fillColor: MaterialStateProperty.all(defaultPrimaryColor),
-      overlayColor: MaterialStateProperty.all(Color(0xFF5D5F6E)),
+      fillColor: WidgetStateProperty.all(defaultPrimaryColor),
+      overlayColor: WidgetStateProperty.all(Color(0xFF5D5F6E)),
     ),
   ).copyWith(
     pageTransitionsTheme: PageTransitionsTheme(
@@ -83,7 +84,9 @@ class AppThemeData {
       actionsIconTheme: IconThemeData(color: Colors.white, size: 24),
       titleTextStyle: boldTextStyle(size: 20),
     ),
-    scrollbarTheme: ScrollbarThemeData(thumbColor: MaterialStateProperty.all(scaffoldColorDark), radius: Radius.circular(defaultRadius)),
+    scrollbarTheme: ScrollbarThemeData(
+        thumbColor: WidgetStateProperty.all(scaffoldColorDark),
+        radius: Radius.circular(defaultRadius)),
     dialogTheme: DialogTheme(
       backgroundColor: cardColor,
       contentTextStyle: primaryTextStyle(color: Colors.red),
@@ -91,12 +94,12 @@ class AppThemeData {
       shape: OutlineInputBorder(borderRadius: BorderRadius.circular(16.0)),
     ),
     checkboxTheme: CheckboxThemeData(
-      fillColor: MaterialStateProperty.all(scaffoldSecondaryDark),
-      overlayColor: MaterialStateProperty.all(Color(0xFF5D5F6E)),
+      fillColor: WidgetStateProperty.all(scaffoldSecondaryDark),
+      overlayColor: WidgetStateProperty.all(Color(0xFF5D5F6E)),
     ),
     radioTheme: RadioThemeData(
-      fillColor: MaterialStateProperty.all(scaffoldSecondaryDark),
-      overlayColor: MaterialStateProperty.all(Color(0xFF5D5F6E)),
+      fillColor: WidgetStateProperty.all(scaffoldSecondaryDark),
+      overlayColor: WidgetStateProperty.all(Color(0xFF5D5F6E)),
     ),
   ).copyWith(
     pageTransitionsTheme: PageTransitionsTheme(

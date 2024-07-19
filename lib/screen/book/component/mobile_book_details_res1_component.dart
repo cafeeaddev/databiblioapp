@@ -2,24 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:granth_flutter/component/app_loader_widget.dart';
 import 'package:granth_flutter/component/download_widget.dart';
+import 'package:granth_flutter/main.dart';
 import 'package:granth_flutter/models/all_book_details_model.dart';
-import 'package:granth_flutter/models/book_ratting_list_model.dart';
 import 'package:granth_flutter/network/common_api_call.dart';
 import 'package:granth_flutter/screen/auth/sign_in_screen.dart';
-import 'package:granth_flutter/screen/book/all_review_list_screen.dart';
 import 'package:granth_flutter/screen/book/component/book_button_component.dart';
 import 'package:granth_flutter/screen/book/component/book_details1_category_component.dart';
 import 'package:granth_flutter/screen/book/component/book_details1_top_component.dart';
-import 'package:granth_flutter/screen/book/component/book_list_component.dart';
-import 'package:granth_flutter/screen/book/component/ratting_list_component.dart';
-import 'package:granth_flutter/screen/book/component/ratting_view_component.dart';
-import 'package:granth_flutter/main.dart';
-import 'package:granth_flutter/screen/book/component/write_review_component.dart';
-import 'package:granth_flutter/screen/book/view_all_book_screen.dart';
-import 'package:granth_flutter/configs.dart';
-import 'package:granth_flutter/screen/dashboard/component/see_all_component.dart';
-import 'package:granth_flutter/utils/common.dart';
-import 'package:granth_flutter/utils/constants.dart';
 import 'package:nb_utils/nb_utils.dart';
 
 class MobileBookDetailsRes1Component extends StatefulWidget {
@@ -48,58 +37,58 @@ class _MobileBookDetailsRes1ComponentState extends State<MobileBookDetailsRes1Co
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     BookDetails1TopComponent(
-                        bookData: widget.bookData.bookDetailResponse!.first),
+                      bookData: widget.bookData.bookDetailResponse?.first,
+                    ),
                     16.height,
                     Text(
-                      widget.bookData.bookDetailResponse!.first.name
-                          .validate()
-                          .capitalizeFirstLetter(),
+                      widget.bookData.bookDetailResponse?.first.name ??
+                          ''.validate().capitalizeFirstLetter(),
                       style: boldTextStyle(size: 18),
                       maxLines: 2,
                       textAlign: TextAlign.center,
                       overflow: TextOverflow.ellipsis,
                     ).center(),
                     8.height,
-                    Text(widget.bookData.authorDetail!.first.name.validate(),
+                    Text(widget.bookData.authorDetail?.first.name ?? ''.validate(),
                             style: secondaryTextStyle())
                         .center(),
                     16.height,
-      
+
                     /// ratting list
                     // RattingViewComponent(bookDetailResponse: bookData.bookDetailResponse!.first, isCenterInfo: true),
                     // 16.height,
-      
+
                     /// category name
                     BookDetails1CategoryComponent(
-                        bookDetailResponse: widget.bookData.bookDetailResponse!.first,
+                        bookDetailResponse: widget.bookData.bookDetailResponse?.first,
                         isCenterInfo: true),
                     24.height,
-      
+
                     BookButtonComponent(
-                        bookDetailResponse: widget.bookData.bookDetailResponse!.first),
+                        bookDetailResponse: widget.bookData.bookDetailResponse?.first),
                     24.height,
-      
+
                     Divider(
                       color: Colors.grey,
                       thickness: 1,
                       indent: 20,
                       endIndent: 20,
                     ),
-      
+
                     12.height,
-      
+
                     ///Introduction title
                     Text(language!.introduction, style: boldTextStyle(size: 24)),
                     8.height,
                     ReadMoreText(
-                      widget.bookData.bookDetailResponse!.first.description.validate(),
+                      widget.bookData.bookDetailResponse?.first.description ?? ''.validate(),
                       textAlign: TextAlign.justify,
                       style: primaryTextStyle(),
                       colorClickableText: Colors.grey,
                     ),
                     // if (widget.bookData.bookRatingData!.length != 0) 24.height,
                     // if (widget.bookData.bookRatingData!.length != 0)
-      
+
                     //   ///Top Review
                     //   SeeAllComponent(
                     //     isShowSeeAll:
@@ -115,7 +104,7 @@ class _MobileBookDetailsRes1ComponentState extends State<MobileBookDetailsRes1Co
                     //       ).launch(context);
                     //     },
                     //   ),
-      
+
                     // if (widget.bookData.bookRatingData!
                     //     .any((element) => element.userId == appStore.userId))
                     //   SizedBox()
@@ -135,7 +124,7 @@ class _MobileBookDetailsRes1ComponentState extends State<MobileBookDetailsRes1Co
                     //           contentPadding: EdgeInsets.all(0),
                     //           builder: (BuildContext context) {
                     //             BookRatingData? mData;
-      
+
                     //             bool isReview = widget.bookData.bookRatingData!.any(
                     //                 (element) =>
                     //                     element.userId == appStore.userId);
@@ -143,7 +132,7 @@ class _MobileBookDetailsRes1ComponentState extends State<MobileBookDetailsRes1Co
                     //               mData = widget.bookData.bookRatingData!.firstWhere(
                     //                   (element) =>
                     //                       element.userId == appStore.userId);
-      
+
                     //             return WriteReviewComponent(
                     //                 bookRatingData: mData,
                     //                 bookId: widget.bookId,
@@ -168,7 +157,7 @@ class _MobileBookDetailsRes1ComponentState extends State<MobileBookDetailsRes1Co
                     // ),
                     // 24.height,
                     // if (widget.bookData.recommendedBook!.isNotEmpty)
-      
+
                     //   ///Recommended Book
                     //   SeeAllComponent(
                     //     isShowSeeAll: true,
@@ -184,9 +173,9 @@ class _MobileBookDetailsRes1ComponentState extends State<MobileBookDetailsRes1Co
                     // BookListComponent(
                     //     bookDetailsList: widget.bookData.recommendedBook, padding: 0),
                     // 24.height,
-      
+
                     // if (widget.bookData.authorBookList!.isNotEmpty)
-      
+
                     //   ///Author Book
                     //   SeeAllComponent(
                     //       isShowSeeAll: false, title: language!.authorBook),
@@ -216,26 +205,24 @@ class _MobileBookDetailsRes1ComponentState extends State<MobileBookDetailsRes1Co
                     // IconButton(
                     //   icon: Icon(Icons.share),
                     //   onPressed: () {
-                        
+
                     //   },
                     // ),
                     IconButton(
                       onPressed: () async {
                         if (appStore.isLoggedIn) {
-                          if (widget.bookData!.bookDetailResponse!.first.isWishlist.validate() == 1) {
-                            appStore.bookWishList.remove(widget.bookData!.bookDetailResponse!.first);
-                            widget.bookData!.bookDetailResponse!.first.isWishlist = 0;
+                          if (widget.bookData.bookDetailResponse!.first.isWishlist.validate() ==
+                              1) {
+                            appStore.bookWishList.remove(widget.bookData.bookDetailResponse!.first);
+                            widget.bookData.bookDetailResponse!.first.isWishlist = 0;
                           } else {
-      
-                            widget.bookData!.bookDetailResponse!.first.isWishlist = 1;
-                            appStore.bookWishList.add(widget.bookData!.bookDetailResponse!.first);
+                            widget.bookData.bookDetailResponse!.first.isWishlist = 1;
+                            appStore.bookWishList.add(widget.bookData.bookDetailResponse!.first);
                           }
-                          setState(() {
-                            
-                          });
+                          setState(() {});
                           await addRemoveWishListApi(
-                                  widget.bookData!.bookDetailResponse!.first.bookId.validate(),
-                                  widget.bookData!.bookDetailResponse!.first.isWishlist.validate())
+                                  widget.bookData.bookDetailResponse!.first.bookId.validate(),
+                                  widget.bookData.bookDetailResponse!.first.isWishlist.validate())
                               .then((value) {})
                               .catchError((e) {
                             log("Error : ${e.toString()}");
@@ -245,16 +232,16 @@ class _MobileBookDetailsRes1ComponentState extends State<MobileBookDetailsRes1Co
                         }
                       },
                       icon: Icon(
-                          widget.bookData!.bookDetailResponse!.first.isWishlist == 1
-                              ? Icons.favorite:
-                               Icons.favorite_outline,
+                          widget.bookData.bookDetailResponse?.first.isWishlist == 1
+                              ? Icons.favorite
+                              : Icons.favorite_outline,
                           color: redColor),
                     )
                   ],
                 )
               ],
             ),
-      
+
             Observer(builder: (context) {
               return AppLoaderWidget().center().visible(appStore.isLoading);
             }),

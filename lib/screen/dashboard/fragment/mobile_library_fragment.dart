@@ -1,15 +1,12 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:granth_flutter/main.dart';
-import 'package:granth_flutter/models/book_list_model.dart';
 import 'package:granth_flutter/models/bookdetail_model.dart';
-import 'package:granth_flutter/models/downloaded_book.dart';
-import 'package:granth_flutter/screen/book/component/library_componet.dart';
+import 'package:granth_flutter/screen/book/component/book_component.dart';
 import 'package:granth_flutter/utils/constants.dart';
-import 'package:granth_flutter/utils/file_common.dart';
 import 'package:nb_utils/nb_utils.dart';
+
+import '../../../network/rest_apis.dart';
 
 class MobileLibraryFragment extends StatefulWidget {
   @override
@@ -17,8 +14,7 @@ class MobileLibraryFragment extends StatefulWidget {
 }
 
 class _MobileLibraryFragmentState extends State<MobileLibraryFragment> {
-  List<DownloadedBook> downloadedList = [];
-
+  List<BookDetailResponse> downloadedList = [];
   bool isDataLoaded = false;
 
   @override
@@ -41,52 +37,22 @@ class _MobileLibraryFragmentState extends State<MobileLibraryFragment> {
     if (mounted) super.setState(fn);
   }
 
-  DownloadedBook? isExists(List<DownloadedBook> tasks, BookDetailResponse mBookDetail) {
-    DownloadedBook? exist;
-    tasks.forEach((task) {
-      if (task.bookId == mBookDetail.bookId.toString() && task.fileType == PURCHASED_BOOK) {
-        exist = task;
-      }
-    });
-    if (exist == null) {
-      exist = defaultBook(mBookDetail, PURCHASED_BOOK);
-    }
-    return exist;
-  }
+  // DownloadedBook? isExists(List<DownloadedBook> tasks, BookDetailResponse mBookDetail) {
+  //   DownloadedBook? exist;
+  //   tasks.forEach((task) {
+  //     if (task.bookId == mBookDetail.bookId.toString() && task.fileType == PURCHASED_BOOK) {
+  //       exist = task;
+  //     }
+  //   });
+  //   if (exist == null) {
+  //     exist = defaultBook(mBookDetail, PURCHASED_BOOK);
+  //   }
+  //   return exist;
+  // }
 
-  ///fetch book data call
   Future<void> fetchData() async {
     appStore.setLoading(true);
-    List<DownloadedBook>? books = await dbHelper.queryAllRows();
-
-    if (books.isNotEmpty) {
-      List<DownloadedBook>? samples = [];
-      List<DownloadedBook>? downloadable = [];
-      books.forEach((DownloadedBook? book) {
-        if (book!.fileType == SAMPLE_BOOK) {
-          samples.add(book);
-        }
-        if (book.fileType == PURCHASED_BOOK) {
-          downloadable.add(book);
-        }
-      });
-      setState(() {
-        downloadedList.clear();
-        downloadedList.addAll(downloadable);
-
-        downloadedList.forEach((purchaseItem) async {
-          String filePath =
-              await getBookFilePathFromName(purchaseItem.bookName.validate(), isSampleFile: false);
-          if (!File(filePath).existsSync()) {
-            purchaseItem.isDownloaded = false;
-          } else {
-            purchaseItem.isDownloaded = true;
-          }
-        });
-      });
-    } else {
-      downloadedList.clear();
-    }
+    downloadedList = await getEmprestimos();
 
     appStore.setLoading(false);
     setState(() {
@@ -117,47 +83,6 @@ class _MobileLibraryFragmentState extends State<MobileLibraryFragment> {
     // }
   }
 
-  Future<void> removeBook(DownloadedBook task, context, isSample) async {
-    String filePath =
-        await getBookFilePathFromName(task.bookName.toString(), isSampleFile: isSample);
-    if (!File(filePath).existsSync()) {
-      toast("Path: File you're trying to remove doesn't Exist");
-    } else {
-      await dbHelper
-          .delete(task.bookId.validate().toInt())
-          .then((value) => toast('Removed from Downloads'));
-      await File(filePath).delete();
-
-      init();
-
-      setState(() {});
-      LiveStream().emit(REFRESH_lIBRARY_LIST);
-    }
-  }
-
-  void setLibraryData(BookListModel response, List<DownloadedBook> books) {
-    List<DownloadedBook> purchased = [];
-    if (response.data!.isNotEmpty) {
-      DownloadedBook? book;
-
-      response.data!.forEach((bookDetail) async {
-        if (books.isNotEmpty) {
-          book = isExists(books, bookDetail);
-          if (book!.taskId != null) {
-          } else {
-            book = defaultBook(bookDetail, PURCHASED_BOOK);
-          }
-        } else {
-          book = defaultBook(bookDetail, SAMPLE_BOOK);
-        }
-        purchased.add(book!);
-      });
-      setState(() {});
-    }
-  }
-
-  ///remove book
-
   @override
   void dispose() {
     LiveStream().dispose(REFRESH_lIBRARY_LIST);
@@ -185,17 +110,22 @@ class _MobileLibraryFragmentState extends State<MobileLibraryFragment> {
             ];
           },
           body: downloadedList.isNotEmpty
-              ? LibraryComponent(
-                  list: downloadedList,
-                  i: 2,
-                  isSampleExits: false,
-                  onRemoveBookUpdate: (DownloadedBook bookDetail) {
-                    removeBook(bookDetail, context, false);
-                    setState(() {});
-                  },
-                  onDownloadUpdate: () {
-                    fetchData();
-                    setState(() {});
+              ? GridView.builder(
+                  padding: EdgeInsets.zero,
+                  shrinkWrap: true,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    childAspectRatio: .7,
+                  ),
+                  itemCount: downloadedList.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return BookComponent(
+                      bookData: downloadedList[index],
+                      bookWidth: context.width(),
+                      isWishList: false,
+                      isCenterBookInfo: false,
+                      isLeftDisTag: 0,
+                    );
                   },
                 )
               : NoDataWidget(title: language!.noPurchasedBookAvailable).visible(

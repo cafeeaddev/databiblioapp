@@ -327,7 +327,7 @@ class LanguagePt extends BaseLanguage {
   String get download => "Download";
 
   @override
-  String get myLibrary => "Minha biblioteca";
+  String get myLibrary => "Emprestimos";
 
   @override
   String get myChallenges => "Meus Desafios";

@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:granth_flutter/utils/model_keys.dart';
 
 class BookDetailResponse {
@@ -134,5 +135,10 @@ class BookDetailResponse {
       data[DashboardKeys.topicCover] = this.topicCover;
     }
     return data;
+  }
+
+  @override
+  String toString() {
+    return 'BookDetailResponse(authorName: $authorName, backCover: $backCover, bookId: $bookId, isBorrowed: $isBorrowed, borrowedUntil: $borrowedUntil, availableCopies: $availableCopies, categoryName: $categoryName, dateOfPublication: $dateOfPublication, description: $description, discount: $discount, discountedPrice: $discountedPrice, edition: $edition, filePath: $filePath, fileSamplePath: $fileSamplePath, format: $format, frontCover: $frontCover, isWishlist: $isWishlist, keywords: $keywords, language: $language, name: $name, price: $price, publisher: $publisher, subcategoryName: $subcategoryName, title: $title, topicCover: $topicCover, review: $review, totalRating: $totalRating, totalPage: $totalPage, isPurchase: $isPurchase)';
   }
 }

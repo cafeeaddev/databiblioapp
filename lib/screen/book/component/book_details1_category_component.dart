@@ -77,7 +77,7 @@ class BookDetails1CategoryComponent extends StatelessWidget {
             : Colors.grey[300], 
         borderRadius: BorderRadius.circular(15),
       ),
-      child: Text(bookDetailResponse!.categoryName.validate(),
+      child: Text(bookDetailResponse?.categoryName ??''.validate(),
                       style: boldTextStyle(), textAlign: TextAlign.center)
     ),
                 

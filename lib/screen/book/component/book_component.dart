@@ -18,12 +18,13 @@ class BookComponent extends StatefulWidget {
   final bool? isCenterBookInfo;
   final double? isLeftDisTag;
 
-  BookComponent(
-      {this.bookData,
-      this.bookWidth,
-      this.isWishList = false,
-      this.isCenterBookInfo = false,
-      this.isLeftDisTag});
+  BookComponent({
+    this.bookData,
+    this.bookWidth,
+    this.isWishList = false,
+    this.isCenterBookInfo = false,
+    this.isLeftDisTag,
+  });
 
   @override
   BookComponentState createState() => BookComponentState();
